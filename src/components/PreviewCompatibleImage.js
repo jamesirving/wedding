@@ -31,4 +31,4 @@ PreviewCompatibleImage.propTypes = {
   }).isRequired,
 }
 
-export default PreviewCompatibleImage
+export { PreviewCompatibleImage };
