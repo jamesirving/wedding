@@ -23,8 +23,9 @@ detailsBlock:
   image: /img/poets-lane.jpg
 rsvpBlock:
   button:
+    linkType: internal
+    linkUrl: /rsvp
     text: RSVP
-    url: /
   heading: We hope you can make it!
   image: /img/IMG_20181006_180438_442.jpg
   preheading: Join Us
