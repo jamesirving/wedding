@@ -10,7 +10,7 @@ pageHeaderBlock:
   subheading: 10 . 14 . 21
 detailsBlock:
   body: >-
-    **4:00pm 27 . 02 . 21**
+    ### **4:00pm 27 . 02 . 21**
 
 
     Poet's Lane Receptions
