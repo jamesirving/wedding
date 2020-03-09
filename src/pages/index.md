@@ -6,13 +6,14 @@ pageHeaderBlock:
   preheading: CELEBRATE OUR WEDDING
   subheading: 10 . 14 . 21
 detailsBlock:
-  heading: Details
-  image: /img/poets-lane.jpg
   body: |-
-    4:00pm 10 . 14 . 21
+    **4:00pm 10 . 14 . 21**
+
     Poets Lane
     13 Sherbrooke Rd, 
     Sherbrooke Vic
+  heading: Details
+  image: /img/poets-lane.jpg
 rsvpBlock:
   button:
     text: RSVP
