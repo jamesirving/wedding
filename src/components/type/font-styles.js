@@ -16,11 +16,11 @@ const coreStyles = css`
 `;
 
 const headingStyles = css`
+  ${coreStyles}
   font-family: ${globalStyles.headingFontFamily};
-  font-weight: ${fontWeight.bold};
+  // font-weight: ${fontWeight.bold};
   letter-spacing: 1px;
   line-height: 1.2;
-  ${coreStyles}
 `;
 
 export { coreStyles, headingStyles };
