@@ -3,10 +3,9 @@ import PropTypes from 'prop-types'
 import { Link, graphql } from 'gatsby'
 
 import Layout from '../components/Layout'
-import Features from '../components/Features'
-import BlogRoll from '../components/BlogRoll'
 import { PageHeader } from '../components/page-header'
-import { getImageUrl } from '../utils'
+import { FeatureBlock } from '../components/feature-block'
+import { ContentImageBlock } from '../components/content-image-block'
 
 export const IndexPageTemplate = ({
   pageHeaderBlock,
@@ -14,7 +13,9 @@ export const IndexPageTemplate = ({
   rsvpBlock,
 }) => (
   <div>
-    <PageHeader image={pageHeaderBlock.image} preheading={pageHeaderBlock.preheading} heading={pageHeaderBlock.heading} subheading={pageHeaderBlock.subheading} />
+    <PageHeader {...pageHeaderBlock} />
+    <ContentImageBlock {...detailsBlock} contentPosition="right"/>
+    <FeatureBlock {...rsvpBlock} />
   </div>
 )
 
