@@ -9,12 +9,14 @@ const StyledContainer = styled.div`
   ${styledSystemSpace}
   ${layout}
   ${color}
+
   box-sizing: border-box;
   margin-left: auto;
   margin-right: auto;
   padding-left: ${space.sm};
   padding-right:  ${space.sm};
   width: 100%;
+
   @media (min-width: ${breakpoints.md}px) {
     padding-left: ${space.md};
     padding-right: ${space.md};

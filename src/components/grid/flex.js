@@ -5,6 +5,7 @@ import { Box } from './box';
 
 const Flex = styled(Box)`
   ${flexbox}
+
   display: flex;
 `;
 

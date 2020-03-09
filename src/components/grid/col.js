@@ -9,15 +9,19 @@ const StyledCol = styled(Box)`
   margin-left: ${props => (props.offset ? props.offset[0] : 0)};
   padding-left: ${grid.gutterHalf};
   padding-right: ${grid.gutterHalf};
+
   @media (min-width: ${breakpoints.sm}) {
     margin-left: ${props => props.offset[1]};
   }
+
   @media (min-width: ${breakpoints.md}) {
     margin-left: ${props => props.offset[2]};
   }
+
   @media (min-width: ${breakpoints.lg}) {
     margin-left: ${props => props.offset[3]};
   }
+
   @media (min-width: ${breakpoints.xl}) {
     margin-left: ${props => props.offset[4]};
   }
