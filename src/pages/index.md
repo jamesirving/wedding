@@ -9,7 +9,16 @@ pageHeaderBlock:
   preheading: CELEBRATE OUR WEDDING
   subheading: 10 . 14 . 21
 detailsBlock:
-  body: '**[ss](sss)s**'
+  body: |-
+    > **sss**
+
+
+
+    * **sss**
+
+      * **sssssssss**
+
+        **ssss**
   heading: Details
   image: /img/poets-lane.jpg
 rsvpBlock:
