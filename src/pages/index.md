@@ -8,12 +8,12 @@ pageHeaderBlock:
 detailsBlock:
   heading: Details
   image: /img/poets-lane.jpg
-  location: |-
+  body: |-
+    4:00pm 10 . 14 . 21
     Poets Lane
     13 Sherbrooke Rd, 
     Sherbrooke Vic
-  time: '10 . 14 . 21 4:00pm'
-revpBlock:
+rsvpBlock:
   button:
     text: RSVP
     url: /
