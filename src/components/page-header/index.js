@@ -6,6 +6,7 @@ import { Container, Col, Row, Flex } from '../grid'
 import {H1, P} from '../type'
 import { colors, space } from '../../styles'
 import { getImageUrl } from '../../utils'
+import { PreviewCompatibleImage } from '../PreviewCompatibleImage';
 
 const OBJECT_POSITION = '50% 50%';
 const HEIGHT = '90vh';
@@ -52,7 +53,7 @@ const StyledContainer = styled(Container)`
 `;
 
 
-const PageHeader = ({image, heading, subheading, feature}) => {
+const PageHeader = ({image, preheading, heading, subheading}) => {
 
     return (
         <Wrapper>
@@ -60,6 +61,7 @@ const PageHeader = ({image, heading, subheading, feature}) => {
             <StyledContainer>
                 <Row>
                     <Col width={{xs: 10/12, md: 8/12, lg: 6/12}} offset={[1/12, 1/12, 2/12, 3/12]}>
+                        {preheading && (<P color='white'>{preheading}</P>)}
                         {heading && (<H1 color='white'>{heading}</H1>)}
                         {subheading && (<P color='white'>{subheading}</P>)}
                     </Col>
@@ -71,9 +73,9 @@ const PageHeader = ({image, heading, subheading, feature}) => {
 
 PageHeader.propTypes = {
     image: PropTypes.object, 
+    preheading: PropTypes.string,
     heading: PropTypes.string,
     subheading:PropTypes.string,
-    feature: PropTypes.bool,
 };
 
 export {PageHeader};
