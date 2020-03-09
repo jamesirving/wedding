@@ -1,7 +1,10 @@
 ---
 templateKey: index-page
 pageHeaderBlock:
-  heading: James Irving & Dina Abdeen
+  heading: |-
+    James Irving
+    &
+    Dina Abdeen
   image: /img/20190319_165147.jpg
   preheading: CELEBRATE OUR WEDDING
   subheading: 10 . 14 . 21
