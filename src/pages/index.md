@@ -9,16 +9,20 @@ pageHeaderBlock:
   preheading: CELEBRATE OUR WEDDING
   subheading: 10 . 14 . 21
 detailsBlock:
-  body: |-
-    > **sss**
+  body: >-
+    **4:00pm 27 . 02 . 21**
 
 
+    Poet's Lane Receptions
 
-    * **sss**
 
-      * **sssssssss**
+    13 Sherbrooke Rd, 
 
-        **ssss**
+
+    Sherbrooke VIC 3789
+
+
+    [Map](https://www.google.com/maps/place/Poet's+Lane+Receptions/@-37.8800092,145.3603217,15z/data=!4m2!3m1!1s0x0:0xdc8f44558156ae5c?sa=X&ved=2ahUKEwj9tdmVuI3oAhW4IbcAHQaIDdoQ_BIwC3oECBoQCA)
   heading: Details
   image: /img/poets-lane.jpg
 rsvpBlock:
