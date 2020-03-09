@@ -1,6 +1,7 @@
-import { bodySize, headingSize } from './font-size';
+import { bodySize, fontSize, headingSize } from './font-size';
 import { breakpoints } from './breakpoints';
 import { colors } from './colors';
+import { fontWeight } from './font-weight';
 import { globalStyles } from './global';
 import { grid } from './grid';
 import { rem } from './rem';
@@ -11,6 +12,8 @@ export {
   bodySize,
   breakpoints,
   colors,
+  fontSize,
+  fontWeight,
   globalStyles,
   grid,
   headingSize,
