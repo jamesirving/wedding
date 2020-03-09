@@ -10,6 +10,7 @@ detailsBlock:
     **4:00pm 10 . 14 . 21**
 
     Poets Lane
+
     13 Sherbrooke Rd, 
     Sherbrooke Vic
   heading: Details
