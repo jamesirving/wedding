@@ -16,13 +16,13 @@ collections:
     label: "Pages"
     files:
       - file: "src/pages/index.md"
-        label: "Landing Page"
-        name: "index"
+        label: "Home Page"
+        name: "home"
         fields:
           - {label: "Template Key", name: "templateKey", widget: "hidden", default: "index-page"}
           - {label: Page Header Block, name: pageHeaderBlock, widget: object, fields: [
               {label: Preheading, name: preheading, widget: string},
-              {label: Heading, name: heading, widget: string},
+              {label: Heading, name: heading, widget: text},
               {label: Subheading, name: subheading, widget: string},
               {label: Image, name: image, widget: image}
             ]}
@@ -34,6 +34,17 @@ collections:
           - {label: RSVP, name: rsvpBlock, widget: object, fields: [
               {label: Preheading, name: preheading, widget: string},
               {label: Heading, name: heading, widget: string},
-              {label: Button, name: button, widget: object, fields: [{label: Text, name: text, widget: string}, {label: url, name: url, widget: string},]},
+              {label: Button, name: button, widget: object, fields: [
+                {label: Text, name: text, widget: string}, 
+                {
+                  label: page, 
+                  name: page,   
+                  widget: "relation",
+                  collection: "pages",
+                  searchFields: ["label"],
+                  valueField: "label",
+                  displayFields: ["label"]
+                }
+              ]},
               {label: Image, name: image, widget: image}
             ]}
