@@ -6,7 +6,7 @@ import ReactMarkdown from "react-markdown";
 import Layout from '../components/Layout'
 import { Feature } from '../components/feature'
 import { ContentImage } from '../components/content-image'
-import { H1, H2, P } from '../components/type'
+import { H1, H2, P, Preheading } from '../components/type'
 import { Button } from '../components/button'
 
 export const IndexPageTemplate = ({
@@ -15,19 +15,19 @@ export const IndexPageTemplate = ({
   rsvpBlock,
 }) => (
   <div>
-    <Feature image={pageHeaderBlock.image} objectPosition='50% 50%' height="400px">
-      {pageHeaderBlock.preheading && (<P color='white'>{pageHeaderBlock.preheading}</P>)}
+    <Feature image={pageHeaderBlock.image} objectPosition='50% 50%' height="90vh">
+      {pageHeaderBlock.preheading && (<Preheading color='white'>{pageHeaderBlock.preheading}</Preheading>)}
       {pageHeaderBlock.heading && (<H1 color='white'>{pageHeaderBlock.heading}</H1>)}
       {pageHeaderBlock.subheading && (<P color='white'>{pageHeaderBlock.subheading}</P>)}
     </Feature>
-    <ContentImage contentPosition="left">
+    <ContentImage image={detailsBlock.image} contentPosition="left" height="400px">
       {detailsBlock.heading && (<H2>{detailsBlock.heading}</H2>)}
       {detailsBlock.body && (<ReactMarkdown source={detailsBlock.body} />)}
     </ContentImage>
-    <Feature  image={rsvpBlock.image} objectPosition='50% 50%' height="400px" >
-      {rsvpBlock.preheading && (<P color='white'>{rsvpBlock.preheading}</P>)}
+    <Feature  image={rsvpBlock.image} objectPosition='50% 50%' height="90vh" >
+      {rsvpBlock.preheading && (<Preheading color='white'>{rsvpBlock.preheading}</Preheading>)}
       {rsvpBlock.heading && (<H1 color='white'>{rsvpBlock.heading}</H1>)}
-      {rsvpBlock.button && (<Button {...rsvpBlock.button} >{rsvpBlock.button.text}</Button>)}
+      {rsvpBlock.button && (<Button mt="2rem" {...rsvpBlock.button} >{rsvpBlock.button.text}</Button>)}
     </Feature>
   </div>
 )
@@ -80,7 +80,12 @@ export const pageQuery = graphql`
         }
         detailsBlock {
           heading
-          body
+          DateTime
+          Location
+          mapLink {
+            text
+            url
+          }
           image {
             childImageSharp {
               fluid(maxWidth: 2048, quality: 100) {
