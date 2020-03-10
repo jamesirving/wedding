@@ -6,11 +6,16 @@ import '../styles/all.sass'
 import useSiteMetadata from './SiteMetadata'
 import { withPrefix } from 'gatsby'
 import {ThemeProvider} from '../components/theme-provider'
+import styled from 'styled-components';
+
+const Wrapper = styled.div`
+  overflow: hidden;
+`;
 
 const TemplateWrapper = ({ children }) => {
   const { title, description } = useSiteMetadata()
   return (
-    <div>
+    <Wrapper>
       <Helmet>
         <html lang="en" />
         <title>{title}</title>
@@ -57,7 +62,7 @@ const TemplateWrapper = ({ children }) => {
       <Navbar />
       <ThemeProvider>{children}</ThemeProvider>
       <Footer />
-    </div>
+    </Wrapper>
   )
 }
 
