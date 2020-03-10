@@ -1,4 +1,4 @@
 import { H1, H2, H3 } from './headings';
-import { P } from './p';
+import { P, Preheading } from './p';
 
-export { H1, H2, H3, P };
+export { H1, H2, H3, P, Preheading };
