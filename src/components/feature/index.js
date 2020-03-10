@@ -1,14 +1,13 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import styled from 'styled-components'
+import React from 'react';
+import PropTypes from 'prop-types';
+import styled from 'styled-components';
 
-import { Container, Col, Row, Flex } from '../grid'
-import {H1, P} from '../type'
-import { colors, space } from '../../styles'
-import { getImageUrl } from '../../utils'
+import { Container, Col, Row, Flex } from '../grid';
+import { colors, space } from '../../styles';
+import { getImageUrl } from '../../utils';
+import { Image } from '../image';
 
 const Wrapper = styled(Flex)`
-  min-height: ${props => props.minHeight};
   overflow: hidden;
   position: relative;
   text-align: center;
@@ -26,18 +25,6 @@ const Wrapper = styled(Flex)`
   }
 `;
 
-const BackgroundImage = styled.img`
-  height: 100%;
-  left: 0;
-  max-width: 100%;
-  object-fit: cover;
-  object-position: ${props => props.objectPosition};
-  position: absolute;
-  top: 0;
-  vertical-align: top;
-  width: 100%;
-`;
-
 const StyledContainer = styled(Container)`
   display: flex;
   flex-direction: column;
@@ -52,11 +39,11 @@ const StyledContainer = styled(Container)`
 const Feature = ({image, objectPosition, height, children }) => {
   return (
     <Wrapper minHeight={height}>
-      <BackgroundImage  src={getImageUrl(image)} objectPosition={objectPosition} />
+      <Image  src={getImageUrl(image)} objectPosition={objectPosition} height={height} isBackground />
       <StyledContainer>
         <Row>
           <Col width={{xs: 10/12, md: 8/12, lg: 6/12}} offset={[1/12, 1/12, 2/12, 3/12]}>
-            {children && (children)}
+            {children}
           </Col>
         </Row>
       </StyledContainer>
@@ -65,10 +52,10 @@ const Feature = ({image, objectPosition, height, children }) => {
 };
 
 Feature.propTypes = {
+  children: PropTypes.node,
+  height: PropTypes.oneOfType([ PropTypes.string, PropTypes.number]),
   image: PropTypes.object,
   objectPosition: PropTypes.string,
-  height: PropTypes.oneOfType([ PropTypes.string, PropTypes.number]),
-  children: PropTypes.node,
 };
 
-export {Feature};
+export { Feature };
