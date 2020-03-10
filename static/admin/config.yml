@@ -35,16 +35,9 @@ collections:
               {label: Preheading, name: preheading, widget: string},
               {label: Heading, name: heading, widget: string},
               {label: Button, name: button, widget: object, fields: [
-                {label: Text, name: text, widget: string}, 
-                {
-                  label: page, 
-                  name: page,   
-                  widget: "relation",
-                  collection: "pages",
-                  searchFields: ["label"],
-                  valueField: "label",
-                  displayFields: ["label"]
-                }
+                {label: Text, name: text, widget: string},
+                {label: url, name: url, widget: string},
+                {label: "Link Type", name: linkType, widget: select, options: [internal, external]}
               ]},
               {label: Image, name: image, widget: image}
             ]}

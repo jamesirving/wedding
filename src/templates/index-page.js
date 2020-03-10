@@ -1,11 +1,13 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Link, graphql } from 'gatsby'
+import { graphql } from 'gatsby'
+import ReactMarkdown from "react-markdown";
 
 import Layout from '../components/Layout'
-import { PageHeader } from '../components/page-header'
-import { FeatureBlock } from '../components/feature-block'
-import { ContentImageBlock } from '../components/content-image-block'
+import { Feature } from '../components/feature'
+import { ContentImage } from '../components/content-image'
+import { H1, H2, P } from '../components/type'
+import { Button } from '../components/button'
 
 export const IndexPageTemplate = ({
   pageHeaderBlock,
@@ -13,9 +15,20 @@ export const IndexPageTemplate = ({
   rsvpBlock,
 }) => (
   <div>
-    <PageHeader {...pageHeaderBlock} />
-    <ContentImageBlock {...detailsBlock} contentPosition="right"/>
-    <FeatureBlock {...rsvpBlock} />
+    <Feature image={pageHeaderBlock.image} objectPosition='50% 50%' height="400px">
+      {pageHeaderBlock.preheading && (<P color='white'>{pageHeaderBlock.preheading}</P>)}
+      {pageHeaderBlock.heading && (<H1 color='white'>{pageHeaderBlock.heading}</H1>)}
+      {pageHeaderBlock.subheading && (<P color='white'>{pageHeaderBlock.subheading}</P>)}
+    </Feature>
+    <ContentImage contentPosition="left">
+      {detailsBlock.heading && (<H2>{detailsBlock.heading}</H2>)}
+      {detailsBlock.body && (<ReactMarkdown source={detailsBlock.body} />)}
+    </ContentImage>
+    <Feature  image={rsvpBlock.image} objectPosition='50% 50%' height="400px" >
+      {rsvpBlock.preheading && (<P color='white'>{rsvpBlock.preheading}</P>)}
+      {rsvpBlock.heading && (<H1 color='white'>{rsvpBlock.heading}</H1>)}
+      {rsvpBlock.button && (<Button {...rsvpBlock.button} >{rsvpBlock.button.text}</Button>)}
+    </Feature>
   </div>
 )
 
@@ -82,6 +95,7 @@ export const pageQuery = graphql`
           button {
             text
             url
+            linkType
           }
           image {
             childImageSharp {
