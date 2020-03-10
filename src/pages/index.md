@@ -9,7 +9,7 @@ pageHeaderBlock:
   preheading: CELEBRATE OUR WEDDING
   subheading: 10 . 14 . 21
 detailsBlock:
-  dateTime: '26.02.21 - 4:00pm'
+  dateTime: '26th February 2021 at 4:00pm'
   heading: Details
   image: /img/poets-lane.jpg
   location: |-
