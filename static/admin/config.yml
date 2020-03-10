@@ -28,7 +28,12 @@ collections:
             ]}
           - {label: Details, name: detailsBlock, widget: object, fields: [
               {label: Heading, name: heading, widget: string},
-              {label: Body, name: body, widget: markdown},
+              {label: Date and Time, name: dateTime, widget: string},
+              {label: Location, name: location, widget: markdown},
+              {label: Map Link, name: mapLink, widget: object, fields: [
+                {label: Text, name: text, widget: string},
+                {label: url, name: url, widget: string},
+              ]},
               {label: Image, name: image, widget: image}
             ]}
           - {label: RSVP, name: rsvpBlock, widget: object, fields: [
