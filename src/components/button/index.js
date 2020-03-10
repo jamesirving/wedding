@@ -18,7 +18,6 @@ const darkTheme = css`
   color: ${colors.white};
 `;
 
-
 const ButtonLink = styled(Link)`
   ${styledSystemSpace}
   ${lightTheme}
@@ -34,8 +33,9 @@ const ButtonLink = styled(Link)`
     ${darkTheme}
   }
 
-  ${props => props.theme === 'dark' && 
-  css`
+  ${props =>
+    props.theme === 'dark' &&
+    css`
     ${darkTheme}
 
     &:hover {
@@ -45,8 +45,12 @@ const ButtonLink = styled(Link)`
   `}
 `;
 
-const Button = ({linkType = 'internal', url, theme = 'light', children, ...props}) => {
-  return <ButtonLink theme={theme} linkType={linkType} url={url} {...props}>{children}</ButtonLink>;
+const Button = ({ linkType = 'internal', url, theme = 'light', children, ...props }) => {
+  return (
+    <ButtonLink theme={theme} linkType={linkType} url={url} {...props}>
+      {children}
+    </ButtonLink>
+  );
 };
 
 Button.propTypes = {
