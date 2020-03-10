@@ -30,6 +30,7 @@
     "react": "^16.8.4",
     "react-dom": "^16.8.4",
     "react-helmet": "^5.2.0",
+    "react-markdown": "^4.3.1",
     "styled-components": "^5.0.1",
     "styled-system": "^5.1.5",
     "uuid": "^3.2.1"
@@ -40,6 +41,7 @@
   "license": "MIT",
   "main": "n/a",
   "scripts": {
+    "lint": "concurrently \"npm run lint:js\" \"npm run lint:css\"",
     "clean": "gatsby clean",
     "start": "npm run develop",
     "build": "npm run clean && gatsby build",
@@ -48,7 +50,19 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "devDependencies": {
-    "prettier": "^1.15.3",
-    "purgecss": "^2.1.0"
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb": "^18.0.1",
+    "eslint-config-prettier": "^6.10.0",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-prettier": "^3.1.2",
+    "eslint-plugin-react": "^7.19.0",
+    "prettier": "^1.19.1",
+    "purgecss": "^2.1.0",
+    "stylelint": "^13.2.1",
+    "stylelint-config-prettier": "^8.0.1",
+    "stylelint-config-recommended": "^3.0.0",
+    "stylelint-config-styled-components": "^0.1.1",
+    "stylelint-prettier": "^1.1.2",
+    "stylelint-processor-styled-components": "^1.10.0"
   }
 }
