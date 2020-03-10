@@ -52,4 +52,9 @@ const P = styled.p`
   ${pStyles}
 `;
 
-export { P, pStyles };
+const Preheading = styled.p`
+  ${pStyles}
+  text-transform: uppercase;
+`;
+
+export { P, Preheading, pStyles };
