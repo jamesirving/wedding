@@ -12,7 +12,7 @@ const Link = ({ className, linkType, url, children }) => {
     );
   } else {
     return (
-      <a className={className} href={url}>
+      <a className={className} href={url} target="_blank" rel="noopener noreferrer">
         {children}
       </a>
     );
