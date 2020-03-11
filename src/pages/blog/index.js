@@ -1,8 +1,9 @@
-import React from 'react'
+import React from 'react';
 
-import Layout from '../../components/Layout'
-import BlogRoll from '../../components/BlogRoll'
+import Layout from '../../components/Layout';
+import BlogRoll from '../../components/BlogRoll';
 
+// eslint-disable-next-line react/prefer-stateless-function
 export default class BlogIndexPage extends React.Component {
   render() {
     return (
@@ -33,6 +34,6 @@ export default class BlogIndexPage extends React.Component {
           </div>
         </section>
       </Layout>
-    )
+    );
   }
 }
