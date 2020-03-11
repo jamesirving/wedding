@@ -54,8 +54,8 @@ const Button = ({ linkType = 'internal', url, theme = 'light', children, ...prop
 };
 
 Button.propTypes = {
-  to: PropTypes.string,
-  href: PropTypes.string,
+  linkType: PropTypes.string,
+  url: PropTypes.string,
   children: PropTypes.node,
   theme: PropTypes.oneOf(['dark', 'light']),
 };
