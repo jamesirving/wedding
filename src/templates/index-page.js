@@ -1,45 +1,52 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import { graphql } from 'gatsby'
-import ReactMarkdown from "react-markdown";
+import React from 'react';
+import PropTypes from 'prop-types';
+import { graphql } from 'gatsby';
+import ReactMarkdown from 'react-markdown';
 
-import Layout from '../components/Layout'
-import { Feature } from '../components/feature'
-import { ContentImage } from '../components/content-image'
-import { H1, H2, P, Preheading } from '../components/type'
-import { Button } from '../components/button'
+import Layout from '../components/Layout';
+import { Feature } from '../components/feature';
+import { ContentImage } from '../components/content-image';
+import { H1, H2, P, Preheading } from '../components/type';
+import { Button } from '../components/button';
+import { Link } from '../components/link';
 
-export const IndexPageTemplate = ({
-  pageHeaderBlock,
-  detailsBlock,
-  rsvpBlock,
-}) => (
+export const IndexPageTemplate = ({ pageHeaderBlock, detailsBlock, rsvpBlock }) => (
   <div>
-    <Feature image={pageHeaderBlock.image} objectPosition='50% 50%' height="90vh">
-      {pageHeaderBlock.preheading && (<Preheading color='white'>{pageHeaderBlock.preheading}</Preheading>)}
-      {pageHeaderBlock.heading && (<H1 color='white'>{pageHeaderBlock.heading}</H1>)}
-      {pageHeaderBlock.subheading && (<P color='white'>{pageHeaderBlock.subheading}</P>)}
+    <Feature image={pageHeaderBlock.image} objectPosition="50% 50%" height="90vh">
+      {pageHeaderBlock.preheading && <Preheading color="white">{pageHeaderBlock.preheading}</Preheading>}
+      {pageHeaderBlock.heading && <H1 color="white">{pageHeaderBlock.heading}</H1>}
+      {pageHeaderBlock.subheading && <P color="white">{pageHeaderBlock.subheading}</P>}
     </Feature>
     <ContentImage image={detailsBlock.image} contentPosition="left" height="400px">
-      {detailsBlock.heading && (<H2>{detailsBlock.heading}</H2>)}
-      {detailsBlock.body && (<ReactMarkdown source={detailsBlock.body} />)}
+      {detailsBlock.heading && <H2>{detailsBlock.heading}</H2>}
+      {detailsBlock.dateTime && <P>{detailsBlock.dateTime}</P>}
+      {detailsBlock.location && <ReactMarkdown source={detailsBlock.location} />}
+      {detailsBlock.mapLink && (
+        <Link linkType="external" url={detailsBlock.mapLink.url}>
+          {detailsBlock.mapLink.text}
+        </Link>
+      )}
     </ContentImage>
-    <Feature  image={rsvpBlock.image} objectPosition='50% 50%' height="90vh" >
-      {rsvpBlock.preheading && (<Preheading color='white'>{rsvpBlock.preheading}</Preheading>)}
-      {rsvpBlock.heading && (<H1 color='white'>{rsvpBlock.heading}</H1>)}
-      {rsvpBlock.button && (<Button mt="2rem" {...rsvpBlock.button} >{rsvpBlock.button.text}</Button>)}
+    <Feature image={rsvpBlock.image} objectPosition="50% 50%" height="90vh">
+      {rsvpBlock.preheading && <Preheading color="white">{rsvpBlock.preheading}</Preheading>}
+      {rsvpBlock.heading && <H1 color="white">{rsvpBlock.heading}</H1>}
+      {rsvpBlock.button && (
+        <Button mt="2rem" {...rsvpBlock.button}>
+          {rsvpBlock.button.text}
+        </Button>
+      )}
     </Feature>
   </div>
-)
+);
 
 IndexPageTemplate.propTypes = {
   pageHeaderBlock: PropTypes.object,
   detailsBlock: PropTypes.object,
   rsvpBlock: PropTypes.object,
-}
+};
 
 const IndexPage = ({ data }) => {
-  const { frontmatter } = data.markdownRemark
+  const { frontmatter } = data.markdownRemark;
 
   return (
     <Layout>
@@ -49,8 +56,8 @@ const IndexPage = ({ data }) => {
         rsvpBlock={frontmatter.rsvpBlock}
       />
     </Layout>
-  )
-}
+  );
+};
 
 IndexPage.propTypes = {
   data: PropTypes.shape({
@@ -58,9 +65,9 @@ IndexPage.propTypes = {
       frontmatter: PropTypes.object,
     }),
   }),
-}
+};
 
-export default IndexPage
+export default IndexPage;
 
 export const pageQuery = graphql`
   query IndexPageTemplate {
@@ -80,8 +87,8 @@ export const pageQuery = graphql`
         }
         detailsBlock {
           heading
-          DateTime
-          Location
+          dateTime
+          location
           mapLink {
             text
             url
@@ -113,4 +120,4 @@ export const pageQuery = graphql`
       }
     }
   }
-`
+`;
