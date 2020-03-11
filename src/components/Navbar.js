@@ -1,6 +1,6 @@
-import React from 'react'
-import { Link } from 'gatsby'
-import styled, { css } from 'styled-components';
+import React from 'react';
+import { Link } from 'gatsby';
+import styled from 'styled-components';
 
 import { Button } from './button';
 import { Container, Flex, Box } from './grid';
@@ -16,7 +16,7 @@ const Nav = styled.nav`
     position: sticky;
     top: 0;
   }
-`
+`;
 
 const Wrapper = styled(Container)`
   @media (min-width: ${breakpoints.md}) {
@@ -39,7 +39,7 @@ const NavBarMenu = styled.div`
   height: 100vh;
   padding-top: ${space.x0};
   position: absolute;
-  transform: translateX(${props => props.isOpen ? '0' : '-140%'});
+  transform: translateX(${props => (props.isOpen ? '0' : '-140%')});
   transition: all ${globalStyles.transitionSpeed} ${globalStyles.easing};
   width: 100%;
 
@@ -81,7 +81,6 @@ const NavItem = styled(Link)`
     display: flex;
     margin-top: 0;
   }
-
 `;
 
 const StyledButton = styled(Button)`
@@ -109,7 +108,7 @@ const Navbar = () => {
           <Link to="/" className="navbar-item" title="home">
             <H3>J&D 26 . 02 . 21</H3>
           </Link>
-          {/* Hamburger menu */}
+          {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions */}
           <div
             className={`navbar-burger burger ${NavIsOpen ? 'is-active' : ''}`}
             data-target="navMenu"
@@ -122,15 +121,13 @@ const Navbar = () => {
         </NavBarLogo>
         <NavBarMenu isOpen={NavIsOpen}>
           <NavItems mr="1rem">
-            <NavItem to="/details">
-              Details
-            </NavItem>
-            <NavItem to="/travel&stay">
-              Travel & Stay
-            </NavItem>
+            <NavItem to="/details">Details</NavItem>
+            <NavItem to="/travel&stay">Travel & Stay</NavItem>
           </NavItems>
-          <Flex justifyContent='center'>
-            <StyledButton url="/rsvp" theme='dark'>rsvp</StyledButton>
+          <Flex justifyContent="center">
+            <StyledButton url="/rsvp" theme="dark">
+              rsvp
+            </StyledButton>
           </Flex>
         </NavBarMenu>
       </Wrapper>
@@ -138,4 +135,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar
+export default Navbar;
