@@ -13,6 +13,7 @@ const Nav = styled.nav`
   z-index: 30;
 
   @media (min-width: ${breakpoints.md}) {
+    min-height: 5rem;
     position: sticky;
     top: 0;
   }
@@ -28,18 +29,16 @@ const NavBarLogo = styled.div`
   align-items: stretch;
   display: flex;
   flex-shrink: 0;
-  min-height: 3.25rem;
   z-index: 2;
 `;
 
 const NavBarMenu = styled.div`
   background-color: ${colors.white};
-  box-shadow: 0 8px 16px rgba(43, 37, 35, 0.1);
   display: block;
   height: 100vh;
   padding-top: ${space.x0};
   position: absolute;
-  transform: translateX(${props => (props.isOpen ? '0' : '-140%')});
+  transform: translateX(${props => (props.isOpen ? `-${space.x0}` : '-140%')});
   transition: all ${globalStyles.transitionSpeed} ${globalStyles.easing};
   width: 100%;
 
@@ -84,6 +83,7 @@ const NavItem = styled(Link)`
 `;
 
 const StyledButton = styled(Button)`
+  border-color: ${colors.black};
   justify-content: center;
   margin-top: ${space.x3};
   width: 90%;
@@ -95,14 +95,15 @@ const StyledButton = styled(Button)`
 `;
 
 const Navbar = () => {
-  const [NavIsOpen, setNavState] = React.useState(false);
+  const [navIsOpen, setNavState] = React.useState(false);
+  const navRef = React.useRef(null);
 
   const toggleHamburger = () => {
-    setNavState(!NavIsOpen);
+    setNavState(!navIsOpen);
   };
 
   return (
-    <Nav role="navigation" aria-label="main-navigation">
+    <Nav role="navigation" aria-label="main-navigation" ref={navRef}>
       <Wrapper>
         <NavBarLogo>
           <Link to="/" className="navbar-item" title="home">
@@ -110,7 +111,7 @@ const Navbar = () => {
           </Link>
           {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions */}
           <div
-            className={`navbar-burger burger ${NavIsOpen ? 'is-active' : ''}`}
+            className={`navbar-burger burger ${navIsOpen ? 'is-active' : ''}`}
             data-target="navMenu"
             onClick={() => toggleHamburger()}
           >
@@ -119,15 +120,13 @@ const Navbar = () => {
             <span />
           </div>
         </NavBarLogo>
-        <NavBarMenu isOpen={NavIsOpen}>
+        <NavBarMenu isOpen={navIsOpen}>
           <NavItems mr="1rem">
             <NavItem to="/details">Details</NavItem>
             <NavItem to="/travel&stay">Travel & Stay</NavItem>
           </NavItems>
           <Flex justifyContent="center">
-            <StyledButton url="/rsvp" theme="dark">
-              rsvp
-            </StyledButton>
+            <StyledButton url="/rsvp">rsvp</StyledButton>
           </Flex>
         </NavBarMenu>
       </Wrapper>
