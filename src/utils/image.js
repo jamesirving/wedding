@@ -1,6 +1,5 @@
-
-const getImageUrl = image => (
-    !!image.childImageSharp ? image.childImageSharp.fluid.src : image
+const getImageProps = image => (
+    !!image.childImageSharp ? {src: image.childImageSharp.fluid.src, srcSet: image.childImageSharp.fluid.srcSet} : image
 );
 
-export {getImageUrl};
+export { getImageProps };

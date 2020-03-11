@@ -2,6 +2,8 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import styled, { css } from 'styled-components';
 
+import { getImageProps } from '../../utils/image';
+
 const StyledImage = styled.img`
   height: auto;
   max-width: 100%;
@@ -21,7 +23,7 @@ const StyledImage = styled.img`
         `}
 `;
 
-const Image = ({ className, src, srcSet, width, height, sizes, alt, objectPosition, isBackground }) => (
+const Image = ({ className, image, src, srcSet, width, height, sizes, alt, objectPosition, isBackground }) => (
   <StyledImage
     className={className}
     src={src}
@@ -32,6 +34,7 @@ const Image = ({ className, src, srcSet, width, height, sizes, alt, objectPositi
     objectPosition={isBackground ? objectPosition : null}
     sizes={sizes}
     alt={alt}
+    {...getImageProps(image)}
   />
 );
 
@@ -42,7 +45,7 @@ Image.propTypes = {
   objectPosition: PropTypes.string,
   isBackground: PropTypes.bool,
   sizes: PropTypes.string,
-  src: PropTypes.string.isRequired,
+  src: PropTypes.string,
   srcSet: PropTypes.string,
   width: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 };

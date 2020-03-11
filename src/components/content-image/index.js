@@ -4,7 +4,6 @@ import styled, { css } from 'styled-components';
 
 import { Container, Row, Col } from '../grid';
 import { space, breakpoints, colors } from '../../styles';
-import { getImageUrl } from '../../utils';
 import { Image } from '../image';
 
 const ContentCol = styled(Col)`
@@ -57,7 +56,7 @@ const ContentImage = ({ image, children, contentPosition, height }) => {
           {children}
         </ContentCol>
         <MediaCol offset={imageOffset} width={{ xs: 12 / 12, lg: 6 / 12 }} height={height}>
-          <Image src={getImageUrl(image)} objectPosition={image.objectPosition} isBackground minHeight={height} />
+          <Image image={image} objectPosition={image.objectPosition} isBackground minHeight={height} />
         </MediaCol>
       </Row>
     </Wrapper>
@@ -67,12 +66,7 @@ const ContentImage = ({ image, children, contentPosition, height }) => {
 ContentImage.propTypes = {
   children: PropTypes.node,
   contentPosition: PropTypes.oneOf(['left', 'right']),
-  image: PropTypes.shape({
-    alt: PropTypes.string,
-    objectPosition: PropTypes.string,
-    srcset: PropTypes.string,
-    url: PropTypes.string.isRequired,
-  }),
+  image: PropTypes.object,
   height: PropTypes.string,
 };
 

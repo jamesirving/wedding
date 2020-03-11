@@ -4,7 +4,6 @@ import styled from 'styled-components';
 
 import { Container, Col, Row, Flex } from '../grid';
 import { colors, space } from '../../styles';
-import { getImageUrl } from '../../utils';
 import { Image } from '../image';
 
 const Wrapper = styled(Flex)`
@@ -38,7 +37,7 @@ const StyledContainer = styled(Container)`
 const Feature = ({ image, objectPosition, height, children }) => {
   return (
     <Wrapper minHeight={height}>
-      <Image src={getImageUrl(image)} objectPosition={objectPosition} height={height} isBackground />
+      <Image image={image} objectPosition={objectPosition} height={height} isBackground />
       <StyledContainer>
         <Row>
           <Col width={{ xs: 10 / 12, md: 8 / 12, lg: 6 / 12 }} offset={[1 / 12, 1 / 12, 2 / 12, 3 / 12]}>
