@@ -8,7 +8,6 @@ import { getImageUrl } from '../../utils';
 import { Image } from '../image';
 
 const ContentCol = styled(Col)`
-  background-color: ${colors.grey50}
   align-items: start;
   display: flex;
   flex-direction: column;
@@ -44,22 +43,25 @@ const Wrapper = styled(Container)`
 `;
 
 const ContentImage = ({ image, children, contentPosition, height }) => {
-
   // if content is right then image position is left
   const imageOffset = contentPosition === 'right' ? [0] : [0, 0, 0, 1 / 12, 1 / 12];
 
   return (
-    <Wrapper my={{xs: 0, md: "2rem"}} minHeight={height} contentPosition={contentPosition}>
-      <Row flexWrap={{ xs: 'wrap', lg: 'nowrap' }}>
-        <ContentCol width={{xs: 10 / 12, md: 8 / 12, lg: 4 / 12}} offset={[1/12]} py={{ xs: space.x3, lg: space.x4 }}>
+    <Wrapper my="2rem" minHeight={height} contentPosition={contentPosition}>
+      <Row mx={{ xs: '2rem', xl: 0 }} flexWrap={{ xs: 'wrap', lg: 'nowrap' }} backgroundColor={colors.grey50}>
+        <ContentCol
+          width={{ xs: 10 / 12, md: 8 / 12, lg: 4 / 12 }}
+          offset={[1 / 12]}
+          py={{ xs: space.x3, lg: space.x4 }}
+        >
           {children}
         </ContentCol>
-        <MediaCol mx={{xs: "2rem", md: 0}} mb={{xs: "2rem", md: 0}} width={{xs: 12/12, md: 6/12}} offset={imageOffset} height={height}>
-          <Image src={getImageUrl(image)} objectPosition={image.objectPosition} isBackground minHeight={height}/>
+        <MediaCol offset={imageOffset} width={{ xs: 12 / 12, lg: 6 / 12 }} height={height}>
+          <Image src={getImageUrl(image)} objectPosition={image.objectPosition} isBackground minHeight={height} />
         </MediaCol>
       </Row>
     </Wrapper>
-  )
+  );
 };
 
 ContentImage.propTypes = {
@@ -71,8 +73,7 @@ ContentImage.propTypes = {
     srcset: PropTypes.string,
     url: PropTypes.string.isRequired,
   }),
-  height: PropTypes.string, 
+  height: PropTypes.string,
 };
-
 
 export { ContentImage };
