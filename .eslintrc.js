@@ -11,6 +11,10 @@ module.exports = {
     'react/react-in-jsx-scope': [0],
     'jsx-a11y/anchor-is-valid': [0],
     'react/prop-types': ['error', { skipUndeclared: true }],
+    'react/forbid-prop-types': [0],
+    'react/require-default-props': [0],
+    'import/prefer-default-export': [0],
+    'react/jsx-props-no-spreading': [0],
     'no-plusplus': ['error', { allowForLoopAfterthoughts: true }],
     'jest/no-disabled-tests': 'error',
     'jest/no-focused-tests': 'warn',
@@ -23,11 +27,7 @@ module.exports = {
     'import/no-extraneous-dependencies': [
       'error',
       {
-        devDependencies: [
-          '.storybook/**',
-          'src/stories/**',
-          '**/*.stories.js',
-        ],
+        devDependencies: ['.storybook/**', 'src/stories/**', '**/*.stories.js'],
       },
     ],
   },
