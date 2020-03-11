@@ -35,14 +35,13 @@ const StyledContainer = styled(Container)`
   z-index: 1;
 `;
 
-
-const Feature = ({image, objectPosition, height, children }) => {
+const Feature = ({ image, objectPosition, height, children }) => {
   return (
     <Wrapper minHeight={height}>
-      <Image  src={getImageUrl(image)} objectPosition={objectPosition} height={height} isBackground />
+      <Image src={getImageUrl(image)} objectPosition={objectPosition} height={height} isBackground />
       <StyledContainer>
         <Row>
-          <Col width={{xs: 10/12, md: 8/12, lg: 6/12}} offset={[1/12, 1/12, 2/12, 3/12]}>
+          <Col width={{ xs: 10 / 12, md: 8 / 12, lg: 6 / 12 }} offset={[1 / 12, 1 / 12, 2 / 12, 3 / 12]}>
             {children}
           </Col>
         </Row>
@@ -53,7 +52,7 @@ const Feature = ({image, objectPosition, height, children }) => {
 
 Feature.propTypes = {
   children: PropTypes.node,
-  height: PropTypes.oneOfType([ PropTypes.string, PropTypes.number]),
+  height: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   image: PropTypes.object,
   objectPosition: PropTypes.string,
 };
