@@ -6,21 +6,22 @@ import { Link } from '../link';
 
 import { space, colors, globalStyles, fontWeight } from '../../styles';
 
-const lightTheme = css`
-  background-color: ${colors.white};
-  border: 2px solid ${colors.white};
-  color: ${colors.black};
-`;
-
-const darkTheme = css`
-  background-color: ${colors.black};
-  border-color: ${colors.black};
-  color: ${colors.white};
-`;
+const themes = {
+  light: css`
+    background-color: ${colors.white};
+    border: 2px solid ${colors.white};
+    color: ${colors.black};
+  `,
+  dark: css`
+    background-color: ${colors.black};
+    border-color: ${colors.black};
+    color: ${colors.white};
+  `,
+};
 
 const ButtonLink = styled(Link)`
   ${styledSystemSpace}
-  ${lightTheme}
+  ${props => themes[props.theme]}
   border-radius: 5px;
   display: inline-flex;
   font-family: ${globalStyles.baseFontFamily};
@@ -30,19 +31,9 @@ const ButtonLink = styled(Link)`
   transition: all ${globalStyles.transitionSpeed} ${globalStyles.easing};
 
   &:hover {
-    ${darkTheme}
+    ${props => themes[props.theme === 'dark' ? 'light' : 'dark']}
+    border-color: ${colors.black};
   }
-
-  ${props =>
-    props.theme === 'dark' &&
-    css`
-    ${darkTheme}
-
-    &:hover {
-      ${lightTheme}
-      border-color: ${colors.black};
-    }
-  `}
 `;
 
 const Button = ({ linkType = 'internal', url, theme = 'light', children, ...props }) => {
