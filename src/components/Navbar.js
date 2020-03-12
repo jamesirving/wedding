@@ -1,10 +1,10 @@
 import React from 'react';
 import { Link } from 'gatsby';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 import { Button } from './button';
 import { Container, Flex, Box } from './grid';
-import { breakpoints, colors, space, globalStyles } from '../styles';
+import { breakpoints, colors, space, globalStyles, fontSize } from '../styles';
 import { H3 } from './type';
 
 const Nav = styled.nav`
@@ -13,7 +13,6 @@ const Nav = styled.nav`
   z-index: 30;
 
   @media (min-width: ${breakpoints.md}) {
-    min-height: 5rem;
     position: sticky;
     top: 0;
   }
@@ -21,22 +20,22 @@ const Nav = styled.nav`
 
 const Wrapper = styled(Container)`
   @media (min-width: ${breakpoints.md}) {
+    align-items: center;
     display: flex;
+    min-height: 5rem;
   }
 `;
 
-const NavBarLogo = styled.div`
-  align-items: stretch;
+const NavBarLogoWrapper = styled.div`
+  align-items: center;
   display: flex;
   flex-shrink: 0;
-  z-index: 2;
 `;
 
 const NavBarMenu = styled.div`
   background-color: ${colors.white};
   display: block;
   height: 100vh;
-  padding-top: ${space.x0};
   position: absolute;
   transform: translateX(${props => (props.isOpen ? `-${space.x0}` : '-140%')});
   transition: all ${globalStyles.transitionSpeed} ${globalStyles.easing};
@@ -60,33 +59,43 @@ const NavItems = styled(Box)`
   }
 `;
 
-const NavItem = styled(Link)`
+const navItem = css`
   color: ${colors.grey800};
   cursor: pointer;
   display: block;
-  flex-grow: 0;
-  flex-shrink: 0;
-  line-height: 1.5;
-  margin-top: ${space.x2};
-  padding: 0.5rem 0.75rem;
   position: relative;
 
   &:hover {
     color: ${colors.grey500};
   }
+`;
+
+const NavItem = styled(Link)`
+  ${navItem}
+  flex-grow: 0;
+  flex-shrink: 0;
+  font-size: 20px;
+  line-height: 1.5;
+  margin-top: ${space.x2};
+  padding: 0.5rem 0.75rem;
 
   @media (min-width: ${breakpoints.md}) {
     align-items: center;
     display: flex;
+    font-size: 16px;
     margin-top: 0;
   }
+`;
+
+const NavBarLogo = styled(Link)`
+  ${navItem}
 `;
 
 const StyledButton = styled(Button)`
   border-color: ${colors.black};
   justify-content: center;
   margin-top: ${space.x3};
-  width: 90%;
+  width: 100%;
 
   @media (min-width: ${breakpoints.md}) {
     margin-top: 0;
@@ -105,10 +114,10 @@ const Navbar = () => {
   return (
     <Nav role="navigation" aria-label="main-navigation" ref={navRef}>
       <Wrapper>
-        <NavBarLogo>
-          <Link to="/" className="navbar-item" title="home">
+        <NavBarLogoWrapper>
+          <NavBarLogo to="/" title="home">
             <H3>J&D 26 . 02 . 21</H3>
-          </Link>
+          </NavBarLogo>
           {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions */}
           <div
             className={`navbar-burger burger ${navIsOpen ? 'is-active' : ''}`}
@@ -119,13 +128,13 @@ const Navbar = () => {
             <span />
             <span />
           </div>
-        </NavBarLogo>
+        </NavBarLogoWrapper>
         <NavBarMenu isOpen={navIsOpen}>
           <NavItems mr="1rem">
             <NavItem to="/details">Details</NavItem>
             <NavItem to="/travel&stay">Travel & Stay</NavItem>
           </NavItems>
-          <Flex justifyContent="center">
+          <Flex px=".75rem" justifyContent="center">
             <StyledButton url="/rsvp">rsvp</StyledButton>
           </Flex>
         </NavBarMenu>
@@ -134,4 +143,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+export { Navbar };
