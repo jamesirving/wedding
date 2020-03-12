@@ -4,8 +4,8 @@ import styled from 'styled-components';
 import { Helmet } from 'react-helmet';
 import { withPrefix } from 'gatsby';
 
-import Footer from './Footer';
-import Navbar from './Navbar';
+import { Footer } from './Footer';
+import { Navbar } from './Navbar';
 import useSiteMetadata from './SiteMetadata';
 import { ThemeProvider } from './theme-provider';
 
