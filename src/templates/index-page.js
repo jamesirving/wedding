@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { graphql } from 'gatsby';
 import ReactMarkdown from 'react-markdown';
 
-import Layout from '../components/Layout';
+import { Layout } from '../components/layout';
 import { Feature } from '../components/feature';
 import { ContentImage } from '../components/content-image';
 import { H1, H2, P, Preheading } from '../components/type';

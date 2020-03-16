@@ -4,16 +4,16 @@ import styled from 'styled-components';
 import { Helmet } from 'react-helmet';
 import { withPrefix } from 'gatsby';
 
-import { Footer } from './Footer';
-import { Navbar } from './Navbar';
-import useSiteMetadata from './SiteMetadata';
-import { ThemeProvider } from './theme-provider';
+import { Footer } from '../footer';
+import { Navbar } from '../navbar';
+import useSiteMetadata from '../SiteMetadata';
+import { ThemeProvider } from '../theme-provider';
 
 const Wrapper = styled.div`
   overflow: hidden;
 `;
 
-const TemplateWrapper = ({ children }) => {
+const Layout = ({ children }) => {
   const { title, description } = useSiteMetadata();
   return (
     <Wrapper>
@@ -46,4 +46,4 @@ const TemplateWrapper = ({ children }) => {
   );
 };
 
-export default TemplateWrapper;
+export { Layout };
