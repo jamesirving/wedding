@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Layout from '../../components/Layout';
+import { Layout } from '../../components/Layout';
 import BlogRoll from '../../components/BlogRoll';
 
 // eslint-disable-next-line react/prefer-stateless-function

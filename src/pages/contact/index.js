@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React from 'react';
 import { navigate } from 'gatsby';
-import Layout from '../../components/Layout';
+import { Layout } from '../../components/Layout';
 
 function encode(data) {
   return Object.keys(data)

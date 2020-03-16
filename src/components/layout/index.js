@@ -1,4 +1,4 @@
-import '../styles/all.sass';
+import '../../styles/all.sass';
 import React from 'react';
 import styled from 'styled-components';
 import { Helmet } from 'react-helmet';

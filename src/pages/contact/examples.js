@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'gatsby';
-import Layout from '../../components/Layout';
+import { Layout } from '../../components/Layout';
 
 // eslint-disable-next-line react/prefer-stateless-function
 export default class Index extends React.Component {

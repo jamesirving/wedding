@@ -2,10 +2,10 @@ import React from 'react';
 import { Link } from 'gatsby';
 import styled, { css } from 'styled-components';
 
-import { Button } from './button';
-import { Container, Flex, Box } from './grid';
-import { breakpoints, colors, space, globalStyles, fontSize } from '../styles';
-import { H3 } from './type';
+import { Button } from '../button';
+import { Container, Flex, Box } from '../grid';
+import { breakpoints, colors, space, globalStyles } from '../../styles';
+import { H3 } from '../type';
 
 const Nav = styled.nav`
   background-color: ${colors.white};

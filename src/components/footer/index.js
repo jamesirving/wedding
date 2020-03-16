@@ -2,9 +2,9 @@ import React from 'react';
 import { Link } from 'gatsby';
 import styled, { css } from 'styled-components';
 
-import { H3 } from './type';
-import { breakpoints, colors, space } from '../styles';
-import { Container, Flex } from './grid';
+import { H3 } from '../type';
+import { colors, space } from '../../styles';
+import { Container, Flex } from '../grid';
 
 const FooterWrapper = styled.footer`
   background-color: ${colors.black};
