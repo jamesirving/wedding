@@ -9,9 +9,23 @@ pageHeaderBlock:
   preheading: CELEBRATE OUR WEDDING
   subheading: '26 . 02 . 21 '
 detailsBlock:
-  - author: dfghdfgj
+  - author: |-
+      dfghdfgj
+
+      dsafgs
+
+      dfgh
+
+      sdgfhbsdgfhs
     heading: dgfhdfg
-  - author: r56ujr567iuj5er6
+  - author: |-
+      r56ujr567iuj5er6ghsdgh
+
+      dzfgsdfhgs
+
+      gdhsdfghdfgh
     heading: dfgjdtj65u5r6u
+  - author: tesrtyhserth sth srth sreth srth
+    heading: setryghws4e5
 ---
 
