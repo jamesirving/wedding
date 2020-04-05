@@ -10,6 +10,6 @@ pageHeaderBlock:
   subheading: '26 . 02 . 21 '
 detailsBlock:
   - author: fgbdfhdgh
-    quote: Everything is awesome!
+    heading: dfghdfgjh
 ---
 
