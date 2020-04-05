@@ -6,10 +6,17 @@ import { IndexPageTemplate } from '../../templates/index-page';
 const IndexPagePreview = ({ entry, getAsset }) => {
   const data = entry.getIn(['data']).toJS();
 
+  const pageHeader = {
+    preheading: entry.getIn(['data', 'preheading']),
+    heading: entry.getIn(['data', 'heading']),
+    subheading: entry.getIn(['data', 'subheading']),
+    image: getAsset(entry.getIn(['data', 'image'])),
+  };
+
   if (data) {
     return (
       <IndexPageTemplate
-        pageHeaderBlock={data.pageHeaderBlock || {}}
+        pageHeaderBlock={pageHeader || {}}
         detailsBlock={data.detailsBlock || {}}
         rsvpBlock={data.rsvpBlock || {}}
       />

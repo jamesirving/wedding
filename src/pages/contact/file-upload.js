@@ -2,7 +2,7 @@
 /* eslint-disable no-restricted-syntax */
 import React from 'react';
 import { navigate } from 'gatsby';
-import { Layout } from '../../components/Layout';
+import { Layout } from '../../components/layout';
 
 function encode(data) {
   const formData = new FormData();

@@ -2,11 +2,11 @@ backend:
   name: git-gateway
   branch: master
   commit_messages:
-    create: 'Create {{collection}} “{{slug}}”'
-    update: 'Update {{collection}} “{{slug}}”'
-    delete: 'Delete {{collection}} “{{slug}}”'
-    uploadMedia: '[skip ci] Upload “{{path}}”'
-    deleteMedia: '[skip ci] Delete “{{path}}”'
+    create: "Create {{collection}} “{{slug}}”"
+    update: "Update {{collection}} “{{slug}}”"
+    delete: "Delete {{collection}} “{{slug}}”"
+    uploadMedia: "[skip ci] Upload “{{path}}”"
+    deleteMedia: "[skip ci] Delete “{{path}}”"
 
 media_folder: static/img
 public_folder: /img
@@ -19,30 +19,90 @@ collections:
         label: "Home Page"
         name: "home"
         fields:
-          - {label: "Template Key", name: "templateKey", widget: "hidden", default: "index-page"}
-          - {label: Page Header Block, name: pageHeaderBlock, widget: object, fields: [
-              {label: Preheading, name: preheading, widget: string},
-              {label: Heading, name: heading, widget: text},
-              {label: Subheading, name: subheading, widget: string},
-              {label: Image, name: image, widget: image}
-            ]}
-          - {label: Details, name: detailsBlock, widget: object, fields: [
-              {label: Heading, name: heading, widget: string},
-              {label: Date and Time, name: dateTime, widget: string},
-              {label: Location, name: location, widget: markdown},
-              {label: Map Link, name: mapLink, widget: object, fields: [
-                {label: Text, name: text, widget: string},
-                {label: url, name: url, widget: string},
-              ]},
-              {label: Image, name: image, widget: image}
-            ]}
-          - {label: RSVP, name: rsvpBlock, widget: object, fields: [
-              {label: Preheading, name: preheading, widget: string},
-              {label: Heading, name: heading, widget: string},
-              {label: Button, name: button, widget: object, fields: [
-                {label: Text, name: text, widget: string},
-                {label: url, name: url, widget: string},
-                {label: "Link Type", name: linkType, widget: select, options: [internal, external]}
-              ]},
-              {label: Image, name: image, widget: image}
-            ]}
+          - {
+              label: "Template Key",
+              name: "templateKey",
+              widget: "hidden",
+              default: "index-page",
+            }
+          - {
+              label: "Page Header Block",
+              name: "pageHeaderBlock",
+              widget: "object",
+              fields:
+                [
+                  { label: "Preheading", name: "preheading", widget: "string" },
+                  { label: "Heading", name: "heading", widget: "text" },
+                  { label: "Subheading", name: "subheading", widget: "string" },
+                  { label: "Image", name: "image", widget: "image" },
+                ],
+            }
+          - {
+              label: "Details",
+              name: "detailsBlock",
+              widget: "object",
+              fields:
+                [
+                  { label: "Heading", name: "heading", widget: "string" },
+                  { label: "Details", name: "details", widget: "markdown" },
+                ],
+            }
+          - {
+              label: "RSVP",
+              name: "rsvpBlock",
+              widget: "object",
+              fields:
+                [
+                  { label: "Preheading", name: "preheading", widget: "string" },
+                  { label: "Heading", name: "heading", widget: "string" },
+                  {
+                    label: "Button",
+                    name: "button",
+                    widget: "object",
+                    fields:
+                      [
+                        { label: "Text", name: "text", widget: "string" },
+                        { label: "url", name: "url", widget: "string" },
+                        {
+                          label: "Link Type",
+                          name: "linkType",
+                          widget: "select",
+                          options: [internal, external],
+                        },
+                      ],
+                  },
+                  { label: "Image", name: "image", widget: "image" },
+                ],
+            }
+      - file: "src/pages/details/index.md"
+        label: "Details"
+        name: "details"
+        fields:
+          - {
+              label: "Template Key",
+              name: "templateKey",
+              widget: "hidden",
+              default: "details-page",
+            }
+          - {
+              label: "Page Header Block",
+              name: "pageHeaderBlock",
+              widget: "object",
+              fields:
+                [
+                  { label: "Preheading", name: "preheading", widget: "string" },
+                  { label: "Heading", name: "heading", widget: "text" },
+                  { label: "Subheading", name: "subheading", widget: "string" },
+                  { label: "Image", name: "image", widget: "image" },
+                ],
+            }
+          - {
+              label: "Details",
+              name: "detailsBlock",
+              widget: "list",
+              fields:
+                [
+                  { label: "Heading", name: "heading", widget: "string" },
+                  { label: "Details", name: "detail", widget: "markdown" },
+                ],
+            }
