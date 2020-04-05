@@ -1,31 +1,43 @@
 ---
 templateKey: details-page
 pageHeaderBlock:
-  heading: |-
-    James Irving
-    &
-    Dina Abdeen
+  heading: Details
   image: /img/20190319_165147.jpg
-  preheading: CELEBRATE OUR WEDDING
-  subheading: '26 . 02 . 21 '
+  preheading: Test
+  subheading: Test
 detailsBlock:
-  - author: |-
-      dfghdfgj
+  - detail: '26th February 2021 at 4:00 pm'
+    heading: When
+  - detail: |-
+      Poets Lane Receptions
 
-      dsafgs
+      13 Sherbrooke Rd,
 
-      dfgh
+      Sherbrooke VIC 3789
 
-      sdgfhbsdgfhs
-    heading: dgfhdfg
-  - author: |-
-      r56ujr567iuj5er6ghsdgh
+      [Map](https://goo.gl/maps/ntypvNdtqfTGsmAE6)
+    heading: Where
+  - detail: >-
+      ### Driving
 
-      dzfgsdfhgs
 
-      gdhsdfghdfgh
-    heading: dfgjdtj65u5r6u
-  - author: tesrtyhserth sth srth sreth srth
-    heading: setryghws4e5
+      There will be ample parking onsite for everyone who chooses to drive.
+
+
+
+
+      ### Rideshare (Uber, DiDi, Ola, etc.)
+
+
+      From Melbourne CBD these options are approximately $70 and will take
+      around an hour depending on traffic.
+    heading: How to get there
+  - detail: |-
+      ### Poets Lane
+
+      Poets Lane has limited onsite accommodation available:
+
+      Phone: (03) 9755 2044
+    heading: Accommodation
 ---
 
