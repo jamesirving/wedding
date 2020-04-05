@@ -9,12 +9,12 @@ import { H1, P, Preheading } from '../components/type';
 
 export const DetailsPageTemplate = ({ pageHeaderBlock, detailsBlock }) => (
   <div>
-    <Feature image={pageHeaderBlock.image} objectPosition="50% 50%" height="90vh">
+    <Feature image={pageHeaderBlock.image} objectPosition="50% 40%" height="50vh">
       {pageHeaderBlock.preheading && <Preheading color="white">{pageHeaderBlock.preheading}</Preheading>}
       {pageHeaderBlock.heading && <H1 color="white">{pageHeaderBlock.heading}</H1>}
       {pageHeaderBlock.subheading && <P color="white">{pageHeaderBlock.subheading}</P>}
     </Feature>
-    <Details> details={detailsBlock}</Details>
+    <Details details={detailsBlock} />
   </div>
 );
 

@@ -8,7 +8,7 @@ pageHeaderBlock:
   image: /img/20190319_165147.jpg
   preheading: CELEBRATE OUR WEDDING
   subheading: '26 . 02 . 21 '
-detailsBlock:
+contentImageBlock:
   dateTime: '26th February 2021 at 4:00pm'
   heading: Details
   image: /img/poets-lane.jpg
@@ -22,7 +22,7 @@ detailsBlock:
     text: Map
     url: >-
       https://www.google.com/maps/place/Poet's+Lane+Receptions/@-37.8800092,145.3603217,15z/data=!4m2!3m1!1s0x0:0xdc8f44558156ae5c?sa=X&ved=2ahUKEwj9tdmVuI3oAhW4IbcAHQaIDdoQ_BIwC3oECBoQCA
-rsvpBlock:
+featureBlock:
   button:
     linkType: internal
     text: RSVP
@@ -31,4 +31,3 @@ rsvpBlock:
   image: /img/IMG_20181006_180438_442.jpg
   preheading: Join Us
 ---
-

@@ -4,16 +4,14 @@ import ReactMarkdown from 'react-markdown';
 import { map } from 'lodash';
 
 import { Container, Row, Col } from '../grid';
-import { H2 } from '../type';
+import { H3 } from '../type';
 
 const Details = ({ details }) => (
-  <Container>
+  <Container my="4rem">
     {map(details, ({ heading, detail }) => (
-      <Row>
-        <Col>
-          <H2>{heading}</H2>
-        </Col>
-        <Col>
+      <Row my="2rem">
+        <Col width={{ xs: 12 / 12, md: 10 / 12, lg: 8 / 12 }} offset={[0, 0, 1 / 12, 1 / 12]}>
+          <H3>{heading}</H3>
           <ReactMarkdown source={detail} />
         </Col>
       </Row>

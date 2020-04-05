@@ -17,7 +17,7 @@ detailsBlock:
 
       [Map](https://goo.gl/maps/ntypvNdtqfTGsmAE6)
     heading: Where
-  - detail: >-
+  - detail: |-
       ### Driving
 
 
@@ -40,4 +40,3 @@ detailsBlock:
       Phone: (03) 9755 2044
     heading: Accommodation
 ---
-
