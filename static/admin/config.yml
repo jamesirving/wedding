@@ -39,7 +39,7 @@ collections:
             }
           - {
               label: "Details",
-              name: "detailsBlock",
+              name: "contentImageBlock",
               widget: "object",
               fields:
                 [
@@ -49,7 +49,7 @@ collections:
             }
           - {
               label: "RSVP",
-              name: "rsvpBlock",
+              name: "featureBlock",
               widget: "object",
               fields:
                 [
@@ -96,13 +96,10 @@ collections:
                   { label: "Image", name: "image", widget: "image" },
                 ],
             }
-          - {
-              label: "Details",
-              name: "detailsBlock",
-              widget: "list",
-              fields:
-                [
-                  { label: "Heading", name: "heading", widget: "string" },
-                  { label: "Details", name: "detail", widget: "markdown" },
-                ],
-            }
+          - label: "Details"
+            name: "detailsBlock"
+            collapsed: false
+            widget: "list"
+            fields:
+              - { label: "Heading", name: "heading", widget: "string" }
+              - { label: "Details", name: "detail", widget: "markdown" }

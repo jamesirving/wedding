@@ -10,29 +10,29 @@ import { H1, H2, P, Preheading } from '../components/type';
 import { Button } from '../components/button';
 import { Link } from '../components/link';
 
-export const IndexPageTemplate = ({ pageHeaderBlock, detailsBlock, rsvpBlock }) => (
+export const IndexPageTemplate = ({ pageHeaderBlock, contentImageBlock, featureBlock }) => (
   <div>
     <Feature image={pageHeaderBlock.image} objectPosition="50% 50%" height="90vh">
       {pageHeaderBlock.preheading && <Preheading color="white">{pageHeaderBlock.preheading}</Preheading>}
       {pageHeaderBlock.heading && <H1 color="white">{pageHeaderBlock.heading}</H1>}
       {pageHeaderBlock.subheading && <P color="white">{pageHeaderBlock.subheading}</P>}
     </Feature>
-    <ContentImage image={detailsBlock.image} contentPosition="left" height="400px">
-      {detailsBlock.heading && <H2>{detailsBlock.heading}</H2>}
-      {detailsBlock.dateTime && <P>{detailsBlock.dateTime}</P>}
-      {detailsBlock.location && <ReactMarkdown source={detailsBlock.location} />}
-      {detailsBlock.mapLink && (
-        <Link linkType="external" url={detailsBlock.mapLink.url}>
-          {detailsBlock.mapLink.text}
+    <ContentImage image={contentImageBlock.image} contentPosition="left" height="400px">
+      {contentImageBlock.heading && <H2>{contentImageBlock.heading}</H2>}
+      {contentImageBlock.dateTime && <P>{contentImageBlock.dateTime}</P>}
+      {contentImageBlock.location && <ReactMarkdown source={contentImageBlock.location} />}
+      {contentImageBlock.mapLink && (
+        <Link linkType="external" url={contentImageBlock.mapLink.url}>
+          {contentImageBlock.mapLink.text}
         </Link>
       )}
     </ContentImage>
-    <Feature image={rsvpBlock.image} objectPosition="50% 50%" height="90vh">
-      {rsvpBlock.preheading && <Preheading color="white">{rsvpBlock.preheading}</Preheading>}
-      {rsvpBlock.heading && <H1 color="white">{rsvpBlock.heading}</H1>}
-      {rsvpBlock.button && (
-        <Button mt="2rem" {...rsvpBlock.button}>
-          {rsvpBlock.button.text}
+    <Feature image={featureBlock.image} objectPosition="50% 50%" height="90vh">
+      {featureBlock.preheading && <Preheading color="white">{featureBlock.preheading}</Preheading>}
+      {featureBlock.heading && <H1 color="white">{featureBlock.heading}</H1>}
+      {featureBlock.button && (
+        <Button mt="2rem" {...featureBlock.button}>
+          {featureBlock.button.text}
         </Button>
       )}
     </Feature>
@@ -41,8 +41,8 @@ export const IndexPageTemplate = ({ pageHeaderBlock, detailsBlock, rsvpBlock }) 
 
 IndexPageTemplate.propTypes = {
   pageHeaderBlock: PropTypes.object,
-  detailsBlock: PropTypes.object,
-  rsvpBlock: PropTypes.object,
+  contentImageBlock: PropTypes.object,
+  featureBlock: PropTypes.object,
 };
 
 const IndexPage = ({ data }) => {
@@ -52,8 +52,8 @@ const IndexPage = ({ data }) => {
     <Layout>
       <IndexPageTemplate
         pageHeaderBlock={frontmatter.pageHeaderBlock}
-        detailsBlock={frontmatter.detailsBlock}
-        rsvpBlock={frontmatter.rsvpBlock}
+        contentImageBlock={frontmatter.contentImageBlock}
+        featureBlock={frontmatter.featureBlock}
       />
     </Layout>
   );
@@ -85,7 +85,7 @@ export const pageQuery = graphql`
             }
           }
         }
-        detailsBlock {
+        contentImageBlock {
           heading
           dateTime
           location
@@ -101,7 +101,7 @@ export const pageQuery = graphql`
             }
           }
         }
-        rsvpBlock {
+        featureBlock {
           preheading
           heading
           button {
