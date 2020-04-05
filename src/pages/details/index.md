@@ -9,9 +9,9 @@ pageHeaderBlock:
   preheading: CELEBRATE OUR WEDDING
   subheading: '26 . 02 . 21 '
 detailsBlock:
-  - author: fgbdfhdgh
-    heading: dfghdfgjh
-  - author: xfdgncfvbnxcf
-    heading: Everything is awesome!
+  - author: dfghdfgj
+    heading: dgfhdfg
+  - author: r56ujr567iuj5er6
+    heading: dfgjdtj65u5r6u
 ---
 
