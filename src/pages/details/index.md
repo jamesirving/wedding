@@ -11,5 +11,7 @@ pageHeaderBlock:
 detailsBlock:
   - author: fgbdfhdgh
     heading: dfghdfgjh
+  - author: xfdgncfvbnxcf
+    heading: Everything is awesome!
 ---
 
