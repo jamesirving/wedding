@@ -8,10 +8,8 @@ pageHeaderBlock:
   image: /img/20190319_165147.jpg
   preheading: CELEBRATE OUR WEDDING
   subheading: '26 . 02 . 21 '
-testimonials:
-  - author: srfhsdgfh
+detailsBlock:
+  - author: fgbdfhdgh
     quote: Everything is awesome!
-  - author: sdghdfgh
-    quote: Everything is awesome! sdtghdryj
 ---
 
