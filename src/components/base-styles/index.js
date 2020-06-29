@@ -64,14 +64,6 @@ const BaseStyles = createGlobalStyle`
     ${props => headingVariants({ ...props, variant: 'h3' })}
   }
 
-  h4 {
-    ${props => headingVariants({ ...props, variant: 'h4' })}
-  }
-
-  h5 {
-    ${props => headingVariants({ ...props, variant: 'h5' })}
-  }
-
   body {
     ${pStyles};
   }
