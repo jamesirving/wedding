@@ -5,13 +5,17 @@ import { graphql } from 'gatsby';
 import { Layout } from '../components/layout';
 import { Feature } from '../components/feature';
 import { Details } from '../components/details';
-import { H1, P, Preheading } from '../components/type';
+import { Heading, P, Preheading } from '../components/type';
 
 export const DetailsPageTemplate = ({ pageHeaderBlock, detailsBlock }) => (
   <div>
     <Feature image={pageHeaderBlock.image} objectPosition="50% 40%" height="50vh">
       {pageHeaderBlock.preheading && <Preheading color="white">{pageHeaderBlock.preheading}</Preheading>}
-      {pageHeaderBlock.heading && <H1 color="white">{pageHeaderBlock.heading}</H1>}
+      {pageHeaderBlock.heading && (
+        <Heading variant="h1" color="white">
+          {pageHeaderBlock.heading}
+        </Heading>
+      )}
       {pageHeaderBlock.subheading && <P color="white">{pageHeaderBlock.subheading}</P>}
     </Feature>
     <Details details={detailsBlock} />

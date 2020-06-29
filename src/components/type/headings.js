@@ -1,39 +1,35 @@
 import styled from 'styled-components';
+import { variant } from 'styled-system';
 
-import { breakpoints, headingSize } from '../../styles';
+import { headingSize } from '../../styles';
 import { headingStyles } from './font-styles';
 
-const H1 = styled.h1`
-  ${headingStyles}
-  font-size: ${headingSize.L3M2S1};
-  @media (min-width: ${breakpoints.md}) {
-    font-size: ${headingSize.L2M1Sx};
-  }
-  @media (min-width: ${breakpoints.lg}) {
-    font-size: ${headingSize.L1MxSx};
-  }
+const headingVariants = variant({
+  scale: 'headings',
+  variants: {
+    h1: {
+      fontSize: [headingSize.L3M2S1, null, headingSize.L2M1Sx, headingSize.L1MxSx],
+    },
+    h2: {
+      fontSize: [headingSize.LxM3S2, null, headingSize.L3M2S1, headingSize.L2M1Sx],
+    },
+    h3: {
+      fontSize: [headingSize.LxMxS3, null, headingSize.LxM3S2, headingSize.L3M2S1],
+    },
+  },
+});
+
+const elementMap = {
+  h1: 'h1',
+  h2: 'h2',
+  h3: 'h3',
+};
+
+const Heading = styled.h2.attrs(({ as, variant: headingVariant }) => ({
+  as: as || elementMap[headingVariant],
+}))`
+  ${headingStyles};
+  ${headingVariants};
 `;
 
-const H2 = styled.h2`
-  ${headingStyles}
-  font-size: ${headingSize.LxM3S2};
-  @media (min-width: ${breakpoints.md}) {
-    font-size: ${headingSize.L3M2S1};
-  }
-  @media (min-width: ${breakpoints.lg}) {
-    font-size: ${headingSize.L2M1Sx};
-  }
-`;
-
-const H3 = styled.h3`
-  ${headingStyles}
-  font-size: ${headingSize.LxMxS3};
-  @media (min-width: ${breakpoints.md}) {
-    font-size: ${headingSize.LxM3S2};
-  }
-  @media (min-width: ${breakpoints.lg}) {
-    font-size: ${headingSize.L3M2S1};
-  }
-`;
-
-export { H1, H2, H3 };
+export { Heading, headingVariants };
