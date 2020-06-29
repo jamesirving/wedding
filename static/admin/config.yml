@@ -2,104 +2,89 @@ backend:
   name: git-gateway
   branch: master
   commit_messages:
-    create: "Create {{collection}} “{{slug}}”"
-    update: "Update {{collection}} “{{slug}}”"
-    delete: "Delete {{collection}} “{{slug}}”"
-    uploadMedia: "[skip ci] Upload “{{path}}”"
-    deleteMedia: "[skip ci] Delete “{{path}}”"
+    create: 'Create {{collection}} “{{slug}}”'
+    update: 'Update {{collection}} “{{slug}}”'
+    delete: 'Delete {{collection}} “{{slug}}”'
+    uploadMedia: '[skip ci] Upload “{{path}}”'
+    deleteMedia: '[skip ci] Delete “{{path}}”'
 
 media_folder: static/img
 public_folder: /img
 
 collections:
-  - name: "pages"
-    label: "Pages"
+  - name: 'pages'
+    label: 'Pages'
     files:
-      - file: "src/pages/index.md"
-        label: "Home Page"
-        name: "home"
+      - file: 'src/pages/index.md'
+        label: 'Home Page'
+        name: 'home'
         fields:
+          - { label: 'Template Key', name: 'templateKey', widget: 'hidden', default: 'index-page' }
           - {
-              label: "Template Key",
-              name: "templateKey",
-              widget: "hidden",
-              default: "index-page",
-            }
-          - {
-              label: "Page Header Block",
-              name: "pageHeaderBlock",
-              widget: "object",
+              label: 'Page Header Block',
+              name: 'pageHeaderBlock',
+              widget: 'object',
               fields:
                 [
-                  { label: "Preheading", name: "preheading", widget: "string" },
-                  { label: "Heading", name: "heading", widget: "text" },
-                  { label: "Subheading", name: "subheading", widget: "string" },
-                  { label: "Image", name: "image", widget: "image" },
+                  { label: 'Preheading', name: 'preheading', widget: 'string' },
+                  { label: 'Heading', name: 'heading', widget: 'text' },
+                  { label: 'Subheading', name: 'subheading', widget: 'string' },
+                  { label: 'Image', name: 'image', widget: 'image' },
                 ],
             }
           - {
-              label: "Details",
-              name: "contentImageBlock",
-              widget: "object",
+              label: 'Details',
+              name: 'contentImageBlock',
+              widget: 'object',
               fields:
                 [
-                  { label: "Heading", name: "heading", widget: "string" },
-                  { label: "Details", name: "details", widget: "markdown" },
+                  { label: 'Heading', name: 'heading', widget: 'string' },
+                  { label: 'Details', name: 'details', widget: 'markdown' },
                 ],
             }
           - {
-              label: "RSVP",
-              name: "featureBlock",
-              widget: "object",
+              label: 'RSVP',
+              name: 'featureBlock',
+              widget: 'object',
               fields:
                 [
-                  { label: "Preheading", name: "preheading", widget: "string" },
-                  { label: "Heading", name: "heading", widget: "string" },
+                  { label: 'Preheading', name: 'preheading', widget: 'string' },
+                  { label: 'Heading', name: 'heading', widget: 'string' },
                   {
-                    label: "Button",
-                    name: "button",
-                    widget: "object",
+                    label: 'Button',
+                    name: 'button',
+                    widget: 'object',
                     fields:
                       [
-                        { label: "Text", name: "text", widget: "string" },
-                        { label: "url", name: "url", widget: "string" },
-                        {
-                          label: "Link Type",
-                          name: "linkType",
-                          widget: "select",
-                          options: [internal, external],
-                        },
+                        { label: 'Text', name: 'text', widget: 'string' },
+                        { label: 'url', name: 'url', widget: 'string' },
+                        { label: 'Link Type', name: 'linkType', widget: 'select', options: [internal, external] },
                       ],
                   },
-                  { label: "Image", name: "image", widget: "image" },
+                  { label: 'Image', name: 'image', widget: 'image' },
                 ],
             }
-      - file: "src/pages/details/index.md"
-        label: "Details"
-        name: "details"
+      - file: 'src/pages/details/index.md'
+        label: 'Details'
+        name: 'details'
         fields:
+          - { label: 'Template Key', name: 'templateKey', widget: 'hidden', default: 'details-page' }
           - {
-              label: "Template Key",
-              name: "templateKey",
-              widget: "hidden",
-              default: "details-page",
-            }
-          - {
-              label: "Page Header Block",
-              name: "pageHeaderBlock",
-              widget: "object",
+              label: 'Page Header Block',
+              name: 'pageHeaderBlock',
+              widget: 'object',
               fields:
                 [
-                  { label: "Preheading", name: "preheading", widget: "string" },
-                  { label: "Heading", name: "heading", widget: "text" },
-                  { label: "Subheading", name: "subheading", widget: "string" },
-                  { label: "Image", name: "image", widget: "image" },
+                  { label: 'Preheading', name: 'preheading', widget: 'string', required: false },
+                  { label: 'Heading', name: 'heading', widget: 'text' },
+                  { label: 'Subheading', name: 'subheading', widget: 'string', required: false },
+                  { label: 'Image', name: 'image', widget: 'image' },
                 ],
             }
-          - label: "Details"
-            name: "detailsBlock"
+          - label: 'Details'
+            name: 'detailsBlock'
             collapsed: false
-            widget: "list"
+            widget: 'list'
             fields:
-              - { label: "Heading", name: "heading", widget: "string" }
-              - { label: "Details", name: "detail", widget: "markdown" }
+              - { label: 'Heading', name: 'heading', widget: 'string' }
+              - { label: 'Details', name: 'detail', widget: 'markdown' }
