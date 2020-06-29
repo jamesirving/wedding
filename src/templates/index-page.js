@@ -6,7 +6,7 @@ import ReactMarkdown from 'react-markdown';
 import { Layout } from '../components/layout';
 import { Feature } from '../components/feature';
 import { ContentImage } from '../components/content-image';
-import { H1, H2, P, Preheading } from '../components/type';
+import { Heading, P, Preheading } from '../components/type';
 import { Button } from '../components/button';
 import { Link } from '../components/link';
 
@@ -14,11 +14,15 @@ export const IndexPageTemplate = ({ pageHeaderBlock, contentImageBlock, featureB
   <div>
     <Feature image={pageHeaderBlock.image} objectPosition="50% 50%" height="90vh">
       {pageHeaderBlock.preheading && <Preheading color="white">{pageHeaderBlock.preheading}</Preheading>}
-      {pageHeaderBlock.heading && <H1 color="white">{pageHeaderBlock.heading}</H1>}
+      {pageHeaderBlock.heading && (
+        <Heading variant="h1" color="white">
+          {pageHeaderBlock.heading}
+        </Heading>
+      )}
       {pageHeaderBlock.subheading && <P color="white">{pageHeaderBlock.subheading}</P>}
     </Feature>
     <ContentImage image={contentImageBlock.image} contentPosition="left" height="400px">
-      {contentImageBlock.heading && <H2>{contentImageBlock.heading}</H2>}
+      {contentImageBlock.heading && <Heading variant="h2">{contentImageBlock.heading}</Heading>}
       {contentImageBlock.dateTime && <P>{contentImageBlock.dateTime}</P>}
       {contentImageBlock.location && <ReactMarkdown source={contentImageBlock.location} />}
       {contentImageBlock.mapLink && (
@@ -29,7 +33,11 @@ export const IndexPageTemplate = ({ pageHeaderBlock, contentImageBlock, featureB
     </ContentImage>
     <Feature image={featureBlock.image} objectPosition="50% 50%" height="90vh">
       {featureBlock.preheading && <Preheading color="white">{featureBlock.preheading}</Preheading>}
-      {featureBlock.heading && <H1 color="white">{featureBlock.heading}</H1>}
+      {featureBlock.heading && (
+        <Heading variant="h1" color="white">
+          {featureBlock.heading}
+        </Heading>
+      )}
       {featureBlock.button && (
         <Button mt="2rem" {...featureBlock.button}>
           {featureBlock.button.text}

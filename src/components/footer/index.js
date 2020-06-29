@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'gatsby';
 import styled, { css } from 'styled-components';
 
-import { H3 } from '../type';
+import { Heading } from '../type';
 import { colors, space } from '../../styles';
 import { Container, Flex } from '../grid';
 
@@ -42,7 +42,9 @@ const Footer = () => {
       <FlexContainer>
         <Flex width="100%" justifyContent="center">
           <NavBarLogo to="/" title="home">
-            <H3 color={colors.grey50}>J&D 26 . 02 . 21</H3>
+            <Heading variant="h3" color={colors.grey50}>
+              J&D 26 . 02 . 21
+            </Heading>
           </NavBarLogo>
         </Flex>
         <Flex mt="2rem" width={{ _: '80%', sm: '50%' }} justifyContent="space-around">

@@ -5,7 +5,7 @@ import styled, { css } from 'styled-components';
 import { Button } from '../button';
 import { Container, Flex, Box } from '../grid';
 import { breakpoints, colors, space, globalStyles } from '../../styles';
-import { H3 } from '../type';
+import { Heading } from '../type';
 
 const Nav = styled.nav`
   background-color: ${colors.white};
@@ -116,7 +116,7 @@ const Navbar = () => {
       <Wrapper>
         <NavBarLogoWrapper>
           <NavBarLogo to="/" title="home">
-            <H3>J&D 26 . 02 . 21</H3>
+            <Heading variant="h3">J&D 26 . 02 . 21</Heading>
           </NavBarLogo>
           {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions */}
           <div

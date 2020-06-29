@@ -1,12 +1,12 @@
 import { css } from 'styled-components';
-import { space, typography } from 'styled-system';
+import { color, space, typography } from 'styled-system';
 
-import { colors, fontWeight, globalStyles } from '../../styles';
+import { fontWeight, globalStyles } from '../../styles';
 
 const coreStyles = css`
-  ${space}
-  ${typography}
-  color: ${({ color }) => (color ? colors[color] : colors.black)};
+  ${color};
+  ${space};
+  ${typography};
   font-family: ${globalStyles.baseFontFamily};
   font-weight: ${fontWeight.normal};
   letter-spacing: normal;
