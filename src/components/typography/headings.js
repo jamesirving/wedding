@@ -16,6 +16,9 @@ const headingVariants = variant({
     h3: {
       fontSize: [headingSize.LxMxS3, null, headingSize.LxM3S2, headingSize.L3M2S1],
     },
+    h3: {
+      fontSize: [headingSize.LxMxS3, null, headingSize.LxM3S2, headingSize.L3M2S1],
+    },
   },
 });
 

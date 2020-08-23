@@ -49,8 +49,8 @@ const Footer = () => {
         </Flex>
         <Flex mt="2rem" width={{ _: '80%', sm: '50%' }} justifyContent="space-around">
           <NavItem to="/">Home</NavItem>
-          <NavItem to="/about">Details</NavItem>
-          <NavItem to="/products">Travel & Stay</NavItem>
+          <NavItem to="/details">Details</NavItem>
+          <NavItem to="/travel&stay">Travel & Stay</NavItem>
         </Flex>
       </FlexContainer>
     </FooterWrapper>

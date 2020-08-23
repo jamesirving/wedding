@@ -1,7 +1,7 @@
 import { createGlobalStyle } from 'styled-components';
 import { normalize } from 'styled-normalize';
 
-import { headingStyles, headingVariants, pStyles } from '../typography';
+import { headingStyles, headingVariants, pStyles, bodyVariants } from '../typography';
 
 const BaseStyles = createGlobalStyle`
   ${normalize}
@@ -63,9 +63,14 @@ const BaseStyles = createGlobalStyle`
   h3 {
     ${props => headingVariants({ ...props, variant: 'h3' })}
   }
+  h4 {
+    ${props => bodyVariants({ ...props, variant: 'Body1' })}
+    text-transform: uppercase;
+    font-weight: bold;
+  }
 
   body {
-    ${pStyles};
+    ${props => bodyVariants({ ...props, variant: 'Body1' })}
   }
 `;
 
