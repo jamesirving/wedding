@@ -1,27 +1,46 @@
+import { color, layout, space as styledSpace, variant as styledVariant, typography } from 'styled-system';
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 import { space as styledSystemSpace } from 'styled-system';
 import { Link } from '../link';
 
 import { space, colors, globalStyles, fontWeight } from '../../styles';
 
-const themes = {
-  light: css`
-    background-color: ${colors.white};
-    border: 2px solid ${colors.white};
-    color: ${colors.black};
-  `,
-  dark: css`
-    background-color: ${colors.black};
-    border-color: ${colors.black};
-    color: ${colors.white};
-  `,
-};
+const buttonVariant = styledVariant({
+  scale: 'buttons',
+  variants: {
+    light: {
+      backgroundColor: colors.white,
+      border: `2px solid ${colors.white}`,
+      color: 'black',
+
+      '&:hover': {
+        borderColor: colors.black,
+        color: colors.white,
+        backgroundColor: colors.black,
+      },
+    },
+    dark: {
+      backgroundColor: colors.black,
+      borderColor: colors.black,
+      color: 'white',
+
+      '&:hover': {
+        borderColor: colors.white,
+      },
+    },
+  },
+});
 
 const ButtonLink = styled(Link)`
   ${styledSystemSpace}
-  ${props => themes[props.theme]}
+  ${buttonVariant};
+  ${color};
+  ${layout};
+  ${styledSpace};
+  ${typography};
+
   border-radius: 5px;
   display: inline-flex;
   font-family: ${globalStyles.baseFontFamily};
@@ -29,16 +48,11 @@ const ButtonLink = styled(Link)`
   padding: ${space.x1} ${space.x2};
   text-transform: uppercase;
   transition: all ${globalStyles.transitionSpeed} ${globalStyles.easing};
-
-  &:hover {
-    ${props => themes[props.theme === 'dark' ? 'light' : 'dark']}
-    border-color: ${colors.black};
-  }
 `;
 
 const Button = ({ linkType = 'internal', url, theme = 'light', children, ...props }) => {
   return (
-    <ButtonLink theme={theme} linkType={linkType} url={url} {...props}>
+    <ButtonLink variant={theme} linkType={linkType} url={url} {...props}>
       {children}
     </ButtonLink>
   );
