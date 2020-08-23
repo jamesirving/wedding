@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'gatsby';
 import styled, { css } from 'styled-components';
 
-import { Heading } from '../type';
+import { Heading } from '../typography';
 import { colors, space } from '../../styles';
 import { Container, Flex } from '../grid';
 

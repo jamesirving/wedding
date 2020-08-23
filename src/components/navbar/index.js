@@ -5,7 +5,7 @@ import styled, { css } from 'styled-components';
 import { Button } from '../button';
 import { Container, Flex, Box } from '../grid';
 import { breakpoints, colors, space, globalStyles } from '../../styles';
-import { Heading } from '../type';
+import { Heading } from '../typography';
 
 const Nav = styled.nav`
   background-color: ${colors.white};

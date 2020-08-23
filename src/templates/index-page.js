@@ -6,7 +6,7 @@ import ReactMarkdown from 'react-markdown';
 import { Layout } from '../components/layout';
 import { Feature } from '../components/feature';
 import { ContentImage } from '../components/content-image';
-import { Heading, P, Preheading } from '../components/type';
+import { Heading, P, Preheading } from '../components/typography';
 import { Button } from '../components/button';
 import { Link } from '../components/link';
 

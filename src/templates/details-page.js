@@ -5,7 +5,7 @@ import { graphql } from 'gatsby';
 import { Layout } from '../components/layout';
 import { Feature } from '../components/feature';
 import { Details } from '../components/details';
-import { Heading, P, Preheading } from '../components/type';
+import { Heading, P, Preheading } from '../components/typography';
 
 export const DetailsPageTemplate = ({ pageHeaderBlock, detailsBlock }) => (
   <div>

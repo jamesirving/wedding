@@ -4,7 +4,7 @@ import ReactMarkdown from 'react-markdown';
 import { map } from 'lodash';
 
 import { Container, Row, Col } from '../grid';
-import { Heading } from '../type';
+import { Heading } from '../typography';
 
 const Details = ({ details }) => (
   <Container my="4rem">
