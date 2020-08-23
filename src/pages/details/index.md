@@ -18,7 +18,7 @@ detailsBlock:
       [Map](https://goo.gl/maps/ntypvNdtqfTGsmAE6)
     heading: Where
   - detail: >-
-      **Driving**
+      #### **Driving**
 
 
       There will be ample parking onsite for everyone who chooses to drive.
@@ -26,7 +26,7 @@ detailsBlock:
 
 
 
-      **Rideshare (Uber, DiDi, Ola, etc.)**
+      #### **Rideshare (Uber, DiDi, Ola, etc.)**
 
 
       From Melbourne CBD these options are approximately $70 and will take around an hour depending on traffic.
