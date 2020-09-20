@@ -4,7 +4,7 @@ import { useGoogleReCaptcha } from 'react-google-recaptcha-v3';
 import { Button } from '../button';
 import { Container, Col, Row } from '../grid';
 import { TextField } from '../form-fields';
-import { From } from '../form';
+import { Form } from '../form';
 
 function encode(data) {
   return Object.keys(data)
@@ -53,7 +53,7 @@ const RsvpForm = () => {
     <Container>
       <Row>
         <Col width={{ xs: 10 / 12, lg: 8 / 12 }} offset={[1 / 12, 1 / 12, 1 / 12, 2 / 12]}>
-          <From name="rsvp" method="post" data-netlify="true" data-netlify-recaptcha="true" onSubmit={handleSubmit}>
+          <Form name="rsvp" method="post" data-netlify="true" data-netlify-recaptcha="true" onSubmit={handleSubmit}>
             <noscript>
               <p>This form won’t work with Javascript disabled</p>
             </noscript>
@@ -71,7 +71,7 @@ const RsvpForm = () => {
         </FormControl> */}
 
             <Button type="submit">Submit</Button>
-          </From>
+          </Form>
         </Col>
       </Row>
     </Container>
