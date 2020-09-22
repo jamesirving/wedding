@@ -1,24 +1,42 @@
 import { TextField as MuiTextField } from '@material-ui/core';
+import { get } from 'lodash';
 import { useFormikContext } from 'formik';
 import noop from 'lodash/noop';
 import PropTypes from 'prop-types';
 import React from 'react';
 
-const TextField = ({ disabled, maxLength, required, onChange, placeholder, autoComplete, label, name, type }) => {
+const TextField = ({
+  autoComplete,
+  disabled,
+  fullWidth,
+  label,
+  maxLength,
+  name,
+  onChange,
+  placeholder,
+  required,
+  type,
+}) => {
   const { errors, handleBlur, handleChange, setFieldTouched, touched, values } = useFormikContext();
 
-  const onFieldChange = value => {
+  const onFieldChange = newValue => {
     setFieldTouched(name, true);
-    onChange(value);
-    handleChange(name)(value);
+    onChange(newValue);
+    handleChange(name)(newValue);
   };
+
+  const isTouched = get(touched, name);
+  const error = get(errors, name);
+  const value = get(values, name);
 
   return (
     <MuiTextField
+      aria-label={label}
       autoComplete={autoComplete}
       disabled={disabled}
-      errorMessage={touched[name] && errors[name]}
-      isError={!!touched[name] && !!errors[name]}
+      helperText={isTouched && error}
+      id={name}
+      error={isTouched && !!error}
       label={label}
       maxLength={maxLength}
       name={name}
@@ -27,15 +45,17 @@ const TextField = ({ disabled, maxLength, required, onChange, placeholder, autoC
       placeholder={placeholder}
       required={required}
       type={type}
-      value={values[name]}
+      value={value}
       variant="filled"
+      fullWidth={fullWidth}
     />
   );
 };
 
 TextField.propTypes = {
-  autoComplete: PropTypes.oneOf(['email', 'family-name', 'given-name', 'tel', 'off']),
+  autoComplete: PropTypes.oneOf(['email', 'family-name', 'given-name', 'tel', 'no-auto-complete']),
   disabled: PropTypes.bool,
+  fullWidth: PropTypes.bool,
   label: PropTypes.string,
   maxLength: PropTypes.number,
   name: PropTypes.string.isRequired,
@@ -46,13 +66,14 @@ TextField.propTypes = {
 };
 
 TextField.defaultProps = {
-  autoComplete: 'off',
+  autoComplete: 'no-auto-complete',
   disabled: false,
+  fullWidth: false,
   label: null,
   maxLength: null,
   onChange: noop,
   placeholder: null,
-  required: true,
+  required: false,
   type: 'text',
 };
 
