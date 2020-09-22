@@ -1,10 +1,9 @@
 import { color, layout, space as styledSpace, variant as styledVariant, typography } from 'styled-system';
-import React from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
-import { space as styledSystemSpace } from 'styled-system';
-import { Link } from '../link';
+import React from 'react';
+import styled, { css } from 'styled-components';
 
+import { Link } from '../link';
 import { space, colors, globalStyles, fontWeight } from '../../styles';
 
 const buttonVariant = styledVariant({
@@ -33,12 +32,11 @@ const buttonVariant = styledVariant({
   },
 });
 
-const ButtonLink = styled(Link)`
-  ${styledSystemSpace}
+const buttonStyles = css`
+  ${styledSpace}
   ${buttonVariant};
   ${color};
   ${layout};
-  ${styledSpace};
   ${typography};
 
   border-radius: 5px;
@@ -50,19 +48,36 @@ const ButtonLink = styled(Link)`
   transition: all ${globalStyles.transitionSpeed} ${globalStyles.easing};
 `;
 
-const Button = ({ linkType = 'internal', url, theme = 'light', children, ...props }) => {
+const StyledLink = styled(Link)`
+  ${buttonStyles}
+`;
+
+const StyledButton = styled.button`
+  ${buttonStyles}
+`;
+
+const Button = ({ linkType = 'internal', children, theme = 'light', type = 'link', url, ...props }) => {
+  if (type === 'link') {
+    return (
+      <StyledLink variant={theme} linkType={linkType} url={url} {...props}>
+        {children}
+      </StyledLink>
+    );
+  }
+
   return (
-    <ButtonLink variant={theme} linkType={linkType} url={url} {...props}>
+    <StyledButton variant={theme} type={type} {...props}>
       {children}
-    </ButtonLink>
+    </StyledButton>
   );
 };
 
 Button.propTypes = {
-  linkType: PropTypes.string,
-  url: PropTypes.string,
   children: PropTypes.node,
+  linkType: PropTypes.string,
   theme: PropTypes.oneOf(['dark', 'light']),
+  type: PropTypes.oneOf(['submit', 'button', 'link']),
+  url: PropTypes.string,
 };
 
 export { Button };
