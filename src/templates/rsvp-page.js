@@ -1,11 +1,11 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { graphql } from 'gatsby';
 import { GoogleReCaptchaProvider } from 'react-google-recaptcha-v3';
+import { graphql } from 'gatsby';
+import PropTypes from 'prop-types';
+import React from 'react';
 
-import { Layout } from '../components/layout';
 import { Feature } from '../components/feature';
 import { Heading, P, Preheading } from '../components/typography';
+import { Layout } from '../components/layout';
 import { RsvpForm } from '../components/rsvp-form';
 
 const RECAPTCHA_KEY = process.env.SITE_RECAPTCHA_KEY;
