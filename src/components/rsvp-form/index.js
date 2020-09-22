@@ -1,80 +1,137 @@
-import React, { useState } from 'react';
+import { Formik, Form, FieldArray } from 'formik';
+import { get, size } from 'lodash';
 import { useGoogleReCaptcha } from 'react-google-recaptcha-v3';
+import React, { useCallback } from 'react';
+import styled from 'styled-components';
 
 import { Button } from '../button';
+import { colors } from '../../styles';
 import { Container, Col, Row } from '../grid';
-import { TextField } from '../form-fields';
-import { Form } from '../form';
+import { Guest } from './guest';
+import { P } from '../typography';
+import { validationSchema } from './validation-shema';
 
-function encode(data) {
+const StyledError = styled(P)`
+  text-align: center;
+  color: ${colors.red500};
+`;
+
+function encode(data, parent) {
   return Object.keys(data)
-    .map(key => `${encodeURIComponent(key)}=${encodeURIComponent(data[key])}`)
+    .map(key => {
+      const encodedKey = parent ? encodeURIComponent(`${parent}[${key}]`) : encodeURIComponent(key);
+      return typeof data[key] === 'object' ? encode(data[key], key) : `${encodedKey}=${encodeURIComponent(data[key])}`;
+    })
     .join('&');
 }
 
 const RsvpForm = () => {
   const { executeRecaptcha } = useGoogleReCaptcha();
-  const [state, setState] = useState({});
 
-  const handleChange = e => {
-    setState(oldState => ({
-      ...oldState,
-      [e.target.name]: e.target.value,
-    }));
-  };
+  const onSubmit = useCallback(
+    async (values, { setSubmitting, setFieldError }) => {
+      const token = await executeRecaptcha('rsvp');
 
-  const handleSubmit = async e => {
-    e.preventDefault();
-    const form = e.target;
-
-    if (!executeRecaptcha) {
-      return;
-    }
-
-    const result = await executeRecaptcha('rsvp');
-    setState(oldState => ({
-      ...oldState,
-      'g-recaptcha-response': result,
-    }));
-
-    fetch('/', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: encode({
-        'form-name': form.getAttribute('name'),
-        ...state,
-      }),
-    })
-      .then(setState({ success: true }))
-      .catch(error => alert(error));
-  };
+      try {
+        fetch('/', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body: encode({
+            'form-name': 'rsvp',
+            'g-recaptcha-response': token,
+            ...values,
+          }),
+        });
+        setFieldError('success', true);
+        setSubmitting(false);
+      } catch (error) {
+        setSubmitting(false);
+        setFieldError(
+          'general',
+          'There was an error submitting the form, please try again. If the problem persists please let us know'
+        );
+        console.log(error);
+      }
+    },
+    [executeRecaptcha]
+  );
 
   return (
-    <Container>
-      <Row>
-        <Col width={{ xs: 10 / 12, lg: 8 / 12 }} offset={[1 / 12, 1 / 12, 1 / 12, 2 / 12]}>
-          <Form name="rsvp" method="post" data-netlify="true" data-netlify-recaptcha="true" onSubmit={handleSubmit}>
-            <noscript>
-              <p>This form won’t work with Javascript disabled</p>
-            </noscript>
+    <Formik
+      initialValues={{
+        guests: [
+          {
+            givenName: '',
+            familyName: '',
+            email: '',
+            rsvp: 'yes',
+            dietaryRequirements: { vegan: false, vegetarian: false, nut: false, gluten: false, none: false },
+          },
+        ],
+      }}
+      onSubmit={onSubmit}
+      validationSchema={validationSchema}
+    >
+      {({ errors, handleSubmit, isSubmitting, values }) => (
+        <Container>
+          {console.log(errors)}
+          <Row my={3}>
+            <Col width={{ xs: 10 / 12, lg: 8 / 12 }} offset={[1 / 12, 1 / 12, 1 / 12, 2 / 12]}>
+              {get(errors, 'success') ? (
+                <P>Success!</P>
+              ) : (
+                <Form data-netlify="true" data-netlify-recaptcha="true" name="rsvp" method="post">
+                  <FieldArray
+                    name="guests"
+                    render={arrayHelpers => (
+                      <div>
+                        {values.guests &&
+                          values.guests.map((guest, index) => {
+                            return (
+                              // eslint-disable-next-line react/no-array-index-key
+                              <Guest key={`guest-${index}`} index={index} arrayHelpers={arrayHelpers} />
+                            );
+                          })}
+                        <Row>
+                          <Col width={1} mb="1">
+                            <Button
+                              onClick={() => arrayHelpers.push({ givenName: '', familyName: '', email: '' })}
+                              variant="dark"
+                              type="button"
+                            >
+                              Add Guest
+                            </Button>
+                          </Col>
+                        </Row>
+                      </div>
+                    )}
+                  />
+                  <Row flexWrap="wrap" mb={1}>
+                    {get(errors, 'general') && (
+                      <Col width={1} mb="1">
+                        <StyledError>{errors.general}</StyledError>
+                      </Col>
+                    )}
 
-            <TextField label="First Name" id="firstName" />
-            <TextField label="Last Name" id="lastName" />
-            <TextField label="Email" id="email" />
-
-            {/* <FormControl component="fieldset">
-          <FormLabel component="legend">Gender</FormLabel>
-          <RadioGroup aria-label="rsvp" name="rsvp" value={value} onChange={handleChange}>
-            <FormControlLabel value="female" control={<Radio />} label="Female" />
-            <FormControlLabel value="male" control={<Radio />} label="Male" />
-          </RadioGroup>
-        </FormControl> */}
-
-            <Button type="submit">Submit</Button>
-          </Form>
-        </Col>
-      </Row>
-    </Container>
+                    <Col width={1} mb="1">
+                      <Button
+                        disabled={size(errors) > 0 || isSubmitting}
+                        isLoading={isSubmitting}
+                        onClick={handleSubmit}
+                        variant="dark"
+                        type="submit"
+                      >
+                        Submit
+                      </Button>
+                    </Col>
+                  </Row>
+                </Form>
+              )}
+            </Col>
+          </Row>
+        </Container>
+      )}
+    </Formik>
   );
 };
 
