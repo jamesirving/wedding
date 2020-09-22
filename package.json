@@ -37,7 +37,8 @@
     "styled-components": "^5.0.1",
     "styled-normalize": "^8.0.7",
     "styled-system": "^5.1.5",
-    "uuid": "^3.2.1"
+    "uuid": "^3.2.1",
+    "yup": "^0.29.3"
   },
   "keywords": [
     "gatsby"
