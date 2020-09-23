@@ -15,9 +15,7 @@ const validationSchema = Yup.object().shape({
       rsvp: Yup.string().required('Response required'),
       dietaryRequirements: Yup.object().shape({
         oneOf: Yup.bool().when(['vegan', 'vegetarian', 'nut', 'gluten', 'none'], {
-          is: (vegan, vegetarian, nut, gluten, none) =>
-            (!vegan && !vegetarian && !nut && !gluten && !none) ||
-            (!!vegan && !!vegetarian && !!nut && !!gluten && !!none),
+          is: (vegan, vegetarian, nut, gluten, none) => !vegan && !vegetarian && !nut && !gluten && !none,
           then: Yup.bool().required('Response required'),
           otherwise: Yup.bool(),
         }),
