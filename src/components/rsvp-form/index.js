@@ -91,7 +91,7 @@ const RsvpForm = () => {
                 <P>Success! Thankyou for your response.</P>
               ) : (
                 <Form>
-                  <HiddenForm />
+                  {/* <HiddenForm /> */}
                   <FieldArray
                     name="guests"
                     render={arrayHelpers => (
