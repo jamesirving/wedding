@@ -1,3 +1,5 @@
+import React from 'react';
+
 const HiddenForm = () => (
   <form name="contact" netlify netlify-honeypot="bot-field" hidden>
     <div style={{ display: 'none' }}>
