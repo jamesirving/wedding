@@ -90,8 +90,7 @@ const RsvpForm = () => {
               {get(errors, 'success') ? (
                 <P>Success! Thankyou for your response.</P>
               ) : (
-                <Form data-netlify="true" name="rsvp" method="post">
-                  {/* <Form data-netlify="true" data-netlify-recaptcha="true" name="rsvp" method="post"> */}
+                <Form>
                   <HiddenForm />
                   <FieldArray
                     name="guests"
