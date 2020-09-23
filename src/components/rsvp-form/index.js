@@ -1,6 +1,6 @@
 import { Formik, Form, FieldArray } from 'formik';
 import { get, size } from 'lodash';
-import { useGoogleReCaptcha } from 'react-google-recaptcha-v3';
+// import { useGoogleReCaptcha } from 'react-google-recaptcha-v3';
 import React, { useCallback } from 'react';
 import styled from 'styled-components';
 
@@ -26,11 +26,21 @@ function encode(data, parent) {
 }
 
 const RsvpForm = () => {
-  const { executeRecaptcha } = useGoogleReCaptcha();
+  // const { executeRecaptcha } = useGoogleReCaptcha();
 
   const onSubmit = useCallback(
     async (values, { setSubmitting, setFieldError }) => {
-      const token = await executeRecaptcha('rsvp');
+      // const token = await executeRecaptcha('rsvp');
+
+      console.log('request: ', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: encode({
+          'form-name': 'rsvp',
+          // 'g-recaptcha-response': token,
+          ...values,
+        }),
+      });
 
       try {
         fetch('/', {
@@ -38,7 +48,7 @@ const RsvpForm = () => {
           headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
           body: encode({
             'form-name': 'rsvp',
-            'g-recaptcha-response': token,
+            // 'g-recaptcha-response': token,
             ...values,
           }),
         });
@@ -50,10 +60,10 @@ const RsvpForm = () => {
           'general',
           'There was an error submitting the form, please try again. If the problem persists please let us know'
         );
-        console.log(error);
+        console.log('submition error: ', error);
       }
-    },
-    [executeRecaptcha]
+    }
+    // [executeRecaptcha]
   );
 
   return (
@@ -74,13 +84,13 @@ const RsvpForm = () => {
     >
       {({ errors, handleSubmit, isSubmitting, values }) => (
         <Container>
-          {console.log(errors)}
           <Row my={3}>
             <Col width={{ xs: 10 / 12, lg: 8 / 12 }} offset={[1 / 12, 1 / 12, 1 / 12, 2 / 12]}>
               {get(errors, 'success') ? (
-                <P>Success!</P>
+                <P>Success! Thankyou for your response.</P>
               ) : (
-                <Form data-netlify="true" data-netlify-recaptcha="true" name="rsvp" method="post">
+                <Form data-netlify="true" name="rsvp" method="post">
+                  {/* <Form data-netlify="true" data-netlify-recaptcha="true" name="rsvp" method="post"> */}
                   <FieldArray
                     name="guests"
                     render={arrayHelpers => (
