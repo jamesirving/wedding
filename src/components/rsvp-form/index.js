@@ -8,6 +8,7 @@ import { Button } from '../button';
 import { colors } from '../../styles';
 import { Container, Col, Row } from '../grid';
 import { Guest } from './guest';
+import { TextField } from '../form-fields';
 import { P } from '../typography';
 import { validationSchema } from './validation-shema';
 
@@ -69,15 +70,16 @@ const RsvpForm = () => {
   return (
     <Formik
       initialValues={{
-        guests: [
-          {
-            givenName: '',
-            familyName: '',
-            email: '',
-            rsvp: 'yes',
-            dietaryRequirements: { vegan: false, vegetarian: false, nut: false, gluten: false, none: false },
-          },
-        ],
+        givenName: '',
+        // guests: [
+        //   {
+        //     givenName: '',
+        //     familyName: '',
+        //     email: '',
+        //     rsvp: 'yes',
+        //     dietaryRequirements: { vegan: false, vegetarian: false, nut: false, gluten: false, none: false },
+        //   },
+        // ],
       }}
       onSubmit={onSubmit}
       validationSchema={validationSchema}
@@ -90,8 +92,9 @@ const RsvpForm = () => {
                 <P>Success! Thankyou for your response.</P>
               ) : (
                 <Form data-netlify="true" name="rsvp" method="post">
+                  <TextField label="First Name" name="givenName" fullWidth required />
                   {/* <Form data-netlify="true" data-netlify-recaptcha="true" name="rsvp" method="post"> */}
-                  <FieldArray
+                  {/* <FieldArray
                     name="guests"
                     render={arrayHelpers => (
                       <div>
@@ -115,7 +118,7 @@ const RsvpForm = () => {
                         </Row>
                       </div>
                     )}
-                  />
+                  /> */}
                   <Row flexWrap="wrap" mb={1}>
                     {get(errors, 'general') && (
                       <Col width={1} mb="1">
