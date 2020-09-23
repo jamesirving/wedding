@@ -8,7 +8,7 @@ import { Button } from '../button';
 import { colors } from '../../styles';
 import { Container, Col, Row } from '../grid';
 import { Guest } from './guest';
-import { TextField } from '../form-fields';
+import { HiddenForm } from './hidden-form';
 import { P } from '../typography';
 import { validationSchema } from './validation-shema';
 
@@ -70,19 +70,18 @@ const RsvpForm = () => {
   return (
     <Formik
       initialValues={{
-        givenName: '',
-        // guests: [
-        //   {
-        //     givenName: '',
-        //     familyName: '',
-        //     email: '',
-        //     rsvp: 'yes',
-        //     dietaryRequirements: { vegan: false, vegetarian: false, nut: false, gluten: false, none: false },
-        //   },
-        // ],
+        guests: [
+          {
+            givenName: '',
+            familyName: '',
+            email: '',
+            rsvp: 'yes',
+            dietaryRequirements: { vegan: false, vegetarian: false, nut: false, gluten: false, none: false },
+          },
+        ],
       }}
       onSubmit={onSubmit}
-      validationSchema={validationSchema}
+      // validationSchema={validationSchema}
     >
       {({ errors, handleSubmit, isSubmitting, values }) => (
         <Container>
@@ -92,9 +91,9 @@ const RsvpForm = () => {
                 <P>Success! Thankyou for your response.</P>
               ) : (
                 <Form data-netlify="true" name="rsvp" method="post">
-                  <TextField label="First Name" name="givenName" fullWidth required />
                   {/* <Form data-netlify="true" data-netlify-recaptcha="true" name="rsvp" method="post"> */}
-                  {/* <FieldArray
+                  <HiddenForm />
+                  <FieldArray
                     name="guests"
                     render={arrayHelpers => (
                       <div>
@@ -108,6 +107,7 @@ const RsvpForm = () => {
                         <Row>
                           <Col width={1} mb="1">
                             <Button
+                              disabled={size(values.guests) > 4}
                               onClick={() => arrayHelpers.push({ givenName: '', familyName: '', email: '' })}
                               variant="dark"
                               type="button"
@@ -118,7 +118,7 @@ const RsvpForm = () => {
                         </Row>
                       </div>
                     )}
-                  /> */}
+                  />
                   <Row flexWrap="wrap" mb={1}>
                     {get(errors, 'general') && (
                       <Col width={1} mb="1">
