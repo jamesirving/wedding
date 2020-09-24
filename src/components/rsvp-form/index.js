@@ -9,7 +9,7 @@ import { colors } from '../../styles';
 import { Container, Col, Row } from '../grid';
 import { Guest } from './guest';
 import { P } from '../typography';
-// import { validationSchema } from './validation-shema';
+import { validationSchema } from './validation-shema';
 import { database } from '../firebase';
 
 const StyledError = styled(P)`
@@ -18,20 +18,19 @@ const StyledError = styled(P)`
 `;
 
 const RsvpForm = () => {
-  const onSubmit = useCallback(async (values, { setSubmitting, setFieldError }) => {
+  const onSubmit = useCallback(async (values, { setSubmitting, setStatus }) => {
     database
       .collection('Wedding')
       .add({ ...values.guests })
       .then(() => {
-        setFieldError('success', true);
+        setStatus({ success: true });
         setSubmitting(false);
       })
       .catch(error => {
         setSubmitting(false);
-        setFieldError(
-          'general',
-          'There was an error submitting the form, please try again. If the problem persists please let us know'
-        );
+        setStatus({
+          error: 'There was an error submitting the form, please try again. If the problem persists please let us know',
+        });
         console.log('submition error: ', error);
       });
   });
@@ -50,16 +49,19 @@ const RsvpForm = () => {
         ],
       }}
       onSubmit={onSubmit}
-      // validationSchema={validationSchema}
+      validationSchema={validationSchema}
     >
-      {({ errors, handleSubmit, isSubmitting, values }) => (
+      {({ errors, handleSubmit, isSubmitting, values, submitCount, touched, status }) => (
         <Container>
           <Row my={3}>
             <Col width={{ xs: 10 / 12, lg: 8 / 12 }} offset={[1 / 12, 1 / 12, 1 / 12, 2 / 12]}>
-              {get(errors, 'success') ? (
+              {get(status, 'success') ? (
                 <P>Success! Thankyou for your response.</P>
               ) : (
-                <Form>
+                <Form onSubmit={handleSubmit}>
+                  {console.log('submitCount: ', submitCount)}
+                  {console.log('errors: ', errors)}
+                  {console.log('touched: ', touched)}
                   <FieldArray
                     name="guests"
                     render={arrayHelpers => (
@@ -75,7 +77,21 @@ const RsvpForm = () => {
                           <Col width={1} mb="1">
                             <Button
                               disabled={size(values.guests) > 4}
-                              onClick={() => arrayHelpers.push({ givenName: '', familyName: '', email: '' })}
+                              onClick={() =>
+                                arrayHelpers.push({
+                                  givenName: '',
+                                  familyName: '',
+                                  email: '',
+                                  rsvp: 'yes',
+                                  dietaryRequirements: {
+                                    vegan: false,
+                                    vegetarian: false,
+                                    nut: false,
+                                    gluten: false,
+                                    none: false,
+                                  },
+                                })
+                              }
                               variant="dark"
                               type="button"
                             >
@@ -87,15 +103,15 @@ const RsvpForm = () => {
                     )}
                   />
                   <Row flexWrap="wrap" mb={1}>
-                    {get(errors, 'general') && (
+                    {get(status, 'error') && (
                       <Col width={1} mb="1">
-                        <StyledError>{errors.general}</StyledError>
+                        <StyledError>{errors.error}</StyledError>
                       </Col>
                     )}
 
                     <Col width={1} mb="1">
                       <Button
-                        disabled={size(errors) > 0 || isSubmitting}
+                        disabled={isSubmitting}
                         isLoading={isSubmitting}
                         onClick={handleSubmit}
                         variant="dark"

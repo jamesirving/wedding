@@ -17,7 +17,7 @@ const TextField = ({
   required,
   type,
 }) => {
-  const { errors, handleBlur, handleChange, setFieldTouched, touched, values } = useFormikContext();
+  const { errors, handleBlur, handleChange, setFieldTouched, touched, values, submitCount } = useFormikContext();
 
   const onFieldChange = newValue => {
     setFieldTouched(name, true);
@@ -34,9 +34,9 @@ const TextField = ({
       aria-label={label}
       autoComplete={autoComplete}
       disabled={disabled}
-      helperText={isTouched && error}
+      helperText={(submitCount > 0 || !!isTouched) && error}
       id={name}
-      error={isTouched && !!error}
+      error={(submitCount > 0 || !!isTouched) && !!error}
       label={label}
       maxLength={maxLength}
       name={name}

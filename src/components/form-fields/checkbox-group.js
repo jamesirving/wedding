@@ -4,18 +4,18 @@ import { useFormikContext } from 'formik';
 import React from 'react';
 
 const CheckboxGroup = ({ legend, ariaLabel, name, options }) => {
+  const { errors, handleChange, submitCount, values } = useFormikContext();
   const [isTouched, setIsTouched] = React.useState(false);
-  const { errors, handleChange, values } = useFormikContext();
 
-  const error = get(errors, `${name}.oneOf`);
-
-  const onChange = event => {
+  const onChange = e => {
     setIsTouched(true);
-    handleChange(event);
+    handleChange(e);
   };
 
+  const error = (isTouched || submitCount > 0) && (get(errors, `${name}.oneOf`) || get(errors, `${name}.notBoth`));
+
   return (
-    <FormControl required error={isTouched && !!error} component="fieldset">
+    <FormControl required error={!!error} component="fieldset">
       <FormLabel component="legend">{legend}</FormLabel>
       <FormGroup aria-label={ariaLabel} name={name}>
         {options.map(({ label, optionName }) => {
@@ -30,7 +30,7 @@ const CheckboxGroup = ({ legend, ariaLabel, name, options }) => {
           );
         })}
       </FormGroup>
-      <FormHelperText>{isTouched && error}</FormHelperText>
+      <FormHelperText>{error}</FormHelperText>
     </FormControl>
   );
 };
