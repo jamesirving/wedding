@@ -19,15 +19,22 @@ const StyledError = styled(P)`
 function encode(data, parent) {
   return Object.keys(data)
     .map(key => {
-      const encodedKey = parent ? encodeURIComponent(`${parent}[${key}]`) : encodeURIComponent(key);
-      return typeof data[key] === 'object' ? encode(data[key], key) : `${encodedKey}=${encodeURIComponent(data[key])}`;
+      const keyReference = parent ? `${parent}[${key}]` : key;
+      return typeof data[key] === 'object'
+        ? encode(data[key], keyReference)
+        : `${encodeURIComponent(keyReference)}=${encodeURIComponent(data[key])}`;
     })
     .join('&');
 }
 
 const RsvpForm = () => {
   const onSubmit = useCallback(async (values, { setSubmitting, setFieldError }) => {
-    console.log({ 'form-name': 'rsvp', ...values });
+    console.log(
+      encode({
+        'form-name': 'rsvp',
+        ...values,
+      })
+    );
 
     try {
       fetch('https://james-and-dina.com/', {
