@@ -38,9 +38,11 @@ export default class Index extends React.Component {
     return (
       <Layout>
         <form data-netlify="true" name="rsvp" method="post" hidden>
-          <input id="givenName" name="givenName" />
-          <input id="familyName" name="familyName" />
-          <input id="email" name="email" />
+          <input id="guests[0].givenName" name="guests[0].givenName" />
+
+          <input id="guests[0].familyName" name="guests[0].familyName" />
+
+          <input id="guests[0].email" name="guests[0].email" />
 
           {/* <fieldset>
             <legend>RSVP</legend>

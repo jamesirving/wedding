@@ -8,7 +8,6 @@ import { Button } from '../button';
 import { colors } from '../../styles';
 import { Container, Col, Row } from '../grid';
 import { Guest } from './guest';
-import { HiddenForm } from './hidden-form';
 import { P } from '../typography';
 import { validationSchema } from './validation-shema';
 
@@ -54,18 +53,15 @@ const RsvpForm = () => {
   return (
     <Formik
       initialValues={{
-        givenName: '',
-        familyName: '',
-        email: '',
-        // guests: [
-        //   {
-        //     givenName: '',
-        //     familyName: '',
-        //     email: '',
-        //     rsvp: 'yes',
-        //     dietaryRequirements: { vegan: false, vegetarian: false, nut: false, gluten: false, none: false },
-        //   },
-        // ],
+        guests: [
+          {
+            givenName: '',
+            familyName: '',
+            email: '',
+            rsvp: 'yes',
+            dietaryRequirements: { vegan: false, vegetarian: false, nut: false, gluten: false, none: false },
+          },
+        ],
       }}
       onSubmit={onSubmit}
       // validationSchema={validationSchema}
@@ -89,7 +85,7 @@ const RsvpForm = () => {
                               <Guest key={`guest-${index}`} index={index} arrayHelpers={arrayHelpers} />
                             );
                           })}
-                        {/* <Row>
+                        <Row>
                           <Col width={1} mb="1">
                             <Button
                               disabled={size(values.guests) > 4}
@@ -100,7 +96,7 @@ const RsvpForm = () => {
                               Add Guest
                             </Button>
                           </Col>
-                        </Row> */}
+                        </Row>
                       </>
                     )}
                   />
