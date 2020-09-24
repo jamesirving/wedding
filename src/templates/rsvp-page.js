@@ -32,15 +32,6 @@ RsvpPageTemplate.propTypes = {
 const RsvpPage = ({ data }) => {
   const { frontmatter } = data.markdownRemark;
 
-  // if (typeof RECAPTCHA_KEY === 'undefined') {
-  //   return (
-  //     <Heading variant="h1" color="black">
-  //       Env var GATSBY_APP_SITE_RECAPTCHA_KEY is undefined! You probably forget to set it in your Netlify build
-  //       environment variables.
-  //     </Heading>
-  //   );
-  // }
-
   return (
     <GoogleReCaptchaProvider reCaptchaKey={RECAPTCHA_KEY}>
       <Layout>

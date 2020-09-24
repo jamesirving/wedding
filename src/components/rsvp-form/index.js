@@ -27,58 +27,45 @@ function encode(data, parent) {
 }
 
 const RsvpForm = () => {
-  // const { executeRecaptcha } = useGoogleReCaptcha();
+  const onSubmit = useCallback(async (values, { setSubmitting, setFieldError }) => {
+    console.log({ 'form-name': 'rsvp', ...values });
 
-  const onSubmit = useCallback(
-    async (values, { setSubmitting, setFieldError }) => {
-      // const token = await executeRecaptcha('rsvp');
-
-      console.log('request: ', {
+    try {
+      fetch('https://james-and-dina.com/', {
         method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
         body: encode({
           'form-name': 'rsvp',
-          // 'g-recaptcha-response': token,
           ...values,
         }),
       });
-
-      try {
-        fetch('/', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-          body: encode({
-            'form-name': 'rsvp',
-            // 'g-recaptcha-response': token,
-            ...values,
-          }),
-        });
-        setFieldError('success', true);
-        setSubmitting(false);
-      } catch (error) {
-        setSubmitting(false);
-        setFieldError(
-          'general',
-          'There was an error submitting the form, please try again. If the problem persists please let us know'
-        );
-        console.log('submition error: ', error);
-      }
+      setFieldError('success', true);
+      setSubmitting(false);
+    } catch (error) {
+      setSubmitting(false);
+      setFieldError(
+        'general',
+        'There was an error submitting the form, please try again. If the problem persists please let us know'
+      );
+      console.log('submition error: ', error);
     }
-    // [executeRecaptcha]
-  );
+  });
 
   return (
     <Formik
       initialValues={{
-        guests: [
-          {
-            givenName: '',
-            familyName: '',
-            email: '',
-            rsvp: 'yes',
-            dietaryRequirements: { vegan: false, vegetarian: false, nut: false, gluten: false, none: false },
-          },
-        ],
+        givenName: '',
+        familyName: '',
+        email: '',
+        // guests: [
+        //   {
+        //     givenName: '',
+        //     familyName: '',
+        //     email: '',
+        //     rsvp: 'yes',
+        //     dietaryRequirements: { vegan: false, vegetarian: false, nut: false, gluten: false, none: false },
+        //   },
+        // ],
       }}
       onSubmit={onSubmit}
       // validationSchema={validationSchema}
