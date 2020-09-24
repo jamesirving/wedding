@@ -68,7 +68,7 @@ export default class Index extends React.Component {
             value=""
           />
 
-          <fieldset>
+          {/* <fieldset>
             <legend>RSVP</legend>
             <input name="guests[0].rsvp" type="radio" value="yes" checked="" />
             Yes, I will be attending
@@ -348,7 +348,7 @@ export default class Index extends React.Component {
             <input name="guests[4].dietaryRequirements.nut" type="checkbox" data-indeterminate="false" value="" />
             <input name="guests[4].dietaryRequirements.gluten" type="checkbox" data-indeterminate="false" value="" />
             <input name="guests[4].dietaryRequirements.none" type="checkbox" data-indeterminate="false" value="" />
-          </fieldset>
+          </fieldset> */}
         </form>
       </Layout>
     );

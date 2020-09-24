@@ -103,7 +103,7 @@ const RsvpForm = () => {
                               <Guest key={`guest-${index}`} index={index} arrayHelpers={arrayHelpers} />
                             );
                           })}
-                        <Row>
+                        {/* <Row>
                           <Col width={1} mb="1">
                             <Button
                               disabled={size(values.guests) > 4}
@@ -114,7 +114,7 @@ const RsvpForm = () => {
                               Add Guest
                             </Button>
                           </Col>
-                        </Row>
+                        </Row> */}
                       </div>
                     )}
                   />
