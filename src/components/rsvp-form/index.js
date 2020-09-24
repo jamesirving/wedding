@@ -91,11 +91,10 @@ const RsvpForm = () => {
                 <P>Success! Thankyou for your response.</P>
               ) : (
                 <Form>
-                  {/* <HiddenForm /> */}
                   <FieldArray
                     name="guests"
                     render={arrayHelpers => (
-                      <div>
+                      <>
                         {values.guests &&
                           values.guests.map((guest, index) => {
                             return (
@@ -115,7 +114,7 @@ const RsvpForm = () => {
                             </Button>
                           </Col>
                         </Row> */}
-                      </div>
+                      </>
                     )}
                   />
                   <Row flexWrap="wrap" mb={1}>

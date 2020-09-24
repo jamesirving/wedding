@@ -41,7 +41,6 @@ const Guest = ({ index, arrayHelpers }) => {
           X
         </CloseButton>
       </Col>
-      '{' '}
       {/* <Col width={{ xs: 12 / 12, lg: 6 / 12 }}>
         <RadioGroup
           legend="RSVP"
