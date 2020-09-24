@@ -9,52 +9,31 @@ import { colors } from '../../styles';
 import { Container, Col, Row } from '../grid';
 import { Guest } from './guest';
 import { P } from '../typography';
-import { validationSchema } from './validation-shema';
+// import { validationSchema } from './validation-shema';
+import { database } from '../firebase';
 
 const StyledError = styled(P)`
   text-align: center;
   color: ${colors.red500};
 `;
 
-function encode(data, parent) {
-  return Object.keys(data)
-    .map(key => {
-      const keyReference = parent ? `${parent}[${key}]` : key;
-      return typeof data[key] === 'object'
-        ? encode(data[key], keyReference)
-        : `${encodeURIComponent(keyReference)}=${encodeURIComponent(data[key])}`;
-    })
-    .join('&');
-}
-
 const RsvpForm = () => {
   const onSubmit = useCallback(async (values, { setSubmitting, setFieldError }) => {
-    console.log(
-      encode({
-        'form-name': 'rsvp',
-        ...values,
+    database
+      .collection('Wedding')
+      .add({ ...values.guests })
+      .then(() => {
+        setFieldError('success', true);
+        setSubmitting(false);
       })
-    );
-
-    try {
-      fetch('https://james-and-dina.com/', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: encode({
-          'form-name': 'rsvp',
-          ...values,
-        }),
+      .catch(error => {
+        setSubmitting(false);
+        setFieldError(
+          'general',
+          'There was an error submitting the form, please try again. If the problem persists please let us know'
+        );
+        console.log('submition error: ', error);
       });
-      setFieldError('success', true);
-      setSubmitting(false);
-    } catch (error) {
-      setSubmitting(false);
-      setFieldError(
-        'general',
-        'There was an error submitting the form, please try again. If the problem persists please let us know'
-      );
-      console.log('submition error: ', error);
-    }
   });
 
   return (
