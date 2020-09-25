@@ -13,7 +13,6 @@ import { validationSchema } from './validation-shema';
 import { rsvpSubmission } from '../../utils';
 
 const StyledError = styled(P)`
-  text-align: center;
   color: ${colors.red500};
 `;
 
@@ -93,12 +92,6 @@ const RsvpForm = () => {
                     )}
                   />
                   <Row flexWrap="wrap" mb={1}>
-                    {get(status, 'error') && (
-                      <Col width={1} mb="1">
-                        <StyledError>{status.error}</StyledError>
-                      </Col>
-                    )}
-
                     <Col width={1} mb="1">
                       <Button
                         disabled={isSubmitting}
@@ -110,6 +103,11 @@ const RsvpForm = () => {
                         Submit
                       </Button>
                     </Col>
+                    {get(status, 'error') && (
+                      <Col width={1} mb="1">
+                        <StyledError>{status.error}</StyledError>
+                      </Col>
+                    )}
                   </Row>
                 </Form>
               )}
