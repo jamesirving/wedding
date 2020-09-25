@@ -19,14 +19,29 @@ const buttonVariant = styledVariant({
         color: colors.white,
         backgroundColor: colors.black,
       },
+
+      '&:disabled': {
+        borderColor: colors.grey100,
+        color: colors.grey600,
+        backgroundColor: colors.grey100,
+        cursor: 'not-allowed',
+      },
     },
     dark: {
       backgroundColor: colors.black,
-      borderColor: colors.black,
+      border: `2px solid ${colors.black}`,
       color: 'white',
 
       '&:hover': {
-        borderColor: colors.white,
+        backgroundColor: colors.white,
+        color: 'black',
+      },
+
+      '&:disabled': {
+        borderColor: colors.grey100,
+        color: colors.grey600,
+        backgroundColor: colors.grey100,
+        cursor: 'not-allowed',
       },
     },
   },
