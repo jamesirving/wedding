@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { color, layout, space as styledSpace, typography } from 'styled-system';
 
 import { Col, Row } from '../grid';
+import { colors } from '../../styles';
 import { P } from '../typography';
 import { TextField, RadioGroup, CheckboxGroup } from '../form-fields';
 
@@ -21,7 +22,7 @@ const StyledRow = styled(Row)`
 
 const Guest = ({ index, arrayHelpers }) => {
   return (
-    <StyledRow flexWrap="wrap" mb={1}>
+    <StyledRow flexWrap="wrap" mb={1} boarderRadius="20px" backgroundColor={colors.grey50}>
       <Col width={1}>{index < 1 ? <P> Your details: </P> : <P> Guest {index + 1} details: </P>}</Col>
       <Col width={{ xs: 12 / 12, lg: 4 / 12 }}>
         <TextField label="First Name" name={`guests[${index}].givenName`} fullWidth required />

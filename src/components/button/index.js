@@ -11,7 +11,7 @@ const buttonVariant = styledVariant({
   variants: {
     light: {
       backgroundColor: colors.white,
-      border: `2px solid ${colors.white}`,
+      border: `2px solid ${colors.black}`,
       color: 'black',
 
       '&:hover': {

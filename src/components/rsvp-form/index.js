@@ -63,7 +63,7 @@ const RsvpForm = () => {
                             );
                           })}
                         <Row>
-                          <Col width={1} mb="1">
+                          <Col width={1} mb="3">
                             <Button
                               disabled={size(values.guests) > 4}
                               onClick={() =>
@@ -81,7 +81,7 @@ const RsvpForm = () => {
                                   },
                                 })
                               }
-                              variant="dark"
+                              variant="light"
                               type="button"
                             >
                               Add Guest
