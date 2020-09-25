@@ -1,6 +1,6 @@
 import { Formik, Form, FieldArray } from 'formik';
 import { get, size } from 'lodash';
-// import { useGoogleReCaptcha } from 'react-google-recaptcha-v3';
+import { useGoogleReCaptcha } from 'react-google-recaptcha-v3';
 import React, { useCallback } from 'react';
 import styled from 'styled-components';
 
@@ -10,7 +10,7 @@ import { Container, Col, Row } from '../grid';
 import { Guest } from './guest';
 import { P } from '../typography';
 import { validationSchema } from './validation-shema';
-import { database } from '../firebase';
+import { rsvpSubmission } from '../../utils';
 
 const StyledError = styled(P)`
   text-align: center;
@@ -18,22 +18,15 @@ const StyledError = styled(P)`
 `;
 
 const RsvpForm = () => {
-  const onSubmit = useCallback(async (values, { setSubmitting, setStatus }) => {
-    database
-      .collection('Wedding')
-      .add({ ...values.guests })
-      .then(() => {
-        setStatus({ success: true });
-        setSubmitting(false);
-      })
-      .catch(error => {
-        setSubmitting(false);
-        setStatus({
-          error: 'There was an error submitting the form, please try again. If the problem persists please let us know',
-        });
-        console.log('submition error: ', error);
-      });
-  });
+  const { executeRecaptcha } = useGoogleReCaptcha();
+
+  const onSubmit = useCallback(
+    async (values, { setSubmitting, setStatus }) => {
+      const token = await executeRecaptcha('rsvp');
+      rsvpSubmission({ token, values, setSubmitting, setStatus });
+    },
+    [executeRecaptcha]
+  );
 
   return (
     <Formik
@@ -51,7 +44,7 @@ const RsvpForm = () => {
       onSubmit={onSubmit}
       validationSchema={validationSchema}
     >
-      {({ errors, handleSubmit, isSubmitting, values, submitCount, touched, status }) => (
+      {({ handleSubmit, isSubmitting, values, status }) => (
         <Container>
           <Row my={3}>
             <Col width={{ xs: 10 / 12, lg: 8 / 12 }} offset={[1 / 12, 1 / 12, 1 / 12, 2 / 12]}>
@@ -59,9 +52,6 @@ const RsvpForm = () => {
                 <P>Success! Thankyou for your response.</P>
               ) : (
                 <Form onSubmit={handleSubmit}>
-                  {console.log('submitCount: ', submitCount)}
-                  {console.log('errors: ', errors)}
-                  {console.log('touched: ', touched)}
                   <FieldArray
                     name="guests"
                     render={arrayHelpers => (
@@ -105,7 +95,7 @@ const RsvpForm = () => {
                   <Row flexWrap="wrap" mb={1}>
                     {get(status, 'error') && (
                       <Col width={1} mb="1">
-                        <StyledError>{errors.error}</StyledError>
+                        <StyledError>{status.error}</StyledError>
                       </Col>
                     )}
 
