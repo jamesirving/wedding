@@ -1,16 +1,16 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import { GoogleReCaptchaProvider } from 'react-google-recaptcha-v3';
 import { graphql } from 'gatsby';
-import ReactMarkdown from 'react-markdown';
+import PropTypes from 'prop-types';
+import React from 'react';
 
-import { Layout } from '../components/layout';
 import { Feature } from '../components/feature';
-import { ContentImage } from '../components/content-image';
 import { Heading, P, Preheading } from '../components/typography';
-import { Button } from '../components/button';
-import { Link } from '../components/link';
+import { Layout } from '../components/layout';
+// import { RsvpForm } from '../components/rsvp-form';
 
-export const IndexPageTemplate = ({ pageHeaderBlock, contentImageBlock, featureBlock }) => (
+const RECAPTCHA_KEY = process.env.SITE_RECAPTCHA_KEY;
+
+export const RsvpPageTemplate = ({ pageHeaderBlock }) => (
   <div>
     <Feature image={pageHeaderBlock.image} objectPosition="50% 50%" height="90vh">
       {pageHeaderBlock.preheading && <Preheading color="white">{pageHeaderBlock.preheading}</Preheading>}
@@ -21,53 +21,26 @@ export const IndexPageTemplate = ({ pageHeaderBlock, contentImageBlock, featureB
       )}
       {pageHeaderBlock.subheading && <P color="white">{pageHeaderBlock.subheading}</P>}
     </Feature>
-    <ContentImage image={contentImageBlock.image} contentPosition="left" height="400px">
-      {contentImageBlock.heading && <Heading variant="h2">{contentImageBlock.heading}</Heading>}
-      {contentImageBlock.dateTime && <P>{contentImageBlock.dateTime}</P>}
-      {contentImageBlock.location && <ReactMarkdown source={contentImageBlock.location} />}
-      {contentImageBlock.mapLink && (
-        <Link linkType="external" url={contentImageBlock.mapLink.url}>
-          {contentImageBlock.mapLink.text}
-        </Link>
-      )}
-    </ContentImage>
-    <Feature image={featureBlock.image} objectPosition="50% 50%" height="90vh">
-      {featureBlock.preheading && <Preheading color="white">{featureBlock.preheading}</Preheading>}
-      {featureBlock.heading && (
-        <Heading variant="h1" color="white">
-          {featureBlock.heading}
-        </Heading>
-      )}
-      {featureBlock.button && (
-        <Button mt="2rem" {...featureBlock.button}>
-          {featureBlock.button.text}
-        </Button>
-      )}
-    </Feature>
   </div>
 );
 
-IndexPageTemplate.propTypes = {
+RsvpPageTemplate.propTypes = {
   pageHeaderBlock: PropTypes.object,
-  contentImageBlock: PropTypes.object,
-  featureBlock: PropTypes.object,
 };
 
-const IndexPage = ({ data }) => {
+const RsvpPage = ({ data }) => {
   const { frontmatter } = data.markdownRemark;
 
   return (
-    <Layout>
-      <IndexPageTemplate
-        pageHeaderBlock={frontmatter.pageHeaderBlock}
-        contentImageBlock={frontmatter.contentImageBlock}
-        featureBlock={frontmatter.featureBlock}
-      />
-    </Layout>
+    <GoogleReCaptchaProvider reCaptchaKey={RECAPTCHA_KEY}>
+      <Layout>
+        <RsvpPageTemplate pageHeaderBlock={frontmatter.pageHeaderBlock} detailsBlock={frontmatter.detailsBlock} />
+      </Layout>
+    </GoogleReCaptchaProvider>
   );
 };
 
-IndexPage.propTypes = {
+RsvpPage.propTypes = {
   data: PropTypes.shape({
     markdownRemark: PropTypes.shape({
       frontmatter: PropTypes.object,
@@ -75,10 +48,10 @@ IndexPage.propTypes = {
   }),
 };
 
-export default IndexPage;
+export default RsvpPage;
 
 export const pageQuery = graphql`
-  query IndexPageTemplate {
+  query RsvpPageTemplate {
     markdownRemark(frontmatter: { templateKey: { eq: "index-page" } }) {
       frontmatter {
         pageHeaderBlock {
