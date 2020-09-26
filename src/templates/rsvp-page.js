@@ -3,7 +3,7 @@ import { graphql } from 'gatsby';
 import PropTypes from 'prop-types';
 import React from 'react';
 
-// import { Feature } from '../components/feature';
+import { Feature } from '../components/feature';
 // import { Heading, P, Preheading } from '../components/typography';
 import { Layout } from '../components/layout';
 // import { RsvpForm } from '../components/rsvp-form';
@@ -12,16 +12,16 @@ import { Layout } from '../components/layout';
 
 export const RsvpPageTemplate = ({ pageHeaderBlock }) => (
   <div>
-    {/* <Feature image={pageHeaderBlock.image} objectPosition="50% 40%" height="50vh">
-      {pageHeaderBlock.preheading && <Preheading color="white">{pageHeaderBlock.preheading}</Preheading>}
+    <Feature image={pageHeaderBlock.image} objectPosition="50% 40%" height="50vh">
+      {/* {pageHeaderBlock.preheading && <Preheading color="white">{pageHeaderBlock.preheading}</Preheading>}
       {pageHeaderBlock.heading && (
         <Heading variant="h1" color="white">
           {pageHeaderBlock.heading}
         </Heading>
       )}
-      {pageHeaderBlock.subheading && <P color="white">{pageHeaderBlock.subheading}</P>}
+      {pageHeaderBlock.subheading && <P color="white">{pageHeaderBlock.subheading}</P>} */}
     </Feature>
-    <RsvpForm /> */}
+    {/* <RsvpForm /> */}
   </div>
 );
 
