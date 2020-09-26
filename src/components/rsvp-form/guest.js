@@ -6,8 +6,9 @@ import { Col, Row } from '../grid';
 import { colors } from '../../styles';
 import { P } from '../typography';
 import { TextField, RadioGroup, CheckboxGroup } from '../form-fields';
+import { Button } from '../button';
 
-const CloseButton = styled.button`
+const CloseButton = styled(Button)`
   ${styledSpace}
   ${color};
   ${layout};
@@ -21,30 +22,21 @@ const StyledRow = styled(Row)`
 `;
 
 const Guest = ({ index, arrayHelpers }) => {
+  const colWidth = { xs: 12 / 12, lg: 4 / 12 };
+
   return (
     <StyledRow flexWrap="wrap" mb={1} boarderRadius="20px" backgroundColor={colors.grey50}>
       <Col width={1}>{index < 1 ? <P> Your details: </P> : <P> Guest {index + 1} details: </P>}</Col>
-      <Col width={{ xs: 12 / 12, lg: 4 / 12 }}>
+      <Col width={colWidth} mb={1}>
         <TextField label="First Name" name={`guests[${index}].givenName`} fullWidth required />
       </Col>
-      <Col width={{ xs: 12 / 12, lg: 4 / 12 }} mb={1}>
+      <Col width={colWidth} mb={1}>
         <TextField label="Last Name" name={`guests[${index}].familyName`} fullWidth required />
       </Col>
-      <Col width={{ xs: 12 / 12, lg: 4 / 12 }} display="flex" mb={2}>
+      <Col width={colWidth} display="flex" mb={1}>
         <TextField label="Email" name={`guests[${index}].email`} fullWidth required />
-        {index > 0 && (
-          <CloseButton
-            p={1}
-            type="button"
-            onClick={() => {
-              arrayHelpers.remove(index); // remove a friend from the list
-            }}
-          >
-            X
-          </CloseButton>
-        )}
       </Col>
-      <Col width={{ xs: 12 / 12, lg: 6 / 12 }}>
+      <Col width={{ xs: 12 / 12, lg: 6 / 12 }} my={1}>
         <RadioGroup
           legend="RSVP"
           ariaLabel="RSVP response"
@@ -61,7 +53,7 @@ const Guest = ({ index, arrayHelpers }) => {
           ]}
         />
       </Col>
-      <Col width={{ xs: 12 / 12, lg: 6 / 12 }}>
+      <Col width={{ xs: 12 / 12, lg: 6 / 12 }} my={1}>
         <CheckboxGroup
           legend="Dietary Requirements"
           ariaLabel="Dietary Requirements"
@@ -90,6 +82,18 @@ const Guest = ({ index, arrayHelpers }) => {
           ]}
         />
       </Col>
+
+      {index > 0 && (
+        <CloseButton
+          p={1}
+          type="button"
+          onClick={() => {
+            arrayHelpers.remove(index); // remove a friend from the list
+          }}
+        >
+          X
+        </CloseButton>
+      )}
     </StyledRow>
   );
 };
