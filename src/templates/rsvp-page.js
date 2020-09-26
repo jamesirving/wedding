@@ -21,7 +21,7 @@ export const RsvpPageTemplate = ({ pageHeaderBlock }) => (
       )}
       {pageHeaderBlock.subheading && <P color="white">{pageHeaderBlock.subheading}</P>}
     </Feature>
-    <RsvpForm />
+    {/* <RsvpForm /> */}
   </div>
 );
 
