@@ -8,7 +8,7 @@ import { Heading, P, Preheading } from '../components/typography';
 import { Layout } from '../components/layout';
 import { RsvpForm } from '../components/rsvp-form';
 
-const RECAPTCHA_KEY = process.env.SITE_RECAPTCHA_KEY;
+// const RECAPTCHA_KEY = process.env.SITE_RECAPTCHA_KEY;
 
 export const RsvpPageTemplate = ({ pageHeaderBlock }) => (
   <div>
@@ -33,11 +33,11 @@ const RsvpPage = ({ data }) => {
   const { frontmatter } = data.markdownRemark;
 
   return (
-    <GoogleReCaptchaProvider reCaptchaKey={RECAPTCHA_KEY}>
-      <Layout>
-        <RsvpPageTemplate pageHeaderBlock={frontmatter.pageHeaderBlock} detailsBlock={frontmatter.detailsBlock} />
-      </Layout>
-    </GoogleReCaptchaProvider>
+    // <GoogleReCaptchaProvider reCaptchaKey={RECAPTCHA_KEY}>
+    <Layout>
+      <RsvpPageTemplate pageHeaderBlock={frontmatter.pageHeaderBlock} detailsBlock={frontmatter.detailsBlock} />
+    </Layout>
+    // </GoogleReCaptchaProvider>
   );
 };
 
