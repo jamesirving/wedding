@@ -77,7 +77,7 @@ exports.onCreateWebpackConfig = ({ stage, actions, getConfig }) => {
         const regex = /^@?firebase(\/(.+))?/;
         // exclude firebase products from being bundled, so they will be loaded using require() at runtime.
         if (regex.test(request)) {
-          return callback(null, 'umd ' + request);
+          return callback(null, `umd ${request}`);
         }
         callback();
       }),
