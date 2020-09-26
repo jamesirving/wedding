@@ -3,16 +3,16 @@ import { graphql } from 'gatsby';
 import PropTypes from 'prop-types';
 import React from 'react';
 
-import { Feature } from '../components/feature';
-import { Heading, P, Preheading } from '../components/typography';
+// import { Feature } from '../components/feature';
+// import { Heading, P, Preheading } from '../components/typography';
 import { Layout } from '../components/layout';
-import { RsvpForm } from '../components/rsvp-form';
+// import { RsvpForm } from '../components/rsvp-form';
 
 // const RECAPTCHA_KEY = process.env.SITE_RECAPTCHA_KEY;
 
 export const RsvpPageTemplate = ({ pageHeaderBlock }) => (
   <div>
-    <Feature image={pageHeaderBlock.image} objectPosition="50% 40%" height="50vh">
+    {/* <Feature image={pageHeaderBlock.image} objectPosition="50% 40%" height="50vh">
       {pageHeaderBlock.preheading && <Preheading color="white">{pageHeaderBlock.preheading}</Preheading>}
       {pageHeaderBlock.heading && (
         <Heading variant="h1" color="white">
@@ -21,7 +21,7 @@ export const RsvpPageTemplate = ({ pageHeaderBlock }) => (
       )}
       {pageHeaderBlock.subheading && <P color="white">{pageHeaderBlock.subheading}</P>}
     </Feature>
-    <RsvpForm />
+    <RsvpForm /> */}
   </div>
 );
 
