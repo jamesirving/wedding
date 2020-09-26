@@ -11,7 +11,7 @@ const RECAPTCHA_KEY = process.env.SITE_RECAPTCHA_KEY;
 
 export const RsvpPageTemplate = ({ pageHeaderBlock }) => (
   <div>
-    <Feature image={pageHeaderBlock.image} objectPosition="50% 50%" height="90vh">
+    <Feature image={pageHeaderBlock.image} objectPosition="50% 50%" height="50vh">
       {pageHeaderBlock.preheading && <Preheading color="white">{pageHeaderBlock.preheading}</Preheading>}
       {pageHeaderBlock.heading && (
         <Heading variant="h1" color="white">

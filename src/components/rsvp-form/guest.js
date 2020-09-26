@@ -1,6 +1,5 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import styled from 'styled-components';
-import { color, layout, space as styledSpace, typography } from 'styled-system';
 
 import { Col, Row } from '../grid';
 import { colors } from '../../styles';
@@ -8,14 +7,9 @@ import { P } from '../typography';
 import { TextField, RadioGroup, CheckboxGroup } from '../form-fields';
 import { Button } from '../button';
 
-const CloseButton = styled(Button)`
-  ${styledSpace}
-  ${color};
-  ${layout};
-  ${typography};
-`;
-
 const StyledRow = styled(Row)`
+  position: relative;
+
   & :hover {
     background-color: light-grey;
   }
@@ -26,7 +20,9 @@ const Guest = ({ index, arrayHelpers }) => {
 
   return (
     <StyledRow flexWrap="wrap" mb={1} boarderRadius="20px" backgroundColor={colors.grey50}>
-      <Col width={1}>{index < 1 ? <P> Your details: </P> : <P> Guest {index + 1} details: </P>}</Col>
+      <Col width={1} my={1}>
+        {index < 1 ? <P> Your details: </P> : <P> Guest {index + 1} details: </P>}
+      </Col>
       <Col width={colWidth} mb={1}>
         <TextField label="First Name" name={`guests[${index}].givenName`} fullWidth required />
       </Col>
@@ -84,15 +80,19 @@ const Guest = ({ index, arrayHelpers }) => {
       </Col>
 
       {index > 0 && (
-        <CloseButton
+        <Button
           p={1}
+          top="0"
+          right="0"
+          variant="close"
+          position="absolute"
           type="button"
           onClick={() => {
-            arrayHelpers.remove(index); // remove a friend from the list
+            arrayHelpers.remove(index); // remove a guest from the list
           }}
         >
           X
-        </CloseButton>
+        </Button>
       )}
     </StyledRow>
   );

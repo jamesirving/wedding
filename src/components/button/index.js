@@ -1,4 +1,13 @@
-import { color, layout, space as styledSpace, variant as styledVariant, typography } from 'styled-system';
+import {
+  border,
+  color,
+  flexbox,
+  layout,
+  position,
+  space as styledSpace,
+  typography,
+  variant as styledVariant,
+} from 'styled-system';
 import PropTypes from 'prop-types';
 import React from 'react';
 import styled, { css } from 'styled-components';
@@ -12,35 +21,51 @@ const buttonVariant = styledVariant({
     light: {
       backgroundColor: colors.white,
       border: `2px solid ${colors.black}`,
-      color: 'black',
+      color: colors.black,
 
       '&:hover': {
+        backgroundColor: colors.black,
         borderColor: colors.black,
         color: colors.white,
-        backgroundColor: colors.black,
       },
 
       '&:disabled': {
+        backgroundColor: colors.grey100,
         borderColor: colors.grey100,
         color: colors.grey600,
-        backgroundColor: colors.grey100,
         cursor: 'not-allowed',
       },
     },
     dark: {
       backgroundColor: colors.black,
       border: `2px solid ${colors.black}`,
-      color: 'white',
+      color: colors.white,
 
       '&:hover': {
         backgroundColor: colors.white,
-        color: 'black',
+        color: colors.black,
       },
 
       '&:disabled': {
+        backgroundColor: colors.grey100,
         borderColor: colors.grey100,
         color: colors.grey600,
+        cursor: 'not-allowed',
+      },
+    },
+    close: {
+      backgroundColor: 'transparent',
+      border: `2px solid transparent`,
+      color: colors.grey600,
+
+      '&:hover': {
+        color: colors.black,
+      },
+
+      '&:disabled': {
         backgroundColor: colors.grey100,
+        borderColor: colors.grey100,
+        color: colors.grey600,
         cursor: 'not-allowed',
       },
     },
@@ -48,12 +73,6 @@ const buttonVariant = styledVariant({
 });
 
 const buttonStyles = css`
-  ${styledSpace}
-  ${buttonVariant};
-  ${color};
-  ${layout};
-  ${typography};
-
   border-radius: 5px;
   display: inline-flex;
   font-family: ${globalStyles.baseFontFamily};
@@ -61,6 +80,16 @@ const buttonStyles = css`
   padding: ${space.x1} ${space.x2};
   text-transform: uppercase;
   transition: all ${globalStyles.transitionSpeed} ${globalStyles.easing};
+
+  ${buttonVariant}
+
+  ${border}
+  ${color}
+  ${flexbox}
+  ${layout}
+  ${position}
+  ${styledSpace}
+  ${typography}
 `;
 
 const StyledLink = styled(Link)`
