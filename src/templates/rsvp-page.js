@@ -5,6 +5,7 @@ import { graphql } from 'gatsby';
 import { Layout } from '../components/layout';
 import { Feature } from '../components/feature';
 import { Heading, P, Preheading } from '../components/typography';
+import { RsvpForm } from '../components/rsvp-form';
 
 const RECAPTCHA_KEY = process.env.SITE_RECAPTCHA_KEY;
 
@@ -19,6 +20,7 @@ export const RsvpPageTemplate = ({ pageHeaderBlock }) => (
       )}
       {pageHeaderBlock.subheading && <P color="white">{pageHeaderBlock.subheading}</P>}
     </Feature>
+    <RsvpForm />
   </div>
 );
 
@@ -48,7 +50,7 @@ export default RsvpPage;
 
 export const pageQuery = graphql`
   query RsvpPageTemplate {
-    markdownRemark(frontmatter: { templateKey: { eq: "index-page" } }) {
+    markdownRemark(frontmatter: { templateKey: { eq: "rsvp-page" } }) {
       frontmatter {
         pageHeaderBlock {
           preheading
@@ -62,37 +64,9 @@ export const pageQuery = graphql`
             }
           }
         }
-        contentImageBlock {
+        detailsBlock {
           heading
-          dateTime
-          location
-          mapLink {
-            text
-            url
-          }
-          image {
-            childImageSharp {
-              fluid(maxWidth: 2048, quality: 100) {
-                ...GatsbyImageSharpFluid
-              }
-            }
-          }
-        }
-        featureBlock {
-          preheading
-          heading
-          button {
-            text
-            url
-            linkType
-          }
-          image {
-            childImageSharp {
-              fluid(maxWidth: 2048, quality: 100) {
-                ...GatsbyImageSharpFluid
-              }
-            }
-          }
+          detail
         }
       }
     }
