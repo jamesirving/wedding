@@ -49,7 +49,7 @@ const ContentImage = ({ image, children, contentPosition, height }) => {
           {children}
         </ContentCol>
         <MediaCol offset={imageOffset} width={{ xs: 12 / 12, lg: 6 / 12 }} height={height} p={0}>
-          <Image image={image} objectPosition={image.objectPosition} isBackground minHeight={height} />
+          {!!image && <Image image={image} isBackground minHeight={height} />}
         </MediaCol>
       </Row>
     </Wrapper>

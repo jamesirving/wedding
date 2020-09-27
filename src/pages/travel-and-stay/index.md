@@ -2,9 +2,9 @@
 templateKey: travel-and-stay-page
 pageHeaderBlock:
   heading: Travel & Stay
-  image: /img/20190319_165147.jpg
-  preheading: Test
-  subheading: Test
+  image: /img/james-and-dina-3.jpg
+  preheading: ""
+  subheading: ""
 contentImageBlock:
   heading: Details
   image: /img/poets-lane.jpg
