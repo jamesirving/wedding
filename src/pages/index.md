@@ -5,9 +5,9 @@ pageHeaderBlock:
     James Irving
     &
     Dina Abdeen
-  image: /img/james-and-dina-wedding.jpg
+  image: /img/compass.jpg
   preheading: CELEBRATE OUR WEDDING
-  subheading: '26 . 02 . 21 '
+  subheading: "26 . 02 . 21 "
 contentImageBlock:
   dateTime: 26th February 2021 at 4:00pm
   heading: Details
@@ -41,6 +41,6 @@ featureBlock:
     text: RSVP
     url: /rsvp
   heading: We hope you can make it!
-  image: /img/pl-front-entrance.jpg
+  image: /img/james-and-dina-5.jpg
   preheading: Join Us
 ---
