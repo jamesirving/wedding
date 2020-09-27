@@ -38,9 +38,20 @@ collections:
               widget: 'object',
               fields:
                 [
-                  { label: 'Heading', name: 'heading', widget: 'string' },
-                  { label: 'Details', name: 'details', widget: 'markdown' },
                   { label: 'Image', name: 'image', widget: 'image' },
+                  { label: 'Heading', name: 'heading', widget: 'string' },
+                  { label: 'Date and Time', name: 'dateTime', widget: 'string' },
+                  { label: 'Location', name: 'location', widget: 'markdown' },
+                  {
+                    label: 'Map Link',
+                    name: 'mapLink',
+                    widget: 'object',
+                    fields:
+                      [
+                        { label: 'Text', name: 'text', widget: 'string' },
+                        { label: 'url', name: 'url', widget: 'string' },
+                      ],
+                  },
                 ],
             }
           - {
@@ -121,17 +132,6 @@ collections:
                   { label: 'Preheading', name: 'preheading', widget: 'string', required: false },
                   { label: 'Heading', name: 'heading', widget: 'text' },
                   { label: 'Subheading', name: 'subheading', widget: 'string', required: false },
-                  { label: 'Image', name: 'image', widget: 'image' },
-                ],
-            }
-          - {
-              label: 'Content Image Block',
-              name: 'contentImageBlock',
-              widget: 'object',
-              fields:
-                [
-                  { label: 'Heading', name: 'heading', widget: 'string' },
-                  { label: 'Content', name: 'content', widget: 'markdown' },
                   { label: 'Image', name: 'image', widget: 'image' },
                 ],
             }

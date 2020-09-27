@@ -31,7 +31,6 @@ export const IndexPageTemplate = ({ pageHeaderBlock, contentImageBlock, featureB
           {contentImageBlock.heading}
         </Heading>
       )}
-      {contentImageBlock.details && <ReactMarkdown source={contentImageBlock.details} />}
       {contentImageBlock.dateTime && <P>{contentImageBlock.dateTime}</P>}
       {contentImageBlock.location && <ReactMarkdown source={contentImageBlock.location} />}
       {contentImageBlock.mapLink && (
@@ -104,7 +103,19 @@ export const pageQuery = graphql`
         }
         contentImageBlock {
           heading
-          details
+          dateTime
+          location
+          mapLink {
+            text
+            url
+          }
+          image {
+            childImageSharp {
+              fluid(maxWidth: 2048, quality: 100) {
+                ...GatsbyImageSharpFluid
+              }
+            }
+          }
         }
         featureBlock {
           preheading
@@ -126,11 +137,3 @@ export const pageQuery = graphql`
     }
   }
 `;
-
-// image {
-//   childImageSharp {
-//     fluid(maxWidth: 2048, quality: 100) {
-//       ...GatsbyImageSharpFluid
-//     }
-//   }
-// }
