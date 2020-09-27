@@ -21,12 +21,12 @@ detailsBlock:
 
       [Map](https://goo.gl/maps/ntypvNdtqfTGsmAE6)
     heading: Where
-  - heading: Can I bring my child/children?
-    detail: Unfortunately, no. We hope you will understand our decision to make the
-      wedding children free and take this opportunity to let your hair down and
-      celebrate a night of freedom.
   - heading: Should I bring a gift?
     detail: Gifts are not at all necessary, your presence at our wedding is honestly
       the best present we could ask for. If you did wish to contribute to our
       honeymoon, we’ll have a wishing well there on the day. Love and thanks.
+  - heading: Can I bring my child/children?
+    detail: Unfortunately, no. We hope you will understand our decision to make the
+      wedding children free and take this opportunity to let your hair down and
+      celebrate a night of freedom.
 ---
