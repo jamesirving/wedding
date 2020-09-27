@@ -2,7 +2,7 @@
 templateKey: travel-and-stay-page
 pageHeaderBlock:
   heading: Travel & Stay
-  image: /img/james-and-dina-3.jpg
+  image: /img/pl-reception.jpg
   preheading: ""
   subheading: ""
 contentImageBlock:
