@@ -6,20 +6,9 @@ import { Container, Row, Col } from '../grid';
 import { space, breakpoints, colors } from '../../styles';
 import { Image } from '../image';
 
-const ContentCol = styled(Col)`
-  align-items: start;
-  display: flex;
-  flex-direction: column;
-  text-align: left;
-
-  @media (min-width: ${breakpoints.lg}) {
-    align-items: center;
-    text-align: center;
-  }
-`;
+const ContentCol = styled(Col)``;
 
 const MediaCol = styled(Col)`
-  padding: 0;
   position: relative;
 
   @media (max-width: ${breakpoints.lg}) {
@@ -49,13 +38,17 @@ const ContentImage = ({ image, children, contentPosition, height }) => {
     <Wrapper my="2rem" minHeight={height} contentPosition={contentPosition}>
       <Row mx={{ xs: '2rem', xl: 0 }} flexWrap={{ xs: 'wrap', lg: 'nowrap' }} backgroundColor={colors.grey50}>
         <ContentCol
-          width={{ xs: 10 / 12, md: 8 / 12, lg: 4 / 12 }}
-          offset={[1 / 12]}
+          alignItems="center"
+          display="flex"
+          flexDirection="column"
+          justifyContent="center"
+          offset={[1 / 12, 1 / 12, 2 / 12, 1 / 12]}
           py={{ xs: space.x3, lg: space.x4 }}
+          width={{ xs: 10 / 12, md: 8 / 12, lg: 4 / 12 }}
         >
           {children}
         </ContentCol>
-        <MediaCol offset={imageOffset} width={{ xs: 12 / 12, lg: 6 / 12 }} height={height}>
+        <MediaCol offset={imageOffset} width={{ xs: 12 / 12, lg: 6 / 12 }} height={height} p={0}>
           <Image image={image} objectPosition={image.objectPosition} isBackground minHeight={height} />
         </MediaCol>
       </Row>
