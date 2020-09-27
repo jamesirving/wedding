@@ -1,7 +1,7 @@
 import { createGlobalStyle } from 'styled-components';
 import { normalize } from 'styled-normalize';
 
-import { headingStyles, headingVariants, pStyles, bodyVariants } from '../typography';
+import { headingStyles, headingVariants, bodyVariants } from '../typography';
 
 const BaseStyles = createGlobalStyle`
   ${normalize}
