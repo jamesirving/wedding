@@ -1,6 +1,7 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import { GoogleReCaptchaProvider } from 'react-google-recaptcha-v3';
 import { graphql } from 'gatsby';
+import PropTypes from 'prop-types';
+import React from 'react';
 
 import { Layout } from '../components/layout';
 import { Feature } from '../components/feature';
@@ -32,9 +33,11 @@ const RsvpPage = ({ data }) => {
   const { frontmatter } = data.markdownRemark;
 
   return (
-    <Layout>
-      <RsvpPageTemplate pageHeaderBlock={frontmatter.pageHeaderBlock} detailsBlock={frontmatter.detailsBlock} />
-    </Layout>
+    <GoogleReCaptchaProvider reCaptchaKey={RECAPTCHA_KEY}>
+      <Layout>
+        <RsvpPageTemplate pageHeaderBlock={frontmatter.pageHeaderBlock} detailsBlock={frontmatter.detailsBlock} />
+      </Layout>
+    </GoogleReCaptchaProvider>
   );
 };
 
