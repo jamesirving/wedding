@@ -7,7 +7,7 @@ pageHeaderBlock:
     Dina Abdeen
   image: /img/james-and-dina-wedding.jpg
   preheading: CELEBRATE OUR WEDDING
-  subheading: "26 . 02 . 21 "
+  subheading: '26 . 02 . 21 '
 contentImageBlock:
   dateTime: 26th February 2021 at 4:00pm
   heading: Details
