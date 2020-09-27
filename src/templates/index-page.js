@@ -21,8 +21,13 @@ export const IndexPageTemplate = ({ pageHeaderBlock, contentImageBlock, featureB
       )}
       {pageHeaderBlock.subheading && <P color="white">{pageHeaderBlock.subheading}</P>}
     </Feature>
-    <ContentImage image={contentImageBlock.image} contentPosition="left" height="400px">
-      {contentImageBlock.heading && <Heading variant="h2">{contentImageBlock.heading}</Heading>}
+    <ContentImage image={contentImageBlock.image} contentPosition="left" height="500px">
+      {contentImageBlock.heading && (
+        <Heading variant="h2" mb={2}>
+          {contentImageBlock.heading}
+        </Heading>
+      )}
+      {contentImageBlock.details && <ReactMarkdown source={contentImageBlock.details} />}
       {contentImageBlock.dateTime && <P>{contentImageBlock.dateTime}</P>}
       {contentImageBlock.location && <ReactMarkdown source={contentImageBlock.location} />}
       {contentImageBlock.mapLink && (
@@ -31,7 +36,7 @@ export const IndexPageTemplate = ({ pageHeaderBlock, contentImageBlock, featureB
         </Link>
       )}
     </ContentImage>
-    <Feature image={featureBlock.image} objectPosition="50% 50%" height="90vh">
+    <Feature image={featureBlock.image} objectPosition="50% 50%" height="70vh">
       {featureBlock.preheading && <Preheading color="white">{featureBlock.preheading}</Preheading>}
       {featureBlock.heading && (
         <Heading variant="h1" color="white">
@@ -39,7 +44,7 @@ export const IndexPageTemplate = ({ pageHeaderBlock, contentImageBlock, featureB
         </Heading>
       )}
       {featureBlock.button && (
-        <Button mt="2rem" {...featureBlock.button}>
+        <Button borderColor="white" mt="2rem" {...featureBlock.button}>
           {featureBlock.button.text}
         </Button>
       )}
@@ -95,12 +100,7 @@ export const pageQuery = graphql`
         }
         contentImageBlock {
           heading
-          dateTime
-          location
-          mapLink {
-            text
-            url
-          }
+          details
           image {
             childImageSharp {
               fluid(maxWidth: 2048, quality: 100) {
