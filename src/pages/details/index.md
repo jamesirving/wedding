@@ -2,7 +2,7 @@
 templateKey: details-page
 pageHeaderBlock:
   heading: Details
-  image: /img/20190120_162655.jpg
+  image: /img/james-and-dina-3.jpg
   preheading: ""
   subheading: ""
 detailsBlock:
