@@ -3,8 +3,8 @@ templateKey: details-page
 pageHeaderBlock:
   heading: Details
   image: /img/20190120_162655.jpg
-  preheading: Test
-  subheading: Test
+  preheading: ""
+  subheading: ""
 detailsBlock:
   - detail: 26th February 2021 at 4:00 pm
     heading: When
