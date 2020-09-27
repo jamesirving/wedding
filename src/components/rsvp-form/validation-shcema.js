@@ -1,5 +1,9 @@
 import * as Yup from 'yup';
 
+import { dietaryRequirements } from '../../constants';
+
+const dietaryRequirementNames = dietaryRequirements.map(requirement => requirement.name);
+
 const validationSchema = Yup.object().shape({
   guests: Yup.array().of(
     Yup.object().shape({
@@ -14,13 +18,14 @@ const validationSchema = Yup.object().shape({
       ),
       rsvp: Yup.string().required('Response required'),
       dietaryRequirements: Yup.object().shape({
-        oneOf: Yup.bool().when(['vegan', 'vegetarian', 'nut', 'gluten', 'none'], {
-          is: (vegan, vegetarian, nut, gluten, none) => !vegan && !vegetarian && !nut && !gluten && !none,
+        oneOf: Yup.bool().when(dietaryRequirementNames, {
+          is: (vegan, vegetarian, nut, halal, gluten, none) =>
+            !vegan && !vegetarian && !nut && !halal && !gluten && !none,
           then: Yup.bool().required('Response required'),
           otherwise: Yup.bool(),
         }),
-        notBoth: Yup.bool().when(['vegan', 'vegetarian', 'nut', 'gluten', 'none'], {
-          is: (vegan, vegetarian, nut, gluten, none) => (vegan || vegetarian || nut || gluten) && none,
+        notBoth: Yup.bool().when(dietaryRequirementNames, {
+          is: (vegan, vegetarian, nut, halal, gluten, none) => (vegan || vegetarian || nut || halal || gluten) && none,
           then: Yup.bool().required('Must have a dietary requirement or no dietary requirement, not both'),
           otherwise: Yup.bool(),
         }),

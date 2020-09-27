@@ -7,10 +7,11 @@ import styled from 'styled-components';
 import { Button } from '../button';
 import { colors } from '../../styles';
 import { Container, Col, Row } from '../grid';
+import { dietaryRequirements } from '../../constants';
 import { Guest } from './guest';
 import { P } from '../typography';
-import { validationSchema } from './validation-shema';
 import { rsvpSubmission } from '../../utils';
+import { validationSchema } from './validation-shcema';
 
 const StyledError = styled(P)`
   color: ${colors.red500};
@@ -27,22 +28,24 @@ const RsvpForm = () => {
     [executeRecaptcha]
   );
 
+  const dietaryDefaults = dietaryRequirements.reduce(
+    (accumulator, requirement) => ({
+      ...accumulator,
+      [requirement.name]: false,
+    }),
+    {}
+  );
+
+  const initialValues = {
+    givenName: '',
+    familyName: '',
+    email: '',
+    rsvp: 'yes',
+    dietaryRequirements: dietaryDefaults,
+  };
+
   return (
-    <Formik
-      initialValues={{
-        guests: [
-          {
-            givenName: '',
-            familyName: '',
-            email: '',
-            rsvp: 'yes',
-            dietaryRequirements: { vegan: false, vegetarian: false, nut: false, gluten: false, none: false },
-          },
-        ],
-      }}
-      onSubmit={onSubmit}
-      validationSchema={validationSchema}
-    >
+    <Formik initialValues={{ guests: [initialValues] }} onSubmit={onSubmit} validationSchema={validationSchema}>
       {({ handleSubmit, isSubmitting, values, status }) => (
         <Container>
           <Row my={3}>
@@ -66,21 +69,7 @@ const RsvpForm = () => {
                           <Col width={1} mb="3">
                             <Button
                               disabled={size(values.guests) > 4}
-                              onClick={() =>
-                                arrayHelpers.push({
-                                  givenName: '',
-                                  familyName: '',
-                                  email: '',
-                                  rsvp: 'yes',
-                                  dietaryRequirements: {
-                                    vegan: false,
-                                    vegetarian: false,
-                                    nut: false,
-                                    gluten: false,
-                                    none: false,
-                                  },
-                                })
-                              }
+                              onClick={() => arrayHelpers.push(initialValues)}
                               variant="light"
                               type="button"
                             >

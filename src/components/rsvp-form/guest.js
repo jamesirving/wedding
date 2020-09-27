@@ -1,11 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import { Button } from '../button';
 import { Col, Row } from '../grid';
 import { colors } from '../../styles';
+import { dietaryRequirements } from '../../constants';
 import { P } from '../typography';
 import { TextField, RadioGroup, CheckboxGroup } from '../form-fields';
-import { Button } from '../button';
 
 const GuestWrapper = styled.div`
   border: 2px solid transparent;
@@ -60,28 +61,10 @@ const Guest = ({ index, arrayHelpers }) => {
             legend="Dietary Requirements"
             ariaLabel="Dietary Requirements"
             name={`guests[${index}].dietaryRequirements`}
-            options={[
-              {
-                label: 'Vegan',
-                optionName: `guests[${index}].dietaryRequirements.vegan`,
-              },
-              {
-                label: 'Vegetarian',
-                optionName: `guests[${index}].dietaryRequirements.vegetarian`,
-              },
-              {
-                label: 'Nut allergy',
-                optionName: `guests[${index}].dietaryRequirements.nut`,
-              },
-              {
-                label: 'Gluten intolerance',
-                optionName: `guests[${index}].dietaryRequirements.gluten`,
-              },
-              {
-                label: 'No dietary requirements',
-                optionName: `guests[${index}].dietaryRequirements.none`,
-              },
-            ]}
+            options={dietaryRequirements.map(requirement => ({
+              label: requirement.label,
+              optionName: `guests[${index}].dietaryRequirements.${requirement.name}`,
+            }))}
           />
         </Col>
 
