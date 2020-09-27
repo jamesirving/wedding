@@ -132,7 +132,7 @@ const Navbar = () => {
         <NavBarMenu isOpen={navIsOpen}>
           <NavItems mr="1rem">
             <NavItem to="/details">Details</NavItem>
-            <NavItem to="/travel&stay">Travel & Stay</NavItem>
+            <NavItem to="/travel-and-stay">Travel & Stay</NavItem>
           </NavItems>
           <Flex px=".75rem" justifyContent="center">
             <StyledButton url="/rsvp">rsvp</StyledButton>
