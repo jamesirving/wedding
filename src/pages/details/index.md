@@ -2,7 +2,7 @@
 templateKey: details-page
 pageHeaderBlock:
   heading: Details
-  image: /img/20190319_165147.jpg
+  image: /img/20190120_162655.jpg
   preheading: Test
   subheading: Test
 detailsBlock:
