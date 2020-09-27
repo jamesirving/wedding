@@ -11,7 +11,7 @@ pageHeaderBlock:
 contentImageBlock:
   dateTime: 26th February 2021 at 4:00pm
   heading: Details
-  image: /img/poets-lane.jpg
+  image: /img/pl-reception.jpg
   location: |-
     Poet's Lane Receptions
 
