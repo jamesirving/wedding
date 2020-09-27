@@ -9,7 +9,7 @@ import { Heading, P, Preheading } from '../components/typography';
 
 export const DetailsPageTemplate = ({ pageHeaderBlock, detailsBlock }) => (
   <div>
-    <Feature image={pageHeaderBlock.image} objectPosition="50% 40%" height="75vh">
+    <Feature image={pageHeaderBlock.image} objectPosition="50% 40%" height="50vh">
       {pageHeaderBlock.preheading && <Preheading color="white">{pageHeaderBlock.preheading}</Preheading>}
       {pageHeaderBlock.heading && (
         <Heading variant="h1" color="white">

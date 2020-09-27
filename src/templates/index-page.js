@@ -21,11 +21,7 @@ export const IndexPageTemplate = ({ pageHeaderBlock, contentImageBlock, featureB
       )}
       {pageHeaderBlock.subheading && <P color="white">{pageHeaderBlock.subheading}</P>}
     </Feature>
-    <ContentImage
-      image={!!contentImageBlock.image ? contentImageBlock.image : undefined}
-      contentPosition="left"
-      height="500px"
-    >
+    <ContentImage image={contentImageBlock.image} contentPosition="left" height="500px">
       {contentImageBlock.heading && (
         <Heading variant="h2" mb={2}>
           {contentImageBlock.heading}
