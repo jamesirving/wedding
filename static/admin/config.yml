@@ -107,24 +107,24 @@ collections:
                   { label: 'Image', name: 'image', widget: 'image' },
                 ],
             }
-        - file: 'src/pages/travel-and-stay/index.md'
-          label: 'Travel & Stay'
-          name: 'travelAndStay'
-          fields:
-            - { label: 'Template Key', name: 'templateKey', widget: 'hidden', default: 'travel-and-stay-page' }
-            - {
-                label: 'Page Header Block',
-                name: 'pageHeaderBlock',
-                widget: 'object',
-                fields:
-                  [
-                    { label: 'Preheading', name: 'preheading', widget: 'string', required: false },
-                    { label: 'Heading', name: 'heading', widget: 'text' },
-                    { label: 'Subheading', name: 'subheading', widget: 'string', required: false },
-                    { label: 'Image', name: 'image', widget: 'image' },
-                  ],
-              }
-            - {
+      - file: 'src/pages/travel-and-stay/index.md'
+        label: 'Travel & Stay'
+        name: 'travelAndStay'
+        fields:
+          - { label: 'Template Key', name: 'templateKey', widget: 'hidden', default: 'travel-and-stay-page' }
+          - {
+              label: 'Page Header Block',
+              name: 'pageHeaderBlock',
+              widget: 'object',
+              fields:
+                [
+                  { label: 'Preheading', name: 'preheading', widget: 'string', required: false },
+                  { label: 'Heading', name: 'heading', widget: 'text' },
+                  { label: 'Subheading', name: 'subheading', widget: 'string', required: false },
+                  { label: 'Image', name: 'image', widget: 'image' },
+                ],
+            }
+          - {
               label: 'Content Image Block',
               name: 'contentImageBlock',
               widget: 'object',
