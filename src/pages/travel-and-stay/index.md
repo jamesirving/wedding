@@ -3,8 +3,8 @@ templateKey: travel-and-stay-page
 pageHeaderBlock:
   heading: Travel & Stay
   image: /img/pl-reception.jpg
-  preheading: ""
-  subheading: ""
+  preheading: ''
+  subheading: ''
 detailsBlock:
   - heading: Where am I going?
     detail: |-
@@ -14,7 +14,7 @@ detailsBlock:
 
       Sherbrooke VIC 3789
 
-      \[Map](https://goo.gl/maps/ntypvNdtqfTGsmAE6)
+      [Map](https://goo.gl/maps/ntypvNdtqfTGsmAE6)
   - heading: How to get there?
     detail: >-
       #### **Driving**
