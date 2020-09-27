@@ -9,7 +9,7 @@ detailsBlock:
   - heading: Covid Restrictions
     detail: Due to Covid-19 we may need to postpone, in which case, we will contact
       everyone to confirm a new date. We will try to make this decision as soon
-      as possible.
+      as possible. This will likely be early January 2021.
   - detail: 26th February 2021 at 4:00 pm
     heading: When
   - detail: |-
