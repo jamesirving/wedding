@@ -5,7 +5,7 @@ pageHeaderBlock:
     James Irving
     &
     Dina Abdeen
-  image: /img/compass.jpg
+  image: /img/james-and-dina-wedding.jpg
   preheading: CELEBRATE OUR WEDDING
   subheading: "26 . 02 . 21 "
 contentImageBlock:
@@ -41,6 +41,6 @@ featureBlock:
     text: RSVP
     url: /rsvp
   heading: We hope you can make it!
-  image: /img/james-and-dina-5.jpg
+  image: /img/pl-front-entrance.jpg
   preheading: Join Us
 ---
