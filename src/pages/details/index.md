@@ -6,6 +6,10 @@ pageHeaderBlock:
   preheading: ""
   subheading: ""
 detailsBlock:
+  - heading: Covid Restrictions
+    detail: Due to Covid-19 we may need to postpone, in which case, we will contact
+      everyone to confirm a new date. We will try to make this decision as soon
+      as possible.
   - detail: 26th February 2021 at 4:00 pm
     heading: When
   - detail: |-
@@ -17,25 +21,8 @@ detailsBlock:
 
       [Map](https://goo.gl/maps/ntypvNdtqfTGsmAE6)
     heading: Where
-  - detail: >-
-      #### **Driving**
-
-
-      There will be ample parking onsite for everyone who chooses to drive.
-
-
-
-
-      #### **Rideshare (Uber, DiDi, Ola, etc.)**
-
-
-      From Melbourne CBD these options are approximately $70 and will take around an hour depending on traffic.
-    heading: How to get there
-  - detail: |-
-      Poets Lane
-
-      Poets Lane has limited onsite accommodation available:
-
-      Phone: (03) 9755 2044
-    heading: On Site Accommodation
+  - heading: Can I bring my child/children?
+    detail: Unfortunately, no. We hope you will understand our decision to make the
+      wedding children free and take this opportunity to let your hair down and
+      celebrate a night of freedom.
 ---
