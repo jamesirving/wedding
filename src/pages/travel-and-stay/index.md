@@ -7,7 +7,7 @@ pageHeaderBlock:
   subheading: ""
 contentImageBlock:
   heading: Details
-  image: /img/poets-lane.jpg
+  image: /img/pl-reception.jpg
   mapLink:
     text: Map
     url: https://www.google.com/maps/place/Poet's+Lane+Receptions/@-37.8800092,145.3603217,15z/data=!4m2!3m1!1s0x0:0xdc8f44558156ae5c?sa=X&ved=2ahUKEwj9tdmVuI3oAhW4IbcAHQaIDdoQ_BIwC3oECBoQCA
@@ -25,4 +25,5 @@ contentImageBlock:
 
 
     [Map](https://www.google.com/maps/place/Poet's+Lane+Receptions/@-37.8800092,145.3603217,15z/data=!4m2!3m1!1s0x0:0xdc8f44558156ae5c?sa=X&ved=2ahUKEwj9tdmVuI3oAhW4IbcAHQaIDdoQ_BIwC3oECBoQCA)
+  content: asdf
 ---
