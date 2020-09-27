@@ -2,7 +2,7 @@
 templateKey: details-page
 pageHeaderBlock:
   heading: Details
-  image: /img/james-and-dina-3.jpg
+  image: /img/pl-ceremony-2.jpg
   preheading: ""
   subheading: ""
 detailsBlock:
