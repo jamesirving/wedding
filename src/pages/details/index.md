@@ -37,5 +37,5 @@ detailsBlock:
       Poets Lane has limited onsite accommodation available:
 
       Phone: (03) 9755 2044
-    heading: Accommodation
+    heading: On Site Accommodation
 ---
