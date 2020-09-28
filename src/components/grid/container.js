@@ -13,8 +13,8 @@ const StyledContainer = styled.div`
   box-sizing: border-box;
   margin-left: auto;
   margin-right: auto;
-  padding-left: ${space.x0};
-  padding-right:  ${space.x0};
+  padding-left: 1.5rem;
+  padding-right:  1.5rem;
   width: 100%;
 
   @media (min-width: ${breakpoints.md}px) {
