@@ -23,9 +23,9 @@ detailsBlock:
     heading: Where
   - heading: Should I bring a gift?
     detail: >-
-      We have our house, and things to go in it, so a present is not necessary
-      but if you do wish to make a gesture, a contribution towards our honeymoon
-      would be much appreciated.
+      We have our new house, and all the things to go in it, so a present is not
+      necessary but if you do wish to make a gesture, a contribution towards our
+      honeymoon would be much appreciated.
 
 
       Love and Thanks
