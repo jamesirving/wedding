@@ -30,7 +30,7 @@ const Wrapper = styled(Container)`
     `};
 `;
 
-const ContentImage = ({ image, children, contentPosition, height }) => {
+const ContentImage = ({ image, children, contentPosition, height, objectPosition }) => {
   // if content is right then image position is left
   const imageOffset = contentPosition === 'right' ? [0] : [0, 0, 0, 1 / 12, 1 / 12];
 
@@ -49,7 +49,7 @@ const ContentImage = ({ image, children, contentPosition, height }) => {
           {children}
         </ContentCol>
         <MediaCol offset={imageOffset} width={{ xs: 12 / 12, lg: 6 / 12 }} height={height} p={0}>
-          {!!image && <Image image={image} isBackground minHeight={height} />}
+          {!!image && <Image image={image} isBackground minHeight={height} objectPosition={objectPosition} />}
         </MediaCol>
       </Row>
     </Wrapper>
@@ -59,8 +59,9 @@ const ContentImage = ({ image, children, contentPosition, height }) => {
 ContentImage.propTypes = {
   children: PropTypes.node,
   contentPosition: PropTypes.oneOf(['left', 'right']),
-  image: PropTypes.object,
   height: PropTypes.string,
+  image: PropTypes.object,
+  objectPosition: PropTypes.string,
 };
 
 export { ContentImage };
