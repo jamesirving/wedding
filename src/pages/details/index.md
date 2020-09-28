@@ -23,11 +23,11 @@ detailsBlock:
     heading: Where
   - heading: Should I bring a gift?
     detail: >-
-      Your presence at our wedding is honestly the best present we could ask
-      for. If you did wish to contribute to our honeymoon, we’ll have a wishing
-      well there on the day. \
+      Your presence at our wedding is gift enough, but if you do wish to make a
+      gesture, a contribution towards our honeymoon would be much appreciated.
 
-      Love and thanks.
+
+      Love and Thanks
   - heading: Can I bring my child/children?
     detail: Unfortunately, no. We hope you will understand our decision to make the
       wedding children free and take this opportunity to let your hair down and
