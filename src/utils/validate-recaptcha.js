@@ -8,7 +8,7 @@ const validateReCaptcha = async token => {
     const { data } = response;
     const { score } = data;
 
-    if (score < 0.5) {
+    if (score < 0.7) {
       const error =
         "reCaptcha validation failed. If you are you sure you're not a robot, please try again. If the problem persists please let us know.";
 
