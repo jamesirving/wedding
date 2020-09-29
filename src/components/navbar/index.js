@@ -37,7 +37,7 @@ const NavBarMenu = styled.div`
   display: block;
   height: 100vh;
   position: absolute;
-  transform: translateX(${props => (props.isOpen ? `-${space.x0}` : '-140%')});
+  transform: translateX(${props => (props.isOpen ? '-1.5rem' : '-140%')});
   transition: all ${globalStyles.transitionSpeed} ${globalStyles.easing};
   width: 100%;
 
