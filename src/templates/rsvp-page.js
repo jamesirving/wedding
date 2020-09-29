@@ -32,6 +32,15 @@ RsvpPageTemplate.propTypes = {
 const RsvpPage = ({ data }) => {
   const { frontmatter } = data.markdownRemark;
 
+  if (!RECAPTCHA_KEY) {
+    console.log('RECAPTCHA_KEY error: ', RECAPTCHA_KEY);
+    return (
+      <Layout>
+        <RsvpPageTemplate pageHeaderBlock={frontmatter.pageHeaderBlock} detailsBlock={frontmatter.detailsBlock} />
+      </Layout>
+    );
+  }
+
   return (
     <GoogleReCaptchaProvider reCaptchaKey={RECAPTCHA_KEY}>
       <Layout>
