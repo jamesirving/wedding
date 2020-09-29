@@ -8,7 +8,9 @@ import { Feature } from '../components/feature';
 import { Heading, P, Preheading } from '../components/typography';
 import { RsvpForm } from '../components/rsvp-form';
 
-const RECAPTCHA_KEY = process.env.SITE_RECAPTCHA_KEY;
+const SITE_RECAPTCHA_KEY = process.env.SITE_RECAPTCHA_KEY;
+const REACT_APP_SITE_RECAPTCHA_KEY = process.env.REACT_APP_SITE_RECAPTCHA_KEY;
+const GATSBY_SITE_RECAPTCHA_KEY = process.env.GATSBY_SITE_RECAPTCHA_KEY;
 
 export const RsvpPageTemplate = ({ pageHeaderBlock }) => (
   <div>
@@ -31,6 +33,11 @@ RsvpPageTemplate.propTypes = {
 
 const RsvpPage = ({ data }) => {
   const { frontmatter } = data.markdownRemark;
+  const RECAPTCHA_KEY = SITE_RECAPTCHA_KEY || REACT_APP_SITE_RECAPTCHA_KEY || GATSBY_SITE_RECAPTCHA_KEY;
+
+  console.log('SITE_RECAPTCHA_KEY: ', SITE_RECAPTCHA_KEY);
+  console.log('REACT_APP_SITE_RECAPTCHA_KEY: ', REACT_APP_SITE_RECAPTCHA_KEY);
+  console.log('GATSBY_SITE_RECAPTCHA_KEY: ', GATSBY_SITE_RECAPTCHA_KEY);
 
   if (!RECAPTCHA_KEY) {
     console.log('RECAPTCHA_KEY error: ', RECAPTCHA_KEY);
