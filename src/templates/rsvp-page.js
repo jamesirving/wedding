@@ -8,9 +8,7 @@ import { Feature } from '../components/feature';
 import { Heading, P, Preheading } from '../components/typography';
 import { RsvpForm } from '../components/rsvp-form';
 
-const SITE_RECAPTCHA_KEY = process.env.SITE_RECAPTCHA_KEY;
-const REACT_APP_SITE_RECAPTCHA_KEY = process.env.REACT_APP_SITE_RECAPTCHA_KEY;
-const GATSBY_SITE_RECAPTCHA_KEY = process.env.GATSBY_SITE_RECAPTCHA_KEY;
+const RECAPTCHA_KEY = process.env.GATSBY_SITE_RECAPTCHA_KEY;
 
 export const RsvpPageTemplate = ({ pageHeaderBlock }) => (
   <div>
@@ -33,17 +31,13 @@ RsvpPageTemplate.propTypes = {
 
 const RsvpPage = ({ data }) => {
   const { frontmatter } = data.markdownRemark;
-  const RECAPTCHA_KEY = SITE_RECAPTCHA_KEY || REACT_APP_SITE_RECAPTCHA_KEY || GATSBY_SITE_RECAPTCHA_KEY;
-
-  console.log('SITE_RECAPTCHA_KEY: ', SITE_RECAPTCHA_KEY);
-  console.log('REACT_APP_SITE_RECAPTCHA_KEY: ', REACT_APP_SITE_RECAPTCHA_KEY);
-  console.log('GATSBY_SITE_RECAPTCHA_KEY: ', GATSBY_SITE_RECAPTCHA_KEY);
 
   if (!RECAPTCHA_KEY) {
+    // eslint-disable-next-line no-console
     console.log('RECAPTCHA_KEY error: ', RECAPTCHA_KEY);
     return (
       <Layout>
-        <RsvpPageTemplate pageHeaderBlock={frontmatter.pageHeaderBlock} detailsBlock={frontmatter.detailsBlock} />
+        <RsvpPageTemplate pageHeaderBlock={frontmatter.pageHeaderBlock} />
       </Layout>
     );
   }
@@ -51,7 +45,7 @@ const RsvpPage = ({ data }) => {
   return (
     <GoogleReCaptchaProvider reCaptchaKey={RECAPTCHA_KEY}>
       <Layout>
-        <RsvpPageTemplate pageHeaderBlock={frontmatter.pageHeaderBlock} detailsBlock={frontmatter.detailsBlock} />
+        <RsvpPageTemplate pageHeaderBlock={frontmatter.pageHeaderBlock} />
       </Layout>
     </GoogleReCaptchaProvider>
   );
