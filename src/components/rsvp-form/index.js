@@ -1,3 +1,4 @@
+import { scroller } from 'react-scroll';
 import { Formik, Form, FieldArray } from 'formik';
 import { get, size } from 'lodash';
 import { useGoogleReCaptcha } from 'react-google-recaptcha-v3';
@@ -46,64 +47,85 @@ const RsvpForm = () => {
 
   return (
     <Formik initialValues={{ guests: [initialValues] }} onSubmit={onSubmit} validationSchema={validationSchema}>
-      {({ handleSubmit, isSubmitting, values, status }) => (
-        <Container>
-          <Row my={3}>
-            <Col width={{ xs: 10 / 12, lg: 8 / 12 }} offset={[1 / 12, 1 / 12, 1 / 12, 2 / 12]}>
-              {get(status, 'success') ? (
-                <P>Success! Thankyou for your response.</P>
-              ) : (
-                <Form onSubmit={handleSubmit}>
-                  <FieldArray
-                    name="guests"
-                    render={arrayHelpers => (
-                      <>
-                        {values.guests &&
-                          values.guests.map((guest, index) => {
-                            return (
-                              // eslint-disable-next-line react/no-array-index-key
-                              <Guest key={`guest-${index}`} index={index} arrayHelpers={arrayHelpers} />
-                            );
-                          })}
-                        <Row>
-                          <Col width={1} mb="3">
-                            <Button
-                              disabled={size(values.guests) > 4}
-                              onClick={() => arrayHelpers.push(initialValues)}
-                              variant="light"
-                              type="button"
-                            >
-                              Add Guest
-                            </Button>
-                          </Col>
-                        </Row>
-                      </>
-                    )}
-                  />
-                  <Row flexWrap="wrap" mb={1}>
-                    <Col width={1} mb="1">
-                      <Button
-                        disabled={isSubmitting}
-                        isLoading={isSubmitting}
-                        onClick={handleSubmit}
-                        variant="dark"
-                        type="submit"
-                      >
-                        Submit
-                      </Button>
-                    </Col>
-                    {get(status, 'error') && (
+      {({ handleSubmit, isSubmitting, values, status }) => {
+        const refs = values.guests.reduce((acc, guest, currentIndex) => {
+          acc[currentIndex] = React.createRef();
+          return acc;
+        }, {});
+
+        return (
+          <Container>
+            <Row my={3}>
+              <Col width={{ xs: 10 / 12, lg: 8 / 12 }} offset={[1 / 12, 1 / 12, 1 / 12, 2 / 12]}>
+                {get(status, 'success') ? (
+                  <P>Success! Thankyou for your response.</P>
+                ) : (
+                  <Form onSubmit={handleSubmit}>
+                    <FieldArray
+                      name="guests"
+                      render={arrayHelpers => (
+                        <>
+                          {values.guests &&
+                            values.guests.map((guest, index) => {
+                              return (
+                                <div
+                                  ref={refs[index]}
+                                  id={`guest-${index}`}
+                                  // eslint-disable-next-line react/no-array-index-key
+                                  key={`guest-${index}`}
+                                >
+                                  <Guest index={index} arrayHelpers={arrayHelpers} />
+                                </div>
+                              );
+                            })}
+                          <Row>
+                            <Col width={1} mb="3">
+                              <Button
+                                disabled={size(values.guests) > 4}
+                                onClick={() => {
+                                  const index = size(values.guests) - 1;
+                                  arrayHelpers.push(initialValues);
+                                  scroller.scrollTo(`guest-${index}`, {
+                                    duration: 800,
+                                    offset: refs[index].current.clientHeight,
+                                    smooth: true,
+                                  });
+                                }}
+                                variant="light"
+                                type="button"
+                              >
+                                Add Guest
+                              </Button>
+                            </Col>
+                          </Row>
+                        </>
+                      )}
+                    />
+                    <Row flexWrap="wrap" mb={1}>
                       <Col width={1} mb="1">
-                        <StyledError>{status.error}</StyledError>
+                        <Button
+                          disabled={isSubmitting}
+                          isLoading={isSubmitting}
+                          onClick={handleSubmit}
+                          variant="dark"
+                          type="submit"
+                        >
+                          Submit
+                        </Button>
                       </Col>
-                    )}
-                  </Row>
-                </Form>
-              )}
-            </Col>
-          </Row>
-        </Container>
-      )}
+                      {get(status, 'error') && (
+                        <Col width={1} mb="1">
+                          <StyledError>{status.error}</StyledError>
+                        </Col>
+                      )}
+                    </Row>
+                  </Form>
+                )}
+              </Col>
+            </Row>
+          </Container>
+        );
+      }}
     </Formik>
   );
 };
