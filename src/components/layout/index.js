@@ -21,6 +21,7 @@ const Layout = ({ children }) => {
         <html lang="en" />
         <title>{title}</title>
         <meta name="description" content={description} />
+        <meta name="theme-color" content="#000000" />
 
         <link
           rel="stylesheet"

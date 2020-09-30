@@ -10,9 +10,10 @@ import { TextField, RadioGroup, CheckboxGroup } from '../form-fields';
 
 const GuestWrapper = styled.div`
   border: 2px solid transparent;
-  border-radius: 20px;
+  border-radius: 5px;
   position: relative;
-  margin-bottom: 1rem;
+  margin: 0 -0.5rem 1rem -0.5rem;
+  padding: 0 0.5rem 0 0.5rem;
 
   &:hover {
     background-color: ${colors.grey50};
