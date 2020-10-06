@@ -23,12 +23,11 @@ detailsBlock:
     heading: Where
   - heading: Should I bring a gift?
     detail: >-
-      We have our new house, and all the things to go in it, so a present is not
-      necessary but if you do wish to make a gesture, a contribution towards our
-      honeymoon would be much appreciated.
+      Your presence at our wedding is gift enough but if you do wish to
+      contribute to our honeymoon would be much appreciated.
 
 
-      Love and Thanks
+      Love and thanks
   - heading: Can I bring my child/children?
     detail: Unfortunately, no. We hope you will understand our decision to make the
       wedding children free and take this opportunity to let your hair down and
