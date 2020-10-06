@@ -23,8 +23,8 @@ detailsBlock:
     heading: Where
   - heading: Should I bring a gift?
     detail: >-
-      Your presence at our wedding is gift enough but if you do wish to
-      contribute to our honeymoon would be much appreciated.
+      Your presence at our wedding is gift enough but if you do wish to make a
+      gesture, a contribution towards our honeymoon would be much appreciated.
 
 
       Love and thanks
