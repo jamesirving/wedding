@@ -28,7 +28,7 @@ detailsBlock:
       *Parking available on site.*
 
 
-      ### 4:15 pm - Ceremony
+      ### 4:15 pm - Ceremony Begins
 
 
       ### 5:00 pm - Lawn games
@@ -40,7 +40,7 @@ detailsBlock:
       ### 5:30 pm - Canapes, refreshments
 
 
-      ### 6:30 pm - Reception
+      ### 6:00 pm - Reception
 
 
       *Same location.*
