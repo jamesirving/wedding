@@ -3,12 +3,12 @@ templateKey: travel-and-stay-page
 pageHeaderBlock:
   heading: Travel & Stay
   image: /img/pl-reception.jpg
-  preheading: ''
-  subheading: ''
+  preheading: ""
+  subheading: ""
 detailsBlock:
   - heading: Where am I going?
     detail: |-
-      Poets Lane Receptions
+      Poet's Lane Receptions
 
       13 Sherbrooke Rd,
 
