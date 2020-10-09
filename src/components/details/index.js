@@ -11,7 +11,7 @@ const Details = ({ details }) => (
     {map(details, ({ heading, detail }) => (
       <Row my="2rem">
         <Col width={{ xs: 12 / 12, md: 10 / 12, lg: 8 / 12 }} offset={[0, 0, 1 / 12, 1 / 12]}>
-          <Heading variant="h3">{heading}</Heading>
+          <Heading variant="h2">{heading}</Heading>
           <ReactMarkdown source={detail} />
         </Col>
       </Row>
