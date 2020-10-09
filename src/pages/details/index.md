@@ -10,7 +10,15 @@ detailsBlock:
     detail: Due to Covid-19 we may need to postpone, in which case, we will contact
       everyone to confirm a new date. We will try to make this decision as soon
       as possible. This will likely be early January 2021.
-  - detail: 26th February 2021 at 4:00 pm
+  - detail: |-
+      26th February 2021
+
+      * 4:00 pm - Arrive at Poets lane
+      * 4:15 pm - Ceremony
+      * 5:00 pm - Lawn games
+      * 5:30 pm - Canapes, refreshments
+      * 6:30 pm - Reception (same location)
+      * 11:00 pm - Wrap up
     heading: When
   - detail: |-
       Poets Lane Receptions
