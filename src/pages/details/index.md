@@ -22,20 +22,31 @@ detailsBlock:
       [Map](https://goo.gl/maps/ntypvNdtqfTGsmAE6)
     heading: Where
   - detail: >-
-      * #### 4:00 pm - Arrive at Poets lane
+      #### **4:00 pm - Arrive at Poets lane**
 
-        * Parking available on site.
-      * #### 4:15 pm - Ceremony
 
-      * #### 5:00 pm - Lawn games
+      *Parking available on site.*
 
-        * The reception is also at Poet's Lane so just relax and have some fun while we run off to take some photos. 
-      * #### 5:30 pm - Canapes, refreshments
 
-      * #### 6:30 pm - Reception
+      #### **4:15 pm - Ceremony**
 
-        * Same location.
-      * #### 11:00 pm - Wrap up
+
+      #### **5:00 pm - Lawn games**
+
+
+      *The reception is also at Poet's Lane so just relax and have some fun while we run off to take some photos.* 
+
+
+      #### **5:30 pm - Canapes, refreshments**
+
+
+      #### **6:30 pm - Reception**
+
+
+      *Same location.*
+
+
+      #### **11:00 pm - Wrap up**
     heading: Schedule
   - heading: Should I bring a gift?
     detail: >-
