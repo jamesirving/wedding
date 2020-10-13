@@ -13,7 +13,6 @@ const rsvpSubmission = ({ token, values, setStatus, setSubmitting }) => {
     }
 
     database
-      .collection('Wedding')
       .add({ ...values.guests })
       .then(() => {
         setStatus({ success: true });

@@ -3,6 +3,7 @@
   functions = "lambda"
   publish = "public"
 [build.environment]
+  GATSBY_SITE_FIREBASE_API_KEY = 'AIzaSyBEFgIdqwWowK1PGAqatipLl_1iAPVf9po'
   GATSBY_SITE_RECAPTCHA_KEY = "6LcbT8IZAAAAAOriFu6TWYdwq57h6ilQ3RJ7NFA4"
   YARN_FLAGS = "--no-ignore-optional"
   YARN_VERSION = "1.9.4"
