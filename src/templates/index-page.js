@@ -22,18 +22,20 @@ export const IndexPageTemplate = ({ pageHeaderBlock, contentImageBlock, featureB
       {pageHeaderBlock.subheading && <P color="white">{pageHeaderBlock.subheading}</P>}
     </Feature>
     <ContentImage image={contentImageBlock.image} contentPosition="left" height="500px" objectPosition="35% 50%">
-      {contentImageBlock.heading && (
-        <Heading variant="h2" mb={2}>
-          {contentImageBlock.heading}
-        </Heading>
-      )}
-      {contentImageBlock.dateTime && <P>{contentImageBlock.dateTime}</P>}
-      {contentImageBlock.location && <ReactMarkdown source={contentImageBlock.location} />}
-      {contentImageBlock.mapLink && (
-        <Link linkType="external" url={contentImageBlock.mapLink.url}>
-          {contentImageBlock.mapLink.text}
-        </Link>
-      )}
+      <div>
+        {contentImageBlock.heading && (
+          <Heading variant="h2" mb={2}>
+            {contentImageBlock.heading}
+          </Heading>
+        )}
+        {contentImageBlock.dateTime && <P>{contentImageBlock.dateTime}</P>}
+        {contentImageBlock.location && <ReactMarkdown source={contentImageBlock.location} />}
+        {contentImageBlock.mapLink && (
+          <Link linkType="external" url={contentImageBlock.mapLink.url}>
+            {contentImageBlock.mapLink.text}
+          </Link>
+        )}
+      </div>
     </ContentImage>
     <Feature image={featureBlock.image} objectPosition="50% 50%" height="70vh">
       {featureBlock.preheading && <Preheading color="white">{featureBlock.preheading}</Preheading>}
