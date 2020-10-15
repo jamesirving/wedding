@@ -3,7 +3,12 @@
   functions = "lambda"
   publish = "public"
 [build.environment]
+  GATSBY_SITE_API_KEY = "AIzaSyBEFgIdqwWowK1PGAqatipLl_1iAPVf9po"
+  GATSBY_SITE_AUTH_DOMAIN = "wedding-4fa01.firebaseapp.com"
+  GATSBY_SITE_DATABASE_URL = "https://wedding-4fa01.firebaseio.com"
   GATSBY_SITE_FIREBASE_API_KEY = 'AIzaSyBEFgIdqwWowK1PGAqatipLl_1iAPVf9po'
+  GATSBY_SITE_PROJECT_ID = "wedding-4fa01"
   GATSBY_SITE_RECAPTCHA_KEY = "6LcbT8IZAAAAAOriFu6TWYdwq57h6ilQ3RJ7NFA4"
+  GATSBY_SITE_STORAGE_BUCKET = "wedding-4fa01.appspot.com"
   YARN_FLAGS = "--no-ignore-optional"
   YARN_VERSION = "1.9.4"

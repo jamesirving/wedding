@@ -65,6 +65,20 @@ module.exports = {
       },
     },
     {
+      resolve: 'gatsby-plugin-firebase',
+      options: {
+        features: {
+          auth: true,
+          database: false,
+          firestore: true,
+          storage: false,
+          messaging: false,
+          functions: false,
+          performance: false,
+        },
+      },
+    },
+    {
       resolve: 'gatsby-plugin-purgecss', // purges all unused/unreferenced css rules
       options: {
         develop: true, // Activates purging in npm run develop
