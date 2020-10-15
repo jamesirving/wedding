@@ -35,7 +35,7 @@ const ContentImage = ({ image, children, contentPosition, height, objectPosition
   const imageOffset = contentPosition === 'right' ? [0] : [0, 0, 0, 1 / 12, 1 / 12];
 
   return (
-    <Wrapper my="2rem" minHeight={height} contentPosition={contentPosition}>
+    <Wrapper my="3rem" minHeight={height} contentPosition={contentPosition}>
       <Row mx={{ xs: '2rem', xl: 0 }} flexWrap={{ xs: 'wrap', lg: 'nowrap' }} backgroundColor={colors.grey50}>
         <ContentCol
           alignItems="center"
