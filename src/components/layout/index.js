@@ -41,6 +41,7 @@ const Layout = ({ children }) => {
         <meta property="og:image" content={`${withPrefix('/')}img/og-image.jpg`} />
       </Helmet>
       <Navbar />
+
       <ThemeProvider>{children}</ThemeProvider>
       <Footer />
     </Wrapper>
