@@ -75,9 +75,9 @@ const RsvpTable = () => {
   const buttonText = hasData ? 'Re-Load Submissions' : 'Load Submissions';
 
   return (
-    <Container>
+    <Container mb={3}>
       <Row>
-        <Col width={{ xs: 12 / 12 }} my={3}>
+        <Col width={{ xs: 12 / 12 }}>
           <Button fontSize={12} mb={3} type="button" onClick={loadSubmissions} disabled={isLoading}>
             {isLoading ? 'Loading...' : buttonText}
           </Button>

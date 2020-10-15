@@ -30,7 +30,7 @@ const ResponsesPage = () => {
     return (
       <Layout>
         <Container>
-          <Row my={3} justifyContent="flex-end">
+          <Row mt={3} justifyContent="flex-end">
             <Col>
               <Button fontSize={12} variant="dark" type="button" onClick={handleSignOut}>
                 {submitting ? 'Logging Out...' : 'Log Out'}
