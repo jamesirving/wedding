@@ -53,7 +53,7 @@ const TextField = ({
 };
 
 TextField.propTypes = {
-  autoComplete: PropTypes.oneOf(['email', 'family-name', 'given-name', 'tel', 'no-auto-complete']),
+  autoComplete: PropTypes.oneOf(['email', 'family-name', 'given-name', 'tel', 'no-auto-complete', 'password']),
   disabled: PropTypes.bool,
   fullWidth: PropTypes.bool,
   label: PropTypes.string,
@@ -62,7 +62,7 @@ TextField.propTypes = {
   onChange: PropTypes.func,
   placeholder: PropTypes.string,
   required: PropTypes.bool,
-  type: PropTypes.oneOf(['email', 'number', 'tel', 'text']),
+  type: PropTypes.oneOf(['email', 'number', 'tel', 'text', 'password']),
 };
 
 TextField.defaultProps = {

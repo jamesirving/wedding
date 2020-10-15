@@ -1,5 +1,6 @@
 import * as firebase from 'firebase/app';
 import 'firebase/firestore';
+import 'firebase/auth';
 
 const firebaseApp = firebase.initializeApp({
   apiKey: 'AIzaSyBEFgIdqwWowK1PGAqatipLl_1iAPVf9po',
@@ -9,6 +10,7 @@ const firebaseApp = firebase.initializeApp({
   storageBucket: 'wedding-4fa01.appspot.com',
 });
 
-const database = firebaseApp.firestore();
+const database = firebaseApp.firestore().collection('Wedding');
+const auth = firebase.auth();
 
-export { firebaseApp, database };
+export { auth, database };

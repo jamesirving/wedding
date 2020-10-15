@@ -8,8 +8,8 @@ import { Heading } from '../typography';
 
 const Details = ({ details }) => (
   <Container my="4rem">
-    {map(details, ({ heading, detail }) => (
-      <Row my="2rem">
+    {map(details, ({ heading, detail, index }) => (
+      <Row my="2rem" key={index}>
         <Col width={{ xs: 12 / 12, md: 10 / 12, lg: 8 / 12 }} offset={[0, 0, 1 / 12, 1 / 12]}>
           <Heading variant="h2">{heading}</Heading>
           <ReactMarkdown source={detail} />
@@ -20,10 +20,12 @@ const Details = ({ details }) => (
 );
 
 Details.propTypes = {
-  details: PropTypes.shape({
-    heading: PropTypes.string.isRequired,
-    detail: PropTypes.string.isRequired,
-  }).isRequired,
+  details: PropTypes.arrayOf(
+    PropTypes.shape({
+      heading: PropTypes.string.isRequired,
+      detail: PropTypes.string.isRequired,
+    })
+  ).isRequired,
 };
 
 export { Details };
