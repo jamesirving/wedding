@@ -6,11 +6,12 @@ import { Layout } from '../../components/layout';
 import { RsvpTable } from '../../components/rsvp-table';
 import { SignIn } from '../../components/sign-in';
 import { UserContext } from '../../providers/user-provider';
-import { auth } from '../../utils';
+import { getFirebaseAuth } from '../../utils';
 
 const ResponsesPage = () => {
   const [submitting, setSubmitting] = useState(false);
   const user = useContext(UserContext);
+  const auth = getFirebaseAuth();
 
   const handleSignOut = () => {
     setSubmitting(true);
