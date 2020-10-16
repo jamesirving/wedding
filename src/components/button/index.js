@@ -100,17 +100,17 @@ const StyledButton = styled.button`
   ${buttonStyles}
 `;
 
-const Button = ({ linkType = 'internal', children, theme = 'light', type = 'link', url, ...props }) => {
+const Button = ({ linkType = 'internal', children, theme = 'light', type = 'link', url, ...rest }) => {
   if (type === 'link') {
     return (
-      <StyledLink variant={theme} linkType={linkType} url={url} {...props}>
+      <StyledLink variant={theme} linkType={linkType} url={url} {...rest}>
         {children}
       </StyledLink>
     );
   }
 
   return (
-    <StyledButton variant={theme} type={type} {...props}>
+    <StyledButton variant={theme} type={type} {...rest}>
       {children}
     </StyledButton>
   );
