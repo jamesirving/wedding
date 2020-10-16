@@ -9,26 +9,32 @@ import { Container, Col, Row } from '../grid';
 import { P } from '../typography';
 import { validationSchema } from './validation-shcema';
 import { TextField } from '../form-fields';
-import { auth } from '../../utils';
+import { getFirebaseAuth } from '../../utils';
 
 const StyledError = styled(P)`
   color: ${colors.red500};
 `;
 
 const SignIn = () => {
+  const auth = getFirebaseAuth();
+
   const onSubmit = useCallback(async (values, { setSubmitting, setStatus, setFieldError }) => {
     setSubmitting(true);
-    console.log('submitting ');
+
     auth.signInWithEmailAndPassword(values.email, values.password).catch(error => {
       const errorCode = error.code;
       const errorMessage = error.message;
+
       console.log('Auth error: ', error);
+
       if (errorCode === 'auth/wrong-password') {
         setFieldError('password', 'Wrong password.');
       } else {
         setStatus({ error: errorMessage });
       }
     });
+
+    setSubmitting(false);
   });
 
   return (
@@ -52,14 +58,8 @@ const SignIn = () => {
                     </Row>
                     <Row flexWrap="wrap" my={1}>
                       <Col width={1}>
-                        <Button
-                          disabled={isSubmitting}
-                          isLoading={isSubmitting}
-                          onClick={handleSubmit}
-                          variant="dark"
-                          type="submit"
-                        >
-                          Login
+                        <Button disabled={isSubmitting} onClick={handleSubmit} variant="dark" type="submit">
+                          {isSubmitting ? 'Submitting...' : 'Login'}
                         </Button>
                       </Col>
                       {get(status, 'error') && (

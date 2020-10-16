@@ -1,10 +1,12 @@
-import { database } from './firebase';
+import { getFirebaseDB } from './firebase';
 import { validateReCaptcha } from './validate-recaptcha';
 
 const ERROR_MESSAGE =
   'There was an error submitting the form, please try again. If the problem persists please let us know.';
 
 const rsvpSubmission = ({ token, values, setStatus, setSubmitting }) => {
+  const database = getFirebaseDB();
+
   validateReCaptcha(token).then(reCaptcha => {
     console.log('reCaptcha: ', reCaptcha);
     if (!reCaptcha.success) {

@@ -1,7 +1,7 @@
 /* eslint-disable react/destructuring-assignment */
 /* eslint-disable react/state-in-constructor */
 import React, { createContext, Component } from 'react';
-import { auth } from '../utils';
+import { getFirebaseAuth } from '../utils';
 
 const UserContext = createContext({ user: null });
 
@@ -11,6 +11,12 @@ class UserProvider extends Component {
   };
 
   componentDidMount = () => {
+    const auth = getFirebaseAuth();
+
+    if (!auth) {
+      return;
+    }
+
     auth.onAuthStateChanged(userAuth => {
       this.setState({ user: userAuth });
     });
