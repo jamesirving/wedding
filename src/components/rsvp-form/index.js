@@ -103,13 +103,7 @@ const RsvpForm = () => {
                     />
                     <Row flexWrap="wrap" mb={1}>
                       <Col width={1} mb="1">
-                        <Button
-                          disabled={isSubmitting}
-                          isLoading={isSubmitting}
-                          onClick={handleSubmit}
-                          variant="dark"
-                          type="submit"
-                        >
+                        <Button disabled={isSubmitting} onClick={handleSubmit} variant="dark" type="submit">
                           Submit
                         </Button>
                       </Col>

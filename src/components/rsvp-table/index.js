@@ -5,7 +5,7 @@ import styled from 'styled-components';
 
 import { Button } from '../button';
 import { Container, Col, Row } from '../grid';
-import { database } from '../../utils/firebase';
+import { getFirebaseDB } from '../../utils';
 import { getComparator, stableSort } from './table-sort';
 import { P } from '../typography';
 import { TableHead } from './table-head';
@@ -40,6 +40,7 @@ const RsvpTable = () => {
   const [documents, setDocuments] = useState([]);
   const [order, setOrder] = React.useState('asc');
   const [orderBy, setOrderBy] = React.useState('calories');
+  const database = getFirebaseDB();
 
   const hasData = !!size(documents);
 
