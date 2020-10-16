@@ -3,11 +3,11 @@ import 'firebase/firestore';
 import 'firebase/auth';
 
 const config = {
-  apiKey: 'AIzaSyBEFgIdqwWowK1PGAqatipLl_1iAPVf9po',
-  authDomain: 'wedding-4fa01.firebaseapp.com',
-  databaseURL: 'https://wedding-4fa01.firebaseio.com',
-  projectId: 'wedding-4fa01',
-  storageBucket: 'wedding-4fa01.appspot.com',
+  apiKey: process.env.GATSBY_FIREBASE_API_KEY,
+  authDomain: process.env.GATSBY_FIREBASE_AUTH_DOMAIN,
+  databaseURL: process.env.GATSBY_FIREBASE_DATABASE_URL,
+  projectId: process.env.GATSBY_FIREBASE_PROJECT_ID,
+  storageBucket: process.env.GATSBY_FIREBASE_STORAGE_BUCKET,
 };
 
 let firebaseApp;
