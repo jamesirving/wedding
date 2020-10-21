@@ -79,8 +79,15 @@ const RsvpTable = () => {
     <Container mb={3}>
       <Row>
         <Col width={{ xs: 12 / 12 }}>
-          <Button fontSize={12} mb={3} type="button" onClick={loadSubmissions} disabled={isLoading}>
-            {isLoading ? 'Loading...' : buttonText}
+          <Button
+            fontSize={12}
+            mb={3}
+            type="button"
+            onClick={loadSubmissions}
+            disabled={isLoading}
+            isLoading={isLoading}
+          >
+            {buttonText}
           </Button>
           {hasData && (
             <>

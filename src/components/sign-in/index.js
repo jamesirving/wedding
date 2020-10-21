@@ -59,11 +59,11 @@ const SignIn = () => {
                     <Row flexWrap="wrap" my={1}>
                       <Col width={1}>
                         <Button disabled={isSubmitting} onClick={handleSubmit} variant="dark" type="submit">
-                          {isSubmitting ? 'Submitting...' : 'Login'}
+                          {isSubmitting ? 'Submitting' : 'Login'}
                         </Button>
                       </Col>
                       {get(status, 'error') && (
-                        <Col width={1} mb="1">
+                        <Col width={1} my="1">
                           <StyledError>{status.error}</StyledError>
                         </Col>
                       )}
