@@ -1,5 +1,5 @@
-import { color, space, typography, position } from 'styled-system';
 import { css } from 'styled-components';
+import { color, space, typography, position } from 'styled-system';
 
 import { fontWeight, globalStyles } from '../../styles';
 

@@ -1,6 +1,6 @@
-import { CircularProgress } from '@material-ui/core';
 import { get } from 'lodash';
 import React, { useContext, useState } from 'react';
+import { CircularProgress } from '@material-ui/core';
 
 import { Button } from '../../components/button';
 import { Container, Col, Flex, Row } from '../../components/grid';

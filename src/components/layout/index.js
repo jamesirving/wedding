@@ -1,13 +1,13 @@
 import '../../styles/all.sass';
-import { Helmet } from 'react-helmet';
-import { withPrefix } from 'gatsby';
 import React from 'react';
 import styled from 'styled-components';
+import { Helmet } from 'react-helmet';
+import { withPrefix } from 'gatsby';
 
 import { Footer } from '../footer';
 import { Navbar } from '../navbar';
-import { ThemeProvider } from '../theme-provider';
 import useSiteMetadata from '../SiteMetadata';
+import { ThemeProvider } from '../theme-provider';
 
 const Wrapper = styled.div`
   overflow: hidden;

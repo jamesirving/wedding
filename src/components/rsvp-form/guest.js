@@ -42,8 +42,8 @@ const Guest = ({ index, arrayHelpers }) => {
       <Row flexWrap="wrap" my={1}>
         <Col width={{ xs: 12 / 12, lg: 6 / 12 }} mb={1}>
           <RadioGroup
-            ariaLabel="RSVP response"
             legend="RSVP"
+            ariaLabel="RSVP response"
             name={`guests[${index}].rsvp`}
             options={[
               {
@@ -59,8 +59,8 @@ const Guest = ({ index, arrayHelpers }) => {
         </Col>
         <Col width={{ xs: 12 / 12, lg: 6 / 12 }}>
           <CheckboxGroup
-            ariaLabel="Dietary Requirements"
             legend="Dietary Requirements"
+            ariaLabel="Dietary Requirements"
             name={`guests[${index}].dietaryRequirements`}
             options={dietaryRequirements.map(requirement => ({
               label: requirement.label,
@@ -71,15 +71,15 @@ const Guest = ({ index, arrayHelpers }) => {
 
         {index > 0 && (
           <Button
+            p={1}
+            top="0"
+            right="0"
+            variant="close"
+            position="absolute"
+            type="button"
             onClick={() => {
               arrayHelpers.remove(index); // remove a guest from the list
             }}
-            p={1}
-            position="absolute"
-            right="0"
-            top="0"
-            type="button"
-            variant="close"
           >
             X
           </Button>

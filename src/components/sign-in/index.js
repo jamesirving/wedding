@@ -6,10 +6,10 @@ import styled from 'styled-components';
 import { Button } from '../button';
 import { colors } from '../../styles';
 import { Container, Col, Row } from '../grid';
-import { getFirebaseAuth } from '../../utils';
 import { P } from '../typography';
-import { TextField } from '../form-fields';
 import { validationSchema } from './validation-shcema';
+import { TextField } from '../form-fields';
+import { getFirebaseAuth } from '../../utils';
 
 const StyledError = styled(P)`
   color: ${colors.red500};

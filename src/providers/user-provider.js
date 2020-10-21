@@ -1,7 +1,6 @@
 /* eslint-disable react/destructuring-assignment */
 /* eslint-disable react/state-in-constructor */
 import React, { createContext, Component } from 'react';
-
 import { getFirebaseAuth } from '../utils';
 
 const UserContext = createContext({

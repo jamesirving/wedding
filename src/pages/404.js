@@ -1,8 +1,8 @@
 import React from 'react';
-
-import { Feature } from '../components/feature';
-import { Heading, P } from '../components/typography';
 import { Layout } from '../components/layout';
+
+import { Heading, P } from '../components/typography';
+import { Feature } from '../components/feature';
 
 const NotFoundPage = () => (
   <Layout>
