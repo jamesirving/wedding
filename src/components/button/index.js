@@ -108,7 +108,7 @@ const Content = ({ children, isLoading }) => {
   ) : (
     <Flex alignItems="center">
       <Box mr={1}>Loading</Box>
-      <CircularProgress color="black" size={20} />
+      <CircularProgress color="black" size={18} />
     </Flex>
   );
 };

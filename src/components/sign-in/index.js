@@ -58,8 +58,14 @@ const SignIn = () => {
                     </Row>
                     <Row flexWrap="wrap" my={1}>
                       <Col width={1}>
-                        <Button disabled={isSubmitting} onClick={handleSubmit} variant="dark" type="submit">
-                          {isSubmitting ? 'Submitting' : 'Login'}
+                        <Button
+                          disabled={isSubmitting}
+                          isLoading={isSubmitting}
+                          onClick={handleSubmit}
+                          type="submit"
+                          variant="dark"
+                        >
+                          Login
                         </Button>
                       </Col>
                       {get(status, 'error') && (
