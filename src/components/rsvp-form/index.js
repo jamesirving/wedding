@@ -1,8 +1,8 @@
-import { scroller } from 'react-scroll';
 import { Formik, Form, FieldArray } from 'formik';
 import { get, size } from 'lodash';
+import { scroller } from 'react-scroll';
 import { useGoogleReCaptcha } from 'react-google-recaptcha-v3';
-import React, { useCallback } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 
 import { Button } from '../button';
@@ -11,7 +11,7 @@ import { Container, Col, Row } from '../grid';
 import { dietaryRequirements } from '../../constants';
 import { Guest } from './guest';
 import { P } from '../typography';
-import { getFirebaseDB, validateReCaptcha } from '../../utils';
+import { rsvpSubmission } from '../../utils';
 import { validationSchema } from './validation-schema';
 
 const StyledError = styled(P)`
@@ -20,30 +20,18 @@ const StyledError = styled(P)`
 
 const RsvpForm = () => {
   const { executeRecaptcha } = useGoogleReCaptcha();
-  const database = getFirebaseDB();
 
   const onSubmit = async (values, { setSubmitting, setStatus }) => {
     setSubmitting(true);
     const token = await executeRecaptcha('rsvp');
-
-    const reCaptcha = await validateReCaptcha(token);
-
-    if (!reCaptcha.success) {
-      setStatus(reCaptcha);
-      setSubmitting(false);
-      return;
-    }
-
-    await database
-      .add({ ...values.guests })
-      .then(() => {
-        setStatus({ success: true });
+    return new Promise((resolve, reject) => {
+      rsvpSubmission({ resolve, reject, values, token });
+    })
+      .then(status => {
+        setStatus(status);
       })
       .catch(error => {
-        // eslint-disable-next-line no-console
-        console.log('Submission Error: ', error);
         setStatus({ success: false, error });
-        setSubmitting(false);
       });
   };
 
@@ -122,9 +110,14 @@ const RsvpForm = () => {
                     />
                     <Row flexWrap="wrap" mb={1}>
                       <Col width={1} mb="1">
-                        {console.log('isSubmitting: ', isSubmitting)}
-                        <Button disabled={success || isSubmitting} onClick={handleSubmit} variant="dark" type="submit">
-                          {isSubmitting ? 'Submitting...' : 'Submit'}
+                        <Button
+                          disabled={success || isSubmitting}
+                          isLoading={true}
+                          onClick={handleSubmit}
+                          type="submit"
+                          variant="dark"
+                        >
+                          Submit
                         </Button>
                       </Col>
                       {get(status, 'error') && (
