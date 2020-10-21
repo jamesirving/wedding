@@ -1,10 +1,10 @@
-import React from 'react';
 import { Link } from 'gatsby';
+import React from 'react';
 import styled, { css } from 'styled-components';
 
-import { Heading } from '../typography';
 import { colors, space } from '../../styles';
 import { Container, Flex } from '../grid';
+import { Heading } from '../typography';
 
 const FooterWrapper = styled.footer`
   background-color: ${colors.black};

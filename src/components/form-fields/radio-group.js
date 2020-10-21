@@ -1,4 +1,3 @@
-import { get } from 'lodash';
 import {
   FormControl,
   FormControlLabel,
@@ -7,6 +6,7 @@ import {
   Radio,
   RadioGroup as MuiRadioGroup,
 } from '@material-ui/core';
+import { get } from 'lodash';
 import { useFormikContext } from 'formik';
 import React from 'react';
 
