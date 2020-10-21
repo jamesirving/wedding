@@ -3,8 +3,8 @@ import React from 'react';
 import styled, { css } from 'styled-components';
 
 import { Container, Row, Col } from '../grid';
-import { Image } from '../image';
 import { space, breakpoints, colors } from '../../styles';
+import { Image } from '../image';
 
 const ContentCol = styled(Col)``;
 
@@ -49,12 +49,12 @@ const ContentImage = ({ image, children, contentPosition, height, objectPosition
           {children}
         </ContentCol>
         <MediaCol
-          height={height}
-          offset={imageOffset}
-          p={0}
-          position="relative"
           style={{ position: 'relative' }}
+          position="relative"
+          offset={imageOffset}
           width={{ xs: 12 / 12, lg: 6 / 12 }}
+          height={height}
+          p={0}
         >
           {!!image && <Image image={image} isBackground minHeight={height} objectPosition={objectPosition} />}
         </MediaCol>

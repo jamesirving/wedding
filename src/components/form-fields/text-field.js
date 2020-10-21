@@ -1,5 +1,5 @@
-import { get } from 'lodash';
 import { TextField as MuiTextField } from '@material-ui/core';
+import { get } from 'lodash';
 import { useFormikContext } from 'formik';
 import noop from 'lodash/noop';
 import PropTypes from 'prop-types';
@@ -34,10 +34,9 @@ const TextField = ({
       aria-label={label}
       autoComplete={autoComplete}
       disabled={disabled}
-      error={(submitCount > 0 || !!isTouched) && !!error}
-      fullWidth={fullWidth}
       helperText={(submitCount > 0 || !!isTouched) && error}
       id={name}
+      error={(submitCount > 0 || !!isTouched) && !!error}
       label={label}
       maxLength={maxLength}
       name={name}
@@ -48,6 +47,7 @@ const TextField = ({
       type={type}
       value={value}
       variant="filled"
+      fullWidth={fullWidth}
     />
   );
 };

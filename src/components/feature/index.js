@@ -1,9 +1,9 @@
-import PropTypes from 'prop-types';
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-import { colors, space } from '../../styles';
 import { Container, Col, Row, Flex } from '../grid';
+import { colors, space } from '../../styles';
 import { Image } from '../image';
 
 const Wrapper = styled(Flex)`

@@ -1,5 +1,5 @@
-import { Checkbox, FormControl, FormControlLabel, FormGroup, FormHelperText, FormLabel } from '@material-ui/core';
 import { get } from 'lodash';
+import { Checkbox, FormControl, FormControlLabel, FormGroup, FormHelperText, FormLabel } from '@material-ui/core';
 import { useFormikContext } from 'formik';
 import React from 'react';
 
