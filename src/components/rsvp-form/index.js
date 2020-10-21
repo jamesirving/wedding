@@ -11,8 +11,8 @@ import { Container, Col, Row } from '../grid';
 import { dietaryRequirements } from '../../constants';
 import { Guest } from './guest';
 import { P } from '../typography';
-import { rsvpSubmission } from '../../utils';
-import { validationSchema } from './validation-shcema';
+import { getFirebaseDB, validateReCaptcha } from '../../utils';
+import { validationSchema } from './validation-schema';
 
 const StyledError = styled(P)`
   color: ${colors.red500};
@@ -20,14 +20,32 @@ const StyledError = styled(P)`
 
 const RsvpForm = () => {
   const { executeRecaptcha } = useGoogleReCaptcha();
+  const database = getFirebaseDB();
 
-  const onSubmit = useCallback(
-    async (values, { setSubmitting, setStatus }) => {
-      const token = await executeRecaptcha('rsvp');
-      rsvpSubmission({ token, values, setSubmitting, setStatus });
-    },
-    [executeRecaptcha]
-  );
+  const onSubmit = async (values, { setSubmitting, setStatus }) => {
+    setSubmitting(true);
+    const token = await executeRecaptcha('rsvp');
+
+    const reCaptcha = await validateReCaptcha(token);
+
+    if (!reCaptcha.success) {
+      setStatus(reCaptcha);
+      setSubmitting(false);
+      return;
+    }
+
+    await database
+      .add({ ...values.guests })
+      .then(() => {
+        setStatus({ success: true });
+      })
+      .catch(error => {
+        // eslint-disable-next-line no-console
+        console.log('Submission Error: ', error);
+        setStatus({ success: false, error });
+        setSubmitting(false);
+      });
+  };
 
   const dietaryDefaults = dietaryRequirements.reduce(
     (accumulator, requirement) => ({
@@ -52,12 +70,13 @@ const RsvpForm = () => {
           acc[currentIndex] = React.createRef();
           return acc;
         }, {});
+        const success = get(status, 'success');
 
         return (
           <Container>
             <Row my={3}>
               <Col width={{ xs: 10 / 12, lg: 8 / 12 }} offset={[1 / 12, 1 / 12, 1 / 12, 2 / 12]}>
-                {get(status, 'success') ? (
+                {success ? (
                   <P>Success! Thankyou for your response.</P>
                 ) : (
                   <Form onSubmit={handleSubmit}>
@@ -103,13 +122,17 @@ const RsvpForm = () => {
                     />
                     <Row flexWrap="wrap" mb={1}>
                       <Col width={1} mb="1">
-                        <Button disabled={isSubmitting} onClick={handleSubmit} variant="dark" type="submit">
-                          Submit
+                        {console.log('isSubmitting: ', isSubmitting)}
+                        <Button disabled={success || isSubmitting} onClick={handleSubmit} variant="dark" type="submit">
+                          {isSubmitting ? 'Submitting...' : 'Submit'}
                         </Button>
                       </Col>
                       {get(status, 'error') && (
                         <Col width={1} mb="1">
-                          <StyledError>{status.error}</StyledError>
+                          <StyledError>
+                            There was an error submitting the form, please try again. If the problem persists please let
+                            us know: {status.error}
+                          </StyledError>
                         </Col>
                       )}
                     </Row>

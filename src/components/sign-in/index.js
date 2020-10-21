@@ -21,7 +21,7 @@ const SignIn = () => {
   const onSubmit = useCallback(async (values, { setSubmitting, setStatus, setFieldError }) => {
     setSubmitting(true);
 
-    auth.signInWithEmailAndPassword(values.email, values.password).catch(error => {
+    await auth.signInWithEmailAndPassword(values.email, values.password).catch(error => {
       const errorCode = error.code;
       const errorMessage = error.message;
 

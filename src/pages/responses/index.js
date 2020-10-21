@@ -18,10 +18,12 @@ const ResponsesPage = () => {
     auth
       .signOut()
       .then(() => {
+        // eslint-disable-next-line no-console
         console.log('Sign out Success');
         setSubmitting(false);
       })
       .catch(error => {
+        // eslint-disable-next-line no-console
         console.log('Sign out error: ', error);
         setSubmitting(false);
       });
@@ -31,7 +33,7 @@ const ResponsesPage = () => {
     return (
       <Layout>
         <Container>
-          <Row mt={3} justifyContent="flex-end">
+          <Row mt={3} mb={{ xs: 3, md: 0 }} justifyContent={{ xs: 'flex-start', md: 'flex-end' }}>
             <Col>
               <Button fontSize={12} variant="dark" type="button" onClick={handleSignOut}>
                 {submitting ? 'Logging Out...' : 'Log Out'}
