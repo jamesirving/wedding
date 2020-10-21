@@ -1,10 +1,10 @@
-import React from 'react';
 import { Link } from 'gatsby';
+import React from 'react';
 import styled, { css } from 'styled-components';
 
+import { breakpoints, colors, space, globalStyles } from '../../styles';
 import { Button } from '../button';
 import { Container, Flex, Box } from '../grid';
-import { breakpoints, colors, space, globalStyles } from '../../styles';
 import { Heading } from '../typography';
 
 const Nav = styled.nav`

@@ -1,6 +1,6 @@
+import { TableCell, TableHead as MuiTableHead, TableRow, TableSortLabel } from '@material-ui/core';
 import React from 'react';
 import styled from 'styled-components';
-import { TableCell, TableHead as MuiTableHead, TableRow, TableSortLabel } from '@material-ui/core';
 
 const headCells = [
   { id: 'givenName', label: 'First Name' },

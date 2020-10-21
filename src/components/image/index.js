@@ -25,15 +25,15 @@ const StyledImage = styled.img`
 
 const Image = ({ className, image, src, srcSet, width, height, sizes, alt, objectPosition, isBackground }) => (
   <StyledImage
+    alt={alt}
     className={className}
-    src={src}
-    srcSet={srcSet}
-    width={width}
     height={height}
     isBackground={isBackground}
     objectPosition={isBackground ? objectPosition : null}
     sizes={sizes}
-    alt={alt}
+    src={src}
+    srcSet={srcSet}
+    width={width}
     {...getImageProps(image)}
   />
 );
@@ -42,8 +42,9 @@ Image.propTypes = {
   alt: PropTypes.string,
   className: PropTypes.string,
   height: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-  objectPosition: PropTypes.string,
+  image: PropTypes.object,
   isBackground: PropTypes.bool,
+  objectPosition: PropTypes.string,
   sizes: PropTypes.string,
   src: PropTypes.string,
   srcSet: PropTypes.string,

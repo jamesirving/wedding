@@ -1,6 +1,6 @@
 const dietaryRequirements = [
   { name: 'gluten', label: 'Gluten intolerance' },
-  { name: 'hallal', label: 'Hallal' },
+  { name: 'halal', label: 'Halal' },
   { name: 'nut', label: 'Nut allergy' },
   { name: 'vegan', label: 'Vegan' },
   { name: 'vegetarian', label: 'Vegetarian' },

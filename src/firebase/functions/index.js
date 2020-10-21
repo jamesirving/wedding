@@ -1,5 +1,5 @@
-const functions = require('firebase-functions');
 const axios = require('axios');
+const functions = require('firebase-functions');
 
 const USER_ERROR_CODES = ['missing-input-response', 'invalid-input-response'];
 

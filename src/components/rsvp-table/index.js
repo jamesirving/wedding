@@ -4,12 +4,12 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 
 import { Button } from '../button';
+import { colors } from '../../styles';
 import { Container, Col, Row } from '../grid';
-import { getFirebaseDB } from '../../utils';
 import { getComparator, stableSort } from './table-sort';
+import { getFirebaseDB } from '../../utils';
 import { P } from '../typography';
 import { TableHead } from './table-head';
-import { colors } from '../../styles';
 
 const formatGuest = guest => {
   const dietaryRequirements = reduce(
