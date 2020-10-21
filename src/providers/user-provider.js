@@ -3,11 +3,17 @@
 import React, { createContext, Component } from 'react';
 import { getFirebaseAuth } from '../utils';
 
-const UserContext = createContext({ user: null });
+const UserContext = createContext({
+  user: {
+    isLoading: true,
+  },
+});
 
 class UserProvider extends Component {
   state = {
-    user: null,
+    user: {
+      isLoading: true,
+    },
   };
 
   componentDidMount = () => {
@@ -18,7 +24,7 @@ class UserProvider extends Component {
     }
 
     auth.onAuthStateChanged(userAuth => {
-      this.setState({ user: userAuth });
+      this.setState({ user: { ...userAuth, isLoading: false } });
     });
   };
 
