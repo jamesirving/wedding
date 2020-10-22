@@ -82,9 +82,7 @@ const buttonStyles = css`
   padding: ${space.x1} ${space.x2};
   text-transform: uppercase;
   transition: all ${globalStyles.transitionSpeed} ${globalStyles.easing};
-
   ${buttonVariant}
-
   ${border}
   ${color}
   ${flexbox}
@@ -108,7 +106,7 @@ const Content = ({ children, isLoading }) => {
   ) : (
     <Flex alignItems="center">
       <Box mr={1}>Loading</Box>
-      <CircularProgress color="black" size={18} />
+      <CircularProgress color="inherit" size={18} />
     </Flex>
   );
 };

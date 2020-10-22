@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { graphql } from 'gatsby';
 import ReactMarkdown from 'react-markdown';
 
-import { Layout } from '../components/layout';
 import { Feature } from '../components/feature';
 import { ContentImage } from '../components/content-image';
 import { Heading, P, Preheading } from '../components/typography';
@@ -63,13 +62,11 @@ const IndexPage = ({ data }) => {
   const { frontmatter } = data.markdownRemark;
 
   return (
-    <Layout>
-      <IndexPageTemplate
-        pageHeaderBlock={frontmatter.pageHeaderBlock}
-        contentImageBlock={frontmatter.contentImageBlock}
-        featureBlock={frontmatter.featureBlock}
-      />
-    </Layout>
+    <IndexPageTemplate
+      pageHeaderBlock={frontmatter.pageHeaderBlock}
+      contentImageBlock={frontmatter.contentImageBlock}
+      featureBlock={frontmatter.featureBlock}
+    />
   );
 };
 

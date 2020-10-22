@@ -1,7 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { graphql } from 'gatsby';
-import { Layout } from '../components/layout';
 import { Content } from '../components/Content';
 
 export const AboutPageTemplate = ({ title, content }) => {
@@ -29,11 +27,7 @@ AboutPageTemplate.propTypes = {
 const AboutPage = ({ data }) => {
   const { markdownRemark: post } = data;
 
-  return (
-    <Layout>
-      <AboutPageTemplate title={post.frontmatter.title} content={post.html} />
-    </Layout>
-  );
+  return <AboutPageTemplate title={post.frontmatter.title} content={post.html} />;
 };
 
 AboutPage.propTypes = {

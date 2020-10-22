@@ -3,7 +3,6 @@ import { graphql } from 'gatsby';
 import PropTypes from 'prop-types';
 import React from 'react';
 
-import { Layout } from '../components/layout';
 import { Feature } from '../components/feature';
 import { Heading, P, Preheading } from '../components/typography';
 import { RsvpForm } from '../components/rsvp-form';
@@ -32,21 +31,9 @@ RsvpPageTemplate.propTypes = {
 const RsvpPage = ({ data }) => {
   const { frontmatter } = data.markdownRemark;
 
-  if (!RECAPTCHA_KEY) {
-    // eslint-disable-next-line no-console
-    console.log('RECAPTCHA_KEY error: ', RECAPTCHA_KEY);
-    return (
-      <Layout>
-        <RsvpPageTemplate pageHeaderBlock={frontmatter.pageHeaderBlock} />
-      </Layout>
-    );
-  }
-
   return (
     <GoogleReCaptchaProvider reCaptchaKey={RECAPTCHA_KEY}>
-      <Layout>
-        <RsvpPageTemplate pageHeaderBlock={frontmatter.pageHeaderBlock} />
-      </Layout>
+      <RsvpPageTemplate pageHeaderBlock={frontmatter.pageHeaderBlock} />
     </GoogleReCaptchaProvider>
   );
 };
