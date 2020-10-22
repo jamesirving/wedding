@@ -112,7 +112,7 @@ const RsvpForm = () => {
                       <Col width={1} mb="1">
                         <Button
                           disabled={success || isSubmitting}
-                          isLoading={true}
+                          isLoading={isSubmitting}
                           onClick={handleSubmit}
                           type="submit"
                           variant="dark"
