@@ -21,7 +21,7 @@ const SignIn = () => {
   const onSubmit = useCallback(async (values, { setSubmitting, setStatus, setFieldError }) => {
     setSubmitting(true);
 
-    auth.signInWithEmailAndPassword(values.email, values.password).catch(error => {
+    await auth.signInWithEmailAndPassword(values.email, values.password).catch(error => {
       const errorCode = error.code;
       const errorMessage = error.message;
 
@@ -58,12 +58,18 @@ const SignIn = () => {
                     </Row>
                     <Row flexWrap="wrap" my={1}>
                       <Col width={1}>
-                        <Button disabled={isSubmitting} onClick={handleSubmit} variant="dark" type="submit">
-                          {isSubmitting ? 'Submitting...' : 'Login'}
+                        <Button
+                          disabled={isSubmitting}
+                          isLoading={isSubmitting}
+                          onClick={handleSubmit}
+                          type="submit"
+                          variant="dark"
+                        >
+                          Login
                         </Button>
                       </Col>
                       {get(status, 'error') && (
-                        <Col width={1} mb="1">
+                        <Col width={1} my="1">
                           <StyledError>{status.error}</StyledError>
                         </Col>
                       )}

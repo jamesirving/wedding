@@ -8,10 +8,12 @@ import {
   typography,
   variant as styledVariant,
 } from 'styled-system';
+import { CircularProgress } from '@material-ui/core';
 import PropTypes from 'prop-types';
 import React from 'react';
 import styled, { css } from 'styled-components';
 
+import { Box, Flex } from '../grid';
 import { Link } from '../link';
 import { space, colors, globalStyles, fontWeight } from '../../styles';
 
@@ -100,24 +102,44 @@ const StyledButton = styled.button`
   ${buttonStyles}
 `;
 
-const Button = ({ linkType = 'internal', children, theme = 'light', type = 'link', url, ...rest }) => {
+const Content = ({ children, isLoading }) => {
+  return !isLoading ? (
+    children
+  ) : (
+    <Flex alignItems="center">
+      <Box mr={1}>Loading</Box>
+      <CircularProgress color="black" size={18} />
+    </Flex>
+  );
+};
+
+const Button = ({
+  children,
+  isLoading = false,
+  linkType = 'internal',
+  theme = 'light',
+  type = 'link',
+  url,
+  ...rest
+}) => {
   if (type === 'link') {
     return (
       <StyledLink variant={theme} linkType={linkType} url={url} {...rest}>
-        {children}
+        <Content isLoading={isLoading}>{children}</Content>
       </StyledLink>
     );
   }
 
   return (
     <StyledButton variant={theme} type={type} {...rest}>
-      {children}
+      <Content isLoading={isLoading}>{children}</Content>
     </StyledButton>
   );
 };
 
 Button.propTypes = {
   children: PropTypes.node,
+  isLoading: PropTypes.bool,
   linkType: PropTypes.string,
   theme: PropTypes.oneOf(['dark', 'light']),
   type: PropTypes.oneOf(['submit', 'button', 'link']),
