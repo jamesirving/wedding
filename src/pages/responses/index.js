@@ -1,11 +1,9 @@
 import { get } from 'lodash';
 import React, { useContext, useState } from 'react';
-import { CircularProgress } from '@material-ui/core';
 
 import { Button } from '../../components/button';
-import { Container, Col, Flex, Row } from '../../components/grid';
+import { Container, Col, Row } from '../../components/grid';
 import { getFirebaseAuth } from '../../utils';
-import { Layout } from '../../components/layout';
 import { RsvpTable } from '../../components/rsvp-table';
 import { SignIn } from '../../components/sign-in';
 import { UserContext } from '../../providers/user-provider';
@@ -31,19 +29,9 @@ const ResponsesPage = () => {
       });
   };
 
-  if (user.isLoading === true) {
-    return (
-      <Layout>
-        <Flex my={3} justifyContent="center">
-          <CircularProgress color="black" />
-        </Flex>
-      </Layout>
-    );
-  }
-
   if (get(user, 'email')) {
     return (
-      <Layout>
+      <>
         <Container>
           <Row mt={3} mb={{ xs: 3, md: 0 }} justifyContent={{ xs: 'flex-start', md: 'flex-end' }}>
             <Col>
@@ -61,15 +49,11 @@ const ResponsesPage = () => {
           </Row>
         </Container>
         <RsvpTable guests={[]} />
-      </Layout>
+      </>
     );
   }
 
-  return (
-    <Layout>
-      <SignIn />
-    </Layout>
-  );
+  return <SignIn />;
 };
 
 export default ResponsesPage;
