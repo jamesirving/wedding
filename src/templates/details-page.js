@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { graphql } from 'gatsby';
 
+import { Layout } from '../components/layout';
 import { Feature } from '../components/feature';
 import { Details } from '../components/details';
 import { Heading, P, Preheading } from '../components/typography';
@@ -29,7 +30,11 @@ DetailsPageTemplate.propTypes = {
 const DetailsPage = ({ data }) => {
   const { frontmatter } = data.markdownRemark;
 
-  return <DetailsPageTemplate pageHeaderBlock={frontmatter.pageHeaderBlock} detailsBlock={frontmatter.detailsBlock} />;
+  return (
+    <Layout>
+      <DetailsPageTemplate pageHeaderBlock={frontmatter.pageHeaderBlock} detailsBlock={frontmatter.detailsBlock} />
+    </Layout>
+  );
 };
 
 DetailsPage.propTypes = {
