@@ -59,4 +59,6 @@ detailsBlock:
     detail: Unfortunately, no. We hope you will understand our decision to make the
       wedding children free and take this opportunity to let your hair down and
       celebrate a night of freedom.
+  - heading: Dress Code
+    detail: Semi-formal.
 ---
